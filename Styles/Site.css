@@ -175,7 +175,7 @@ div.menu ul li a, div.menu ul li a:visited
 
 div.menu ul li a:hover
 {
-    background-color: #bfcbd6;
+    background-color: Yellow ;
     color: #465c71;
     text-decoration: none;
 }
@@ -236,6 +236,8 @@ div.accountInfo
     width: 42%;
 }
 
+
+
 /* MISC  
 ----------------------------------------------------------*/
 
@@ -291,4 +293,11 @@ div.accountInfo
 {
     text-align: right;
     padding-right: 10px;
+}
+
+#NavBar
+{
+    width:1000px;
+    padding-left:50px;
+    
 }

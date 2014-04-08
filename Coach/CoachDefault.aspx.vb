@@ -1,29 +1,32 @@
 ﻿Imports System.Diagnostics
 Imports System.Data
 Imports System.Data.SqlClient
+
+
 Partial Class Coach_Default
     Inherits System.Web.UI.Page
-    Dim connectionString As String = "Data Source=SIMON;Initial Catalog=BetaSYS39414;Persist Security Info=True;User ID=sking;Password=pxdrlgyu"
-    Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
 
-        'Connection to database and Permissoin Call
-        Dim Conn As New SqlConnection(connectionString)
-        Dim PermissionCheck As New SqlCommand("EXEC PermissionCheckWithRoles", Conn)
-        PermissionCheck.Parameters.AddWithValue("@Title", Session("UserRole"))
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
-        Conn.Open()
+        Select Case Session("UserRole")
+            Case "Admin"
+                Debug.Print("UserRole is admin")
+                AdminNavMenu.Visible = True
 
-        Dim rd As SqlDataReader = PermissionCheck.ExecuteReader()
-        If PermissionCheck =
+            Case "Athlete"
+                Debug.Print("UserRole is athlete")
+                AthleteNavMenu.Visible = True
 
-
-        End If
-
-
+            Case "Coach"
+                Debug.Print("UserRole is coach")
+                CoachNavMenu.Visible = True
 
 
+        End Select
 
+    End Sub
 
+    Protected Sub CoachNavMenu_MenuItemClick(sender As Object, e As System.Web.UI.WebControls.MenuEventArgs) Handles CoachNavMenu.MenuItemClick
 
     End Sub
 End Class
