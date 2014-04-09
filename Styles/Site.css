@@ -1,6 +1,13 @@
 ﻿/* DEFAULTS
 ----------------------------------------------------------*/
 
+#NavBar
+{
+    width:200px;
+    padding-left:50px;
+    
+}
+
 body   
 {
     background: #b6b7bc;
@@ -237,6 +244,18 @@ div.accountInfo
 }
 
 
+/* Workout Page Layout
+----------------------------------------------------------*/
+
+#CurrentWorkouts
+{
+    position:absolute;
+    top:171px;
+    right:200px;
+    float:right;
+    
+    
+}
 
 /* MISC  
 ----------------------------------------------------------*/
@@ -295,9 +314,3 @@ div.accountInfo
     padding-right: 10px;
 }
 
-#NavBar
-{
-    width:1000px;
-    padding-left:50px;
-    
-}

@@ -20,7 +20,30 @@
             <asp:Parameter Name="Description" Type="String" />
         </UpdateParameters>
     </asp:SqlDataSource>
-    <asp:GridView ID="GridView1" runat="server" AllowPaging="True" 
+        <div id="NavBar">
+        <asp:Menu ID="CoachNavMenu" Visible="false" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Vertical">
+            <Items>
+                <asp:MenuItem NavigateUrl="~/WorkoutPage.aspx" Text="Workouts" />
+                <asp:MenuItem NavigateUrl="~/ExercisePage.aspx" Text="Exercises" />
+                <asp:MenuItem NavigateUrl="~/ReportPage.aspx" Text="Workout Reports" />
+                <asp:MenuItem NavigateUrl="~/AttendancePage.aspx" Text="Attendance Reports" />
+                <asp:MenuItem NavigateUrl="~/Teams.aspx" Text="Teams" />
+                <asp:MenuItem NavigateUrl="~/Positions.aspx" Text="Positions" />
+            </Items>
+        </asp:Menu>
+        <asp:Menu ID="AdminNavMenu" Visible="false" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Vertical">
+            <Items>
+                <asp:MenuItem NavigateUrl="~/UserAccount.aspx" Text="Manage User Accounts" />
+                <asp:MenuItem NavigateUrl="~/Teams.aspx" Text="Manage Teams" />
+                <asp:MenuItem NavigateUrl="~/WorkoutPage.aspx" Text="Manage Workouts" />
+                <asp:MenuItem NavigateUrl="~/ExercisePage.aspx" Text="Manage Exercises" />
+                <asp:MenuItem NavigateUrl="~/ReportPage.aspx" Text="Manage Workout Reports" />
+            </Items>
+        </asp:Menu>
+
+    </div>
+        <div id="CurrentWorkouts">
+    <asp:GridView ID="WorkoutTable" runat="server" AllowPaging="True" 
         AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="WorkoutID" 
         DataSourceID="sdsWorkout">
         <Columns>
@@ -37,6 +60,7 @@
         </Columns>
     </asp:GridView>
     <asp:Button ID="btnNewWorkout" runat="server" Text="Add Workout" />
+    
     <br />
     <asp:DetailsView ID="dvNewWorkout" runat="server" AutoGenerateRows="False" 
         DataKeyNames="WorkoutID" DataSourceID="sdsWorkout" DefaultMode="Insert" 
@@ -68,7 +92,7 @@
             <asp:Parameter Name="WorkoutID" Type="Int32" />
         </InsertParameters>
         <SelectParameters>
-            <asp:ControlParameter ControlID="GridView1" DefaultValue="" Name="WorkoutID" 
+            <asp:ControlParameter ControlID="WorkoutTable" DefaultValue="" Name="WorkoutID" 
                 PropertyName="SelectedValue" Type="Int32" />
         </SelectParameters>
     </asp:SqlDataSource>
@@ -112,5 +136,7 @@
     <br />
     <asp:Button ID="btnAddExercise" runat="server" Text="Add Exercise to Workout" 
         Visible="False" />
+    </div>
     </asp:Content>
+    
 

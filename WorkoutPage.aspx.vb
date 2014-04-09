@@ -1,4 +1,5 @@
-﻿Imports System.Data
+﻿Imports System.Diagnostics
+Imports System.Data
 Imports System.Data.SqlClient
 Partial Class Default3
     Inherits System.Web.UI.Page
@@ -9,7 +10,7 @@ Partial Class Default3
         btnNewWorkout.Visible = False
     End Sub
 
-    Protected Sub GridView1_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles GridView1.SelectedIndexChanged
+    Protected Sub WorkoutTable_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles WorkoutTable.SelectedIndexChanged
         gvWorkoutExercise.Visible = True
         btnAddExercise.Visible = True
         ddlExercise.Visible = True
@@ -19,7 +20,7 @@ Partial Class Default3
         Using connection As New SqlConnection(connectionString)
             Dim JoelandSam4ever As New SqlCommand("EXEC CreateWorkoutExercise @ExerciseID, @WorkoutID", connection)
             JoelandSam4ever.Parameters.AddWithValue("@ExerciseID", ddlExercise.SelectedValue)
-            JoelandSam4ever.Parameters.AddWithValue("@WorkoutID", GridView1.SelectedValue)
+            JoelandSam4ever.Parameters.AddWithValue("@WorkoutID", WorkoutTable.SelectedValue)
             connection.Open()
             Dim rowsAffected As Integer = JoelandSam4ever.ExecuteNonQuery
         End Using
@@ -30,5 +31,17 @@ Partial Class Default3
         btnNewWorkout.Visible = True
         dvNewWorkout.Visible = False
         btnCancel.Visible = False
+    End Sub
+
+    Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
+        Select Session("UserRole")
+            Case "Admin"
+                Debug.Print("UserRole is admin")
+                AdminNavMenu.Visible = True
+
+            Case "Coach"
+                Debug.Print("UserRole is coach")
+                CoachNavMenu.Visible = True
+        End Select
     End Sub
 End Class
