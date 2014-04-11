@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" MasterPageFile="~/LoginMaster.Master" AutoEventWireup="false" CodeFile="ExercisePage.aspx.vb" Inherits="ExercisePage_Default" %>
+﻿<%@ Page Language="VB" MasterPageFile="~/Site.Master" AutoEventWireup="false" CodeFile="ExercisePage.aspx.vb" Inherits="ExercisePage_Default" %>
 
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
