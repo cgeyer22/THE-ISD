@@ -10,6 +10,7 @@
     </h2>
     <div>
         Here is a link to <a href="../UserAccounts/UserAccount_Default.aspx" >User Accounts</a>.
-        Here is another to <a href="~/UserAccounts/UserRoles.aspx" >Exercise Pages</a>.
+        Here is another to 
+        <asp:Button ID="btnWorkout" runat="server" Text="Workout Page" />
     </div>
 </asp:Content>

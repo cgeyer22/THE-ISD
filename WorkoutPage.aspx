@@ -141,6 +141,8 @@
     <asp:Button ID="btnAddExercise" runat="server" Text="Add Exercise to Workout" 
         Visible="False" />
     &nbsp;<asp:Button ID="btnNewExercise" runat="server" Text="Create a New Exercise" />
+            <asp:Button ID="btnAssignWorkout" runat="server" 
+                Text="Assign Workouts to Athletes" />
     </div>
     </asp:Content>
 

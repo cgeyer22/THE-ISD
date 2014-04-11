@@ -54,4 +54,8 @@ Partial Class Default3
     Protected Sub btnNewExercise_Click(sender As Object, e As System.EventArgs) Handles btnNewExercise.Click
         Response.Redirect("ExercisePage.aspx")
     End Sub
+
+    Protected Sub btnAssignWorkout_Click(sender As Object, e As System.EventArgs) Handles btnAssignWorkout.Click
+        Response.Redirect("AssignWorkouts.aspx")
+    End Sub
 End Class
