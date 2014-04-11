@@ -8,7 +8,7 @@
     <h1>
         Welcome to the Coach home page.
     </h1>
-    <div id="NavBar">
+    <div class="NavBar">
         <asp:Menu ID="CoachNavMenu" Visible="false" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Vertical">
             <Items>
                 <asp:MenuItem NavigateUrl="~/WorkoutPage.aspx" Text="Workouts" />
@@ -37,6 +37,6 @@
         </asp:Menu>
 
     </div>
-    <div>this should b eon the left</div>
+
 
 </asp:Content>

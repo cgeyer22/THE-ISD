@@ -13,6 +13,21 @@ Partial Class ExercisePage_Default
                 debug.print("Athlete cannot be on page")
 
         End Select
+        Select Case Session("UserRole")
+            Case "Admin"
+                Debug.Print("UserRole is admin")
+                AdminNavMenu.Visible = True
+
+            Case "Athlete"
+                Debug.Print("UserRole is athlete")
+                AthleteNavMenu.Visible = True
+
+            Case "Coach"
+                Debug.Print("UserRole is coach")
+                CoachNavMenu.Visible = True
+
+
+        End Select
     End Sub
 
 

@@ -5,7 +5,37 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 
-    <h2>Create Exercise</h2>
+       <h1>Create Exercise</h1>
+      <div class="NavBar">
+        <asp:Menu ID="CoachNavMenu" Visible="false" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Vertical">
+            <Items>
+                <asp:MenuItem NavigateUrl="~/WorkoutPage.aspx" Text="Workouts" />
+                <asp:MenuItem NavigateUrl="~/ExercisePage.aspx" Text="Exercises" />
+                <asp:MenuItem NavigateUrl="~/ReportPage.aspx" Text="Workout Reports" />
+                <asp:MenuItem NavigateUrl="~/AttendancePage.aspx" Text="Attendance Reports" />
+                <asp:MenuItem NavigateUrl="~/Teams.aspx" Text="Teams" />
+                <asp:MenuItem NavigateUrl="~/Positions.aspx" Text="Positions" />
+            </Items>
+        </asp:Menu>
+        <asp:Menu ID="AdminNavMenu" Visible="false" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Vertical">
+            <Items>
+                <asp:MenuItem NavigateUrl="~/UserAccount.aspx" Text="Manage User Accounts" />
+                <asp:MenuItem NavigateUrl="~/Teams.aspx" Text="Manage Teams" />
+                <asp:MenuItem NavigateUrl="~/WorkoutPage.aspx" Text="Manage Workouts" />
+                <asp:MenuItem NavigateUrl="~/ExercisePage.aspx" Text="Manage Exercises" />
+                <asp:MenuItem NavigateUrl="~/ReportPage.aspx" Text="Manage Workout Reports" />
+            </Items>
+        </asp:Menu>
+        <asp:Menu ID="AthleteNavMenu" Visible="false" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Vertical">
+            <Items>
+                <asp:MenuItem NavigateUrl="~/WorkoutPage.aspx" Text="Manage Workouts" />
+                <asp:MenuItem NavigateUrl="~/CalendarPage.aspx" Text="Manage Calendar" />
+                <asp:MenuItem NavigateUrl="~/ReportPage.aspx" Text="Manage Reports" />
+            </Items>
+        </asp:Menu>
+
+    </div>
+    <div class="PostionOfLeftColumn">
     <asp:SqlDataSource ID="sqlExerciseTable" runat="server" 
         ConnectionString="<%$ ConnectionStrings:BetaSYS39414ConnectionString %>" 
         SelectCommand="ReadExercise" 
@@ -28,11 +58,8 @@
 
     </asp:SqlDataSource>
     <asp:DetailsView ID="DetailsView1" runat="server" Height="50px" Width="125px" 
-        DefaultMode="Insert" AutoGenerateRows="False" BackColor="LightGoldenrodYellow" 
-        BorderColor="Tan" BorderWidth="1px" CellPadding="2" DataKeyNames="ExerciseID" 
-        DataSourceID="sqlExerciseTable" ForeColor="Black" GridLines="None">
-        <AlternatingRowStyle BackColor="PaleGoldenrod" />
-        <EditRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
+        DefaultMode="Insert" AutoGenerateRows="False" BorderWidth="1px" CellPadding="2" DataKeyNames="ExerciseID" 
+        DataSourceID="sqlExerciseTable" GridLines="None">
         <Fields>
             <asp:BoundField DataField="ExerciseID" HeaderText="ExerciseID" 
                 InsertVisible="False" ReadOnly="True" SortExpression="ExerciseID" />
@@ -41,10 +68,6 @@
                 SortExpression="Description" />
             <asp:CommandField ShowInsertButton="True" ButtonType="Button" />
         </Fields>
-        <FooterStyle BackColor="Tan" />
-        <HeaderStyle BackColor="Tan" Font-Bold="True" />
-        <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" 
-            HorizontalAlign="Center" />
     </asp:DetailsView>
     <br />
     <h2>List of Exercises</h2>
@@ -52,7 +75,7 @@
         AllowSorting="True" AutoGenerateColumns="False" BackColor="White" 
         BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" 
         CellSpacing="1" DataKeyNames="ExerciseID" DataSourceID="sqlExerciseTable" 
-        GridLines="None">
+        GridLines="Horizontal" Width="600px">
         <Columns>
             <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ButtonType="Button" />
           
@@ -60,15 +83,7 @@
             <asp:BoundField DataField="Description" HeaderText="Description" 
                 SortExpression="Description" />
         </Columns>
-        <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />
-        <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#E7E7FF" />
-        <PagerStyle BackColor="#C6C3C6" ForeColor="Black" HorizontalAlign="Right" />
-        <RowStyle BackColor="#DEDFDE" ForeColor="Black" />
-        <SelectedRowStyle BackColor="#9471DE" Font-Bold="True" ForeColor="White" />
-        <SortedAscendingCellStyle BackColor="#F1F1F1" />
-        <SortedAscendingHeaderStyle BackColor="#594B9C" />
-        <SortedDescendingCellStyle BackColor="#CAC9C9" />
-        <SortedDescendingHeaderStyle BackColor="#33276A" />
     </asp:GridView>
+    </div>
 
 </asp:Content>

@@ -1,7 +1,7 @@
 ﻿/* DEFAULTS
 ----------------------------------------------------------*/
 
-#NavBar
+.NavBar
 {
     width:200px;
     padding-left:50px;
@@ -11,9 +11,8 @@
 .PostionOfLeftColumn
 {
     position:absolute;
-    top:171px;
-    right:200px;
-    float:right;
+    top:155px;
+    left:400px;
     
     
 }
