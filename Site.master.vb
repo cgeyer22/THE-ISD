@@ -20,9 +20,7 @@ Partial Class Site
             Debug.Print("Username is " + Session("Username"))
 
             LogoutLink.Visible = True
-
-
-
+            HeadLoginView.Visible = False
 
         End If
 
