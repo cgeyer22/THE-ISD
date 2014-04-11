@@ -42,7 +42,7 @@
         </asp:Menu>
 
     </div>
-        <div id="CurrentWorkouts">
+        <div id="CurrentWorkouts" class="PostionOfLeftColumn">
     <asp:GridView ID="WorkoutTable" runat="server" AllowPaging="True" 
         AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="WorkoutID" 
         DataSourceID="sdsWorkout">

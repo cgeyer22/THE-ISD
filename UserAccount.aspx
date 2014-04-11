@@ -1,13 +1,11 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="Default.aspx.vb" Inherits="_Default" %>
+﻿<%@ Page Title="" Language="VB" MasterPageFile="~/LoginMaster.master" AutoEventWireup="false" CodeFile="UserAccount.aspx.vb" Inherits="UserAccount" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="CreateUser" runat="server">
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+</asp:Content>
+<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+
+    <div id="CreateUser">
     <asp:SqlDataSource ID="SqlAccess" runat="server" 
         ConnectionString="<%$ ConnectionStrings:BetaSYS39414ConnectionString %>" 
         DeleteCommand="InactivateUserAccount" DeleteCommandType="StoredProcedure" 
@@ -126,6 +124,7 @@
         <SortedDescendingCellStyle BackColor="#E1DB9C" />
         <SortedDescendingHeaderStyle BackColor="#C2A47B" />
     </asp:GridView>
-    </form>
-</body>
-</html>
+    </div>
+    </asp:Content>
+    
+

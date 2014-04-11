@@ -8,6 +8,16 @@
     
 }
 
+.PostionOfLeftColumn
+{
+    position:absolute;
+    top:171px;
+    right:200px;
+    float:right;
+    
+    
+}
+
 body   
 {
     background: #b6b7bc;
@@ -247,15 +257,7 @@ div.accountInfo
 /* Workout Page Layout
 ----------------------------------------------------------*/
 
-#CurrentWorkouts
-{
-    position:absolute;
-    top:171px;
-    right:200px;
-    float:right;
-    
-    
-}
+
 
 /* MISC  
 ----------------------------------------------------------*/

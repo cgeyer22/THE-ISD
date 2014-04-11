@@ -43,5 +43,10 @@ Partial Class Default3
                 Debug.Print("UserRole is coach")
                 CoachNavMenu.Visible = True
         End Select
+
+        Select Case Session("ActiveUser")
+            Case "Athlete"
+                Response.Redirect("~/Athlete/AthleteDefault.aspx")
+        End Select
     End Sub
 End Class

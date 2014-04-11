@@ -1,14 +1,10 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="ExercisePage.aspx.vb" Inherits="ExercisePage_Default" %>
+﻿<%@ Page Language="VB" MasterPageFile="~/LoginMaster.Master" AutoEventWireup="false" CodeFile="ExercisePage.aspx.vb" Inherits="ExercisePage_Default" %>
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+</asp:Content>
+<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
     <h2>Create Exercise</h2>
     <asp:SqlDataSource ID="sqlExerciseTable" runat="server" 
         ConnectionString="<%$ ConnectionStrings:BetaSYS39414ConnectionString %>" 
@@ -74,8 +70,5 @@
         <SortedDescendingCellStyle BackColor="#CAC9C9" />
         <SortedDescendingHeaderStyle BackColor="#33276A" />
     </asp:GridView>
-   
-    
-    </form>
-</body>
-</html>
+
+</asp:Content>
