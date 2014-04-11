@@ -18,7 +18,7 @@
 
 
     <div>
-    <asp:DropDownList ID="DropDownList1" runat="server" 
+    <asp:DropDownList ID="ddlUsername" runat="server" 
         DataSourceID="sqlDSUserRole" DataTextField="Username" 
             DataValueField="Username" AutoPostBack="True">
     </asp:DropDownList>
@@ -36,7 +36,7 @@
         SelectCommand="SelectRoleOfUser" SelectCommandType="StoredProcedure" 
             UpdateCommand="UpdateRoleOfUser" UpdateCommandType="StoredProcedure">
         <SelectParameters>
-            <asp:ControlParameter ControlID="DropDownList1" Name="UserName" 
+            <asp:ControlParameter ControlID="ddlUsername" Name="UserName" 
                 PropertyName="SelectedValue" Type="String" />
         </SelectParameters>
         <UpdateParameters>
@@ -51,11 +51,14 @@
             <asp:BoundField DataField="Title" HeaderText="Title" SortExpression="Title"  />
         </Columns>
     </asp:GridView>
-
-        <asp:DropDownList ID="DropDownList2" runat="server" 
+        
+        <asp:Button ID="btnChange" runat="server" Text="Change User Role" Visible="false" />
+        
+        <asp:Label Text="Change Role of User to: " ID="lblChange" runat="server" Visible="false" />
+        <asp:DropDownList ID="ddlRoles" runat="server" Visible="false"
             DataSourceID="SqlDataSource2" DataTextField="Title" DataValueField="Title">
         </asp:DropDownList>
-        <asp:Button ID="Button1" runat="server" Text="Button" />
+        <asp:Button ID="btnNewRole" runat="server" Text="Confirm" Visible="false" />
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
             ConnectionString="<%$ ConnectionStrings:BetaSYS39414ConnectionString2 %>" 
             SelectCommand="SelectRoles" SelectCommandType="StoredProcedure">
