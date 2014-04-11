@@ -35,6 +35,7 @@ Partial Class LoginMaster
         'Also change database so last Session entry is false
 
         LogoutLink.Visible = False
+        HeadLoginView.Visible = True
 
         Debug.Print("Log me out please")
         Response.Redirect("~/Account/Login.aspx")

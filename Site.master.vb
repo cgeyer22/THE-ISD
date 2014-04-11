@@ -11,6 +11,9 @@ Partial Class Site
 
 
 
+
+
+
         If Session("activeUser") Is Nothing Then
             LogoutLink.Visible = False
             Response.Redirect("~/ErrorLogin.aspx")
@@ -35,6 +38,7 @@ Partial Class Site
         'Also change database so last Session entry is false
 
         LogoutLink.Visible = False
+        HeadLoginView.Visible = True
 
         Debug.Print("Log me out please")
         Response.Redirect("~/Account/Login.aspx")

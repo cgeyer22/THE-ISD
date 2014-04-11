@@ -25,6 +25,7 @@ Partial Class Default3
             Dim rowsAffected As Integer = JoelandSam4ever.ExecuteNonQuery
         End Using
         gvWorkoutExercise.DataBind()
+        ddlExercise.DataBind()
     End Sub
 
     Protected Sub btnCancel_Click(sender As Object, e As System.EventArgs) Handles btnCancel.Click
@@ -48,5 +49,9 @@ Partial Class Default3
             Case "Athlete"
                 Response.Redirect("~/Athlete/AthleteDefault.aspx")
         End Select
+    End Sub
+
+    Protected Sub btnNewExercise_Click(sender As Object, e As System.EventArgs) Handles btnNewExercise.Click
+        Response.Redirect("ExercisePage.aspx")
     End Sub
 End Class

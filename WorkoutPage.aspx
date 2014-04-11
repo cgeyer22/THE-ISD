@@ -115,7 +115,7 @@
         ConnectionString="<%$ ConnectionStrings:BetaSYS39414Exercise %>" 
         DeleteCommand="DeleteExercise" DeleteCommandType="StoredProcedure" 
         InsertCommand="CreateExercise" InsertCommandType="StoredProcedure" 
-        SelectCommand="ReadExercise" SelectCommandType="StoredProcedure" 
+        SelectCommand="ReadUnaddedExercise" SelectCommandType="StoredProcedure" 
         UpdateCommand="UpdateExerciseTable" UpdateCommandType="StoredProcedure">
         <DeleteParameters>
             <asp:Parameter Name="ExerciseID" Type="Int32" />
@@ -124,6 +124,10 @@
             <asp:Parameter Name="Name" Type="String" />
             <asp:Parameter Name="Description" Type="String" />
         </InsertParameters>
+        <SelectParameters>
+            <asp:ControlParameter ControlID="WorkoutTable" Name="WorkoutID" 
+                PropertyName="SelectedValue" Type="Int32" />
+        </SelectParameters>
         <UpdateParameters>
             <asp:Parameter Name="ExerciseID" Type="Int32" />
             <asp:Parameter Name="Name" Type="String" />
@@ -136,7 +140,7 @@
     <br />
     <asp:Button ID="btnAddExercise" runat="server" Text="Add Exercise to Workout" 
         Visible="False" />
+    &nbsp;<asp:Button ID="btnNewExercise" runat="server" Text="Create a New Exercise" />
     </div>
     </asp:Content>
-    
 

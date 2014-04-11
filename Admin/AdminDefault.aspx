@@ -9,7 +9,7 @@
         Welcome to ASP.NET!
     </h2>
     <div>
-        Here is a link to <a href="../UserAccount.aspx" >User Accounts</a>.
-        Here is another to <a href="../ExercisePage.aspx" >Exercise Pages</a>.
+        Here is a link to <a href="../UserAccounts/UserAccount_Default.aspx" >User Accounts</a>.
+        Here is another to <a href="~/UserAccounts/UserRoles.aspx" >Exercise Pages</a>.
     </div>
 </asp:Content>
