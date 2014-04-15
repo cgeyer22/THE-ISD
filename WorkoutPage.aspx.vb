@@ -1,6 +1,7 @@
 ﻿Imports System.Diagnostics
 Imports System.Data
 Imports System.Data.SqlClient
+
 Partial Class Default3
     Inherits System.Web.UI.Page
     Dim connectionString As String = "Data Source=simon;Initial Catalog=BetaSYS39414;Persist Security Info=True;User ID=skrygshe;Password=vccviwhq"

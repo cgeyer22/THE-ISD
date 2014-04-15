@@ -109,15 +109,17 @@ Partial Class Account_Login
 
                 Debug.Print("valid login")
 
-                Select Case Session("UserRole")
-                    Case "Coach"
-                        Response.Redirect("~/Coach/CoachDefault.aspx")
-                    Case "Athlete"
-                        Response.Redirect("~/Athlete/AthleteDefault.aspx")
-                    Case "Admin"
-                        Response.Redirect("~/Admin/AdminDefault.aspx")
+                Response.Redirect("~/RoleHome/RoleDefault.aspx")
 
-                End Select
+                'Select Case Session("UserRole")
+                '   Case "Coach"
+                'Response.Redirect("~/Coach/CoachDefault.aspx")
+                '    Case "Athlete"
+                'Response.Redirect("~/Athlete/AthleteDefault.aspx")
+                '    Case "Admin"
+                'Response.Redirect("~/Admin/AdminDefault.aspx")
+
+                'End Select
 
                 con2.Close()
             End While

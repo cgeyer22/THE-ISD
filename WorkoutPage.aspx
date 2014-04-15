@@ -20,28 +20,30 @@
             <asp:Parameter Name="Description" Type="String" />
         </UpdateParameters>
     </asp:SqlDataSource>
-        <div id="NavBar">
-        <asp:Menu ID="CoachNavMenu" Visible="false" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Vertical">
-            <Items>
-                <asp:MenuItem NavigateUrl="~/WorkoutPage.aspx" Text="Workouts" />
-                <asp:MenuItem NavigateUrl="~/ExercisePage.aspx" Text="Exercises" />
-                <asp:MenuItem NavigateUrl="~/ReportPage.aspx" Text="Workout Reports" />
-                <asp:MenuItem NavigateUrl="~/AttendancePage.aspx" Text="Attendance Reports" />
-                <asp:MenuItem NavigateUrl="~/Teams.aspx" Text="Teams" />
-                <asp:MenuItem NavigateUrl="~/Positions.aspx" Text="Positions" />
-            </Items>
-        </asp:Menu>
-        <asp:Menu ID="AdminNavMenu" Visible="false" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Vertical">
-            <Items>
-                <asp:MenuItem NavigateUrl="~/UserAccount.aspx" Text="Manage User Accounts" />
-                <asp:MenuItem NavigateUrl="~/Teams.aspx" Text="Manage Teams" />
-                <asp:MenuItem NavigateUrl="~/WorkoutPage.aspx" Text="Manage Workouts" />
-                <asp:MenuItem NavigateUrl="~/ExercisePage.aspx" Text="Manage Exercises" />
-                <asp:MenuItem NavigateUrl="~/ReportPage.aspx" Text="Manage Workout Reports" />
-            </Items>
-        </asp:Menu>
-
-    </div>
+    
+    
+            <div id="NavBar">
+                <asp:Menu ID="CoachNavMenu" Visible="true" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Vertical">
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/WorkoutPage.aspx" Text="Workouts" />
+                        <asp:MenuItem NavigateUrl="~/ExercisePage.aspx" Text="Exercises" />
+                        <asp:MenuItem NavigateUrl="~/ReportPage.aspx" Text="Workout Reports" />
+                        <asp:MenuItem NavigateUrl="~/AttendancePage.aspx" Text="Attendance Reports" />
+                        <asp:MenuItem NavigateUrl="~/Teams.aspx" Text="Teams" />
+                        <asp:MenuItem NavigateUrl="~/Positions.aspx" Text="Positions" />
+                    </Items>
+                </asp:Menu>
+                <asp:Menu ID="AdminNavMenu" Visible="true" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Vertical">
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/UserAccount.aspx" Text="Manage User Accounts" />
+                        <asp:MenuItem NavigateUrl="~/Teams.aspx" Text="Manage Teams" />
+                        <asp:MenuItem NavigateUrl="~/WorkoutPage.aspx" Text="Manage Workouts" />
+                        <asp:MenuItem NavigateUrl="~/ExercisePage.aspx" Text="Manage Exercises" />
+                        <asp:MenuItem NavigateUrl="~/ReportPage.aspx" Text="Manage Workout Reports" />
+                    </Items>
+                </asp:Menu>
+            </div>
+           
         <div id="CurrentWorkouts" class="PostionOfLeftColumn">
     <asp:GridView ID="WorkoutTable" runat="server" AllowPaging="True" 
         AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="WorkoutID" 
