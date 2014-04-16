@@ -52,11 +52,11 @@
                     Orientation="Horizontal">
                     <Items>
                         <asp:MenuItem NavigateUrl="~/RoleHome/RoleDefault.aspx" Text="My Home"/>
-                        <asp:MenuItem NavigateUrl="~/WorkoutPage.aspx" Text="Workouts" />
-                        <asp:MenuItem NavigateUrl="~/ExercisePage.aspx" Text="Exercises" >
-                            <asp:MenuItem NavigateUrl="~/ExercisePage.aspx" Text="Create Exercises" 
+                        <asp:MenuItem NavigateUrl="~/Workouts/WorkoutPage.aspx" Text="Workouts" />
+                        <asp:MenuItem NavigateUrl="~/Workouts/ExercisePage.aspx" Text="Exercises" >
+                            <asp:MenuItem NavigateUrl="~/Workouts/ExercisePage.aspx" Text="Create Exercises" 
                                 Value="Create Exercises"></asp:MenuItem>
-                            <asp:MenuItem NavigateUrl="~/AssignExercises.aspx" Text="New Item" 
+                            <asp:MenuItem NavigateUrl="~/Workouts/AssignExercises.aspx" Text="New Item" 
                                 Value="New Item"></asp:MenuItem>
                         </asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/ReportPage.aspx" Text="Workout Reports" />
@@ -72,15 +72,15 @@
                         <asp:MenuItem NavigateUrl="~/RoleHome/RoleDefault.aspx" Text="My Home"/>
                         <asp:MenuItem NavigateUrl="~/UserAccounts/UserAccount.aspx" Text="Manage User Accounts" />
                         <asp:MenuItem NavigateUrl="~/Teams.aspx" Text="Manage Teams" />
-                        <asp:MenuItem NavigateUrl="~/WorkoutPage.aspx" Text="Manage Workouts" />
-                        <asp:MenuItem NavigateUrl="~/ExercisePage.aspx" Text="Manage Exercises" />
+                        <asp:MenuItem NavigateUrl="~/Workouts/WorkoutPage.aspx" Text="Manage Workouts" />
+                        <asp:MenuItem NavigateUrl="~/Workouts/ExercisePage.aspx" Text="Manage Exercises" />
                         <asp:MenuItem NavigateUrl="~/ReportPage.aspx" Text="Manage Workout Reports" />
                     </Items>
                 </asp:Menu>
                 <asp:Menu ID="AthleteNavMenu" Visible="false" runat="server"
                     CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
-                        <asp:MenuItem NavigateUrl="~/WorkoutPage.aspx" Text="Manage Workouts" />
+                        <asp:MenuItem NavigateUrl="~/Workouts/WorkoutPage.aspx" Text="Manage Workouts" />
                         <asp:MenuItem NavigateUrl="~/CalendarPage.aspx" Text="Manage Calendar" />
                         <asp:MenuItem NavigateUrl="~/ReportPage.aspx" Text="Manage Reports" />
                     </Items>
