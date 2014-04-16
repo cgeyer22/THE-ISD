@@ -13,6 +13,7 @@ Partial Class Role_Default
                 Debug.Print("UserRole is admin")
                 AdminNavMenu.Visible = True
 
+
             Case "Athlete"
                 Debug.Print("UserRole is athlete")
                 AthleteNavMenu.Visible = True
@@ -26,7 +27,4 @@ Partial Class Role_Default
 
     End Sub
 
-    Protected Sub CoachNavMenu_MenuItemClick(sender As Object, e As System.Web.UI.WebControls.MenuEventArgs) Handles CoachNavMenu.MenuItemClick
-
-    End Sub
 End Class

@@ -29,6 +29,22 @@ Partial Class Site
             HeadLoginView.Visible = False
 
         End If
+        Select Case Session("UserRole")
+            Case "Admin"
+                Debug.Print("UserRole is admin")
+                AdminNavMenu_Master.Visible = True
+
+
+                'Case "Athlete"
+                '    Debug.Print("UserRole is athlete")
+                '    AthleteNavMenu.Visible = True
+
+            Case "Coach"
+                Debug.Print("UserRole is coach")
+                CoachNavMenu_Master.Visible = True
+
+
+        End Select
 
     End Sub
 
