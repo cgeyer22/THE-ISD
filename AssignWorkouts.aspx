@@ -4,28 +4,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     
-    <div id="NavBar">
-        <asp:Menu ID="CoachNavMenu" Visible="false" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Vertical">
-            <Items>
-                <asp:MenuItem NavigateUrl="~/WorkoutPage.aspx" Text="Workouts" />
-                <asp:MenuItem NavigateUrl="~/ExercisePage.aspx" Text="Exercises" />
-                <asp:MenuItem NavigateUrl="~/ReportPage.aspx" Text="Workout Reports" />
-                <asp:MenuItem NavigateUrl="~/AttendancePage.aspx" Text="Attendance Reports" />
-                <asp:MenuItem NavigateUrl="~/Teams.aspx" Text="Teams" />
-                <asp:MenuItem NavigateUrl="~/Positions.aspx" Text="Positions" />
-            </Items>
-        </asp:Menu>
-        <asp:Menu ID="AdminNavMenu" Visible="false" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Vertical">
-            <Items>
-                <asp:MenuItem NavigateUrl="~/UserAccounts/UserAccount.aspx" Text="Manage User Accounts" />
-                <asp:MenuItem NavigateUrl="~/Teams.aspx" Text="Manage Teams" />
-                <asp:MenuItem NavigateUrl="~/WorkoutPage.aspx" Text="Manage Workouts" />
-                <asp:MenuItem NavigateUrl="~/ExercisePage.aspx" Text="Manage Exercises" />
-                <asp:MenuItem NavigateUrl="~/ReportPage.aspx" Text="Manage Workout Reports" />
-            </Items>
-        </asp:Menu>
-    </div>
-
     <asp:SqlDataSource ID="sdsWorkout" runat="server" 
         ConnectionString="<%$ ConnectionStrings:BetaSYS39414ConnectionWorkout %>" 
         InsertCommand="CreateWorkout" InsertCommandType="StoredProcedure" 
