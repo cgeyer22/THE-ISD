@@ -8,11 +8,14 @@ Partial Class Site
     Dim connectionString As String = "Data Source=SIMON;Initial Catalog=BetaSYS39414;Persist Security Info=True;User ID=sking;Password=pxdrlgyu"
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
-
-
-
-
-
+        'Check to see if there are multiple roles, if yes - show the dropdown
+        If Not (Page.IsPostBack) Then
+            RoleDropDown.DataBind()
+        End If
+        If RoleDropDown.Items.Count = 1 Then
+            RoleDropDown.Visible = "false"
+        End If
+        'End of Drop Down
 
         If Session("activeUser") Is Nothing Then
             LogoutLink.Visible = False
