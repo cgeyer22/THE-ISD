@@ -107,7 +107,7 @@ first child of the left and right table columns */
     width: 960px;
     background-color: #fff;
     margin: 20px auto 0px auto;
-    border: 1px solid #496077;
+    border: 1px solid #000000;
 }
 
 .header
@@ -115,7 +115,7 @@ first child of the left and right table columns */
     position: relative;
     margin: 0px;
     padding: 0px;
-    background: #4b6c9e;
+    background: #606060;
     width: 100%;
 }
 
@@ -160,7 +160,7 @@ first child of the left and right table columns */
 
 div.hideSkiplink
 {
-    background-color:#3a4f63;
+    background-color:#555555;
     width:100%;
 }
 
@@ -179,8 +179,8 @@ div.menu ul
 
 div.menu ul li a, div.menu ul li a:visited
 {
-    background-color: #465c71;
-    border: 1px #4e667d solid;
+    background-color: #202020;
+    border: 1px #151515 solid;
     color: #dde4ec;
     display: block;
     line-height: 1.35em;
@@ -191,14 +191,14 @@ div.menu ul li a, div.menu ul li a:visited
 
 div.menu ul li a:hover
 {
-    background-color: Yellow ;
-    color: #465c71;
+    background-color: #404040 ;
+    color: #dde4ec;
     text-decoration: none;
 }
 
 div.menu ul li a:active
 {
-    background-color: #465c71;
+    background-color: #505050;
     color: #cfdbe6;
     text-decoration: none;
 }
