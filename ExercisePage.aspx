@@ -19,7 +19,7 @@
         </asp:Menu>
         <asp:Menu ID="AdminNavMenu" Visible="false" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Vertical">
             <Items>
-                <asp:MenuItem NavigateUrl="~/UserAccount.aspx" Text="Manage User Accounts" />
+                <asp:MenuItem NavigateUrl="~/UserAccounts/UserAccount.aspx" Text="Manage User Accounts" />
                 <asp:MenuItem NavigateUrl="~/Teams.aspx" Text="Manage Teams" />
                 <asp:MenuItem NavigateUrl="~/WorkoutPage.aspx" Text="Manage Workouts" />
                 <asp:MenuItem NavigateUrl="~/ExercisePage.aspx" Text="Manage Exercises" />
@@ -48,10 +48,11 @@
             <asp:Parameter Name="ExerciseID" Type="Int32" />
         </DeleteParameters>
         <InsertParameters>
-            <asp:Parameter Name="Name" Type="String" />
+            <asp:Parameter Name="ExerciseName" Type="String" />
             <asp:Parameter Name="Description" Type="String" />
         </InsertParameters>
         <UpdateParameters>
+            <asp:Parameter Name="ExerciseID" Type="Int32" />
             <asp:Parameter Name="Name" Type="String" />
             <asp:Parameter Name="Description" Type="String" />
         </UpdateParameters>
@@ -63,7 +64,7 @@
         <Fields>
             <asp:BoundField DataField="ExerciseID" HeaderText="ExerciseID" 
                 InsertVisible="False" ReadOnly="True" SortExpression="ExerciseID" />
-            <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
+            <asp:BoundField DataField="ExerciseName" HeaderText="ExerciseName" SortExpression="ExerciseName" />
             <asp:BoundField DataField="Description" HeaderText="Description" 
                 SortExpression="Description" />
             <asp:CommandField ShowInsertButton="True" ButtonType="Button" />
@@ -77,9 +78,13 @@
         CellSpacing="1" DataKeyNames="ExerciseID" DataSourceID="sqlExerciseTable" 
         GridLines="Horizontal" Width="600px">
         <Columns>
+          
             <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ButtonType="Button" />
           
-            <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
+            <asp:BoundField DataField="ExerciseID" HeaderText="ExerciseID" 
+                SortExpression="ExerciseID" InsertVisible="False" ReadOnly="True" />
+            <asp:BoundField DataField="ExerciseName" HeaderText="ExerciseName" 
+                SortExpression="ExerciseName" />
             <asp:BoundField DataField="Description" HeaderText="Description" 
                 SortExpression="Description" />
         </Columns>
