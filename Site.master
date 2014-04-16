@@ -53,7 +53,12 @@
                     <Items>
                         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="My Home"/>
                         <asp:MenuItem NavigateUrl="~/WorkoutPage.aspx" Text="Workouts" />
-                        <asp:MenuItem NavigateUrl="~/ExercisePage.aspx" Text="Exercises" />
+                        <asp:MenuItem NavigateUrl="~/ExercisePage.aspx" Text="Exercises" >
+                            <asp:MenuItem NavigateUrl="~/ExercisePage.aspx" Text="Create Exercises" 
+                                Value="Create Exercises"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/AssignExercises.aspx" Text="New Item" 
+                                Value="New Item"></asp:MenuItem>
+                        </asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/ReportPage.aspx" Text="Workout Reports" />
                         <asp:MenuItem NavigateUrl="~/AttendancePage.aspx" Text="Attendance Reports" />
                         <asp:MenuItem NavigateUrl="~/Teams.aspx" Text="Teams" />
