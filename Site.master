@@ -18,6 +18,17 @@
                 </h1>
             </div>
             <div class="loginDisplay">
+            <p>Welcome <%= Session("UserName")%> </p>
+                <asp:DropDownList ID="RoleDropDown" runat="server" 
+                    DataSourceID="SqlDataSource1" DataTextField="Title" DataValueField="Title">
+                </asp:DropDownList>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+                    ConnectionString="<%$ ConnectionStrings:BetaSYS39414RoleDropDownInHeader %>" 
+                    SelectCommand="SelectRoleOfUser" SelectCommandType="StoredProcedure">
+                    <SelectParameters>
+                        <asp:SessionParameter Name="UserID" SessionField="activeUser" Type="Int32" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
                 <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
                     <AnonymousTemplate>
                         [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Log In</a> ]

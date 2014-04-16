@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h1>
-        Welcome to the Coach home page.
+        Welcome to the <%= Session("UserRole")%> home page.
     </h1>
     <div class="NavBar">
         <asp:Menu ID="CoachNavMenu" Visible="false" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Vertical">
