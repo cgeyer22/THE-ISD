@@ -36,20 +36,12 @@ Partial Class Default3
     End Sub
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
-        Select Session("UserRole")
-            Case "Admin"
-                Debug.Print("UserRole is admin")
-                AdminNavMenu.Visible = True
-
-            Case "Coach"
-                Debug.Print("UserRole is coach")
-                CoachNavMenu.Visible = True
-        End Select
-
-        Select Case Session("ActiveUser")
+        
+        Select Case Session("userRole")
             Case "Athlete"
-                Response.Redirect("~/Athlete/AthleteDefault.aspx")
+                Response.Redirect("~/RoleHome/RoleDefault.aspx")
         End Select
+
     End Sub
 
     Protected Sub btnNewExercise_Click(sender As Object, e As System.EventArgs) Handles btnNewExercise.Click

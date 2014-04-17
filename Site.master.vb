@@ -35,9 +35,9 @@ Partial Class Site
                 AdminNavMenu_Master.Visible = True
 
 
-                'Case "Athlete"
-                '    Debug.Print("UserRole is athlete")
-                '    AthleteNavMenu.Visible = True
+            Case "Athlete"
+                Debug.Print("UserRole is athlete")
+                AthleteNavMenu.Visible = True
 
             Case "Coach"
                 Debug.Print("UserRole is coach")
