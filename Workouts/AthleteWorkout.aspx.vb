@@ -1,5 +1,5 @@
 ﻿
-Partial Class Athlete_Default
+Partial Class Workouts_AthleteWorkout
     Inherits System.Web.UI.Page
 
 End Class
