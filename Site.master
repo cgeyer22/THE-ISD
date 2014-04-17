@@ -17,16 +17,16 @@
             </div>
             <div class="loginDisplay">
             <p>Welcome <%= Session("UserName")%> </p>
-                <asp:DropDownList ID="RoleDropDown" runat="server" 
+                <%--<asp:DropDownList ID="RoleDropDown" runat="server" 
                     DataSourceID="SqlDataSource1" DataTextField="Title" DataValueField="Title">
-                </asp:DropDownList>
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+                </asp:DropDownList>--%>
+                <%--<asp:SqlDataSource ID="SqlDataSource1" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:BetaSYS39414RoleDropDownInHeader %>" 
                     SelectCommand="SelectRoleOfUser" SelectCommandType="StoredProcedure">
                     <SelectParameters>
                         <asp:SessionParameter Name="UserID" SessionField="activeUser" Type="Int32" />
                     </SelectParameters>
-                </asp:SqlDataSource>
+                </asp:SqlDataSource>--%>
                 <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
                     <AnonymousTemplate>
                         [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Log In</a> ]
@@ -49,7 +49,7 @@
                     CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" 
                     Orientation="Horizontal">
                     <Items>
-                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="My Home"/>
+                        <asp:MenuItem NavigateUrl="~/RoleHome/RoleDefault.aspx" Text="My Home"/>
                         <asp:MenuItem NavigateUrl="~/Workouts/WorkoutPage.aspx" Text="Workouts" />
                         <asp:MenuItem NavigateUrl="#" Text="Exercises" >
                             <asp:MenuItem NavigateUrl="~/Workouts/ExercisePage.aspx" Text="Create Exercises" 
@@ -67,7 +67,7 @@
                     CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" 
                     Orientation="Horizontal">
                     <Items>
-                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="My Home"/>
+                        <asp:MenuItem NavigateUrl="~/RoleHome/RoleDefault.aspx" Text="My Home"/>
                         <asp:MenuItem NavigateUrl="~/UserAccounts/UserAccount.aspx" Text="Manage User Accounts" />
                         <asp:MenuItem NavigateUrl="~/Teams.aspx" Text="Manage Teams" />
                         <asp:MenuItem NavigateUrl="~/Workouts/WorkoutPage.aspx" Text="Manage Workouts" />
@@ -79,7 +79,7 @@
                     CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" 
                     Orientation="Horizontal">
                     <Items>
-                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="My Home"/>
+                        <asp:MenuItem NavigateUrl="~/RoleHome/RoleDefault.aspx" Text="My Home"/>
                         <asp:MenuItem NavigateUrl="~/Workouts/WorkoutPage.aspx" Text="Manage Workouts" />
                         <asp:MenuItem NavigateUrl="~/CalendarPage.aspx" Text="Calendar" />
                         <asp:MenuItem NavigateUrl="~/ReportPage.aspx" Text="Workout Reports" />

@@ -9,7 +9,14 @@ Partial Class Site
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
 
-
+        Select Case Session("UserRole")
+            Case "Coach"
+                CoachNavMenu_Master.Visible = True
+            Case "Admin"
+                AdminNavMenu_Master.Visible = True
+            Case "Athlete"
+                AthleteNavMenu.Visible = True
+        End Select
 
 
 
