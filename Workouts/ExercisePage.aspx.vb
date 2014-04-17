@@ -9,25 +9,11 @@ Partial Class ExercisePage_Default
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         Select Case Session("UserRole")
             Case "Athlete"
-                Response.Redirect("~/Athlete/AthleteDefault.aspx")
+                Response.Redirect("~/RoleHome/RoleDefault.aspx")
                 debug.print("Athlete cannot be on page")
 
         End Select
-        Select Case Session("UserRole")
-            Case "Admin"
-                Debug.Print("UserRole is admin")
-                AdminNavMenu.Visible = True
-
-            Case "Athlete"
-                Debug.Print("UserRole is athlete")
-                AthleteNavMenu.Visible = True
-
-            Case "Coach"
-                Debug.Print("UserRole is coach")
-                CoachNavMenu.Visible = True
-
-
-        End Select
+        
     End Sub
 
 

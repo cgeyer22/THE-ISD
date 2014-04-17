@@ -9,12 +9,12 @@
         SelectCommand="ReadWorkout" SelectCommandType="StoredProcedure" 
         UpdateCommand="UpdateWorkout" UpdateCommandType="StoredProcedure">
         <InsertParameters>
-            <asp:Parameter Name="Name" Type="String" />
+            <asp:Parameter Name="WorkoutName" Type="String" />
             <asp:Parameter Name="Description" Type="String" />
         </InsertParameters>
         <UpdateParameters>
             <asp:Parameter Name="WorkoutID" Type="Int32" />
-            <asp:Parameter Name="Name" Type="String" />
+            <asp:Parameter Name="WorkoutName" Type="String" />
             <asp:Parameter Name="Description" Type="String" />
         </UpdateParameters>
     </asp:SqlDataSource>
@@ -28,8 +28,8 @@
             <asp:BoundField DataField="WorkoutID" HeaderText="WorkoutID" 
                 InsertVisible="False" ReadOnly="True" SortExpression="WorkoutID" 
                 Visible="False" />
-            <asp:BoundField DataField="Name" HeaderText="Workout Name" 
-                SortExpression="Name" />
+            <asp:BoundField DataField="WorkoutName" HeaderText="Workout Name" 
+                SortExpression="WorkoutName" />
             <asp:BoundField DataField="Description" HeaderText="Workout Description" 
                 SortExpression="Description" />
         </Columns>
@@ -42,5 +42,13 @@
         DataSourceID="sdsAthletes" DataTextField="FullName" DataValueField="UserID" 
         Visible="False">
     </asp:CheckBoxList>
+
+    <asp:Button ID="btnAssign" runat="server" Text="Assign" Visible="False" />
+    <br />
+    <asp:Label ID="lblAssignmentResult" runat="server" Text="Assigned to: " Visible="false" />
+    <br />
+    <asp:Label ID="lblDublicate" runat="server" Text="Previously Assigned to: " Visible="false" />
+
+
 </asp:Content>
 

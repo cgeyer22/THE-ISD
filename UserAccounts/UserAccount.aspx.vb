@@ -8,9 +8,9 @@ Partial Class UserAccount
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
         Select Case Session("UserRole")
             Case "Coach"
-                Response.Redirect("~/Coach/CoachDefault.aspx")
+                Response.Redirect("~/RoleHome/RoleDefault.aspx")
             Case "Athlete"
-                Response.Redirect("~/Athlete/AthleteDefault.aspx")
+                Response.Redirect("~/RoleHome/RoleDefault.aspx")
 
         End Select
     End Sub

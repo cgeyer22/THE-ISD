@@ -11,40 +11,17 @@
         SelectCommand="ReadWorkout" SelectCommandType="StoredProcedure" 
         UpdateCommand="UpdateWorkout" UpdateCommandType="StoredProcedure">
         <InsertParameters>
-            <asp:Parameter Name="Name" Type="String" />
+            <asp:Parameter Name="WorkoutName" Type="String" />
             <asp:Parameter Name="Description" Type="String" />
         </InsertParameters>
         <UpdateParameters>
             <asp:Parameter Name="WorkoutID" Type="Int32" />
-            <asp:Parameter Name="Name" Type="String" />
+            <asp:Parameter Name="WorkoutName" Type="String" />
             <asp:Parameter Name="Description" Type="String" />
         </UpdateParameters>
     </asp:SqlDataSource>
     
-    
-            <div id="NavBar">
-                <asp:Menu ID="CoachNavMenu" Visible="true" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Vertical">
-                    <Items>
-                        <asp:MenuItem NavigateUrl="~/WorkoutPage.aspx" Text="Workouts" />
-                        <asp:MenuItem NavigateUrl="~/ExercisePage.aspx" Text="Exercises" />
-                        <asp:MenuItem NavigateUrl="~/ReportPage.aspx" Text="Workout Reports" />
-                        <asp:MenuItem NavigateUrl="~/AttendancePage.aspx" Text="Attendance Reports" />
-                        <asp:MenuItem NavigateUrl="~/Teams.aspx" Text="Teams" />
-                        <asp:MenuItem NavigateUrl="~/Positions.aspx" Text="Positions" />
-                    </Items>
-                </asp:Menu>
-                <asp:Menu ID="AdminNavMenu" Visible="true" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Vertical">
-                    <Items>
-                        <asp:MenuItem NavigateUrl="~/UserAccount.aspx" Text="Manage User Accounts" />
-                        <asp:MenuItem NavigateUrl="~/Teams.aspx" Text="Manage Teams" />
-                        <asp:MenuItem NavigateUrl="~/WorkoutPage.aspx" Text="Manage Workouts" />
-                        <asp:MenuItem NavigateUrl="~/ExercisePage.aspx" Text="Manage Exercises" />
-                        <asp:MenuItem NavigateUrl="~/ReportPage.aspx" Text="Manage Workout Reports" />
-                    </Items>
-                </asp:Menu>
-            </div>
-           
-        <div id="CurrentWorkouts" class="PostionOfLeftColumn">
+    <div id="CurrentWorkouts" class="PostionOfLeftColumn">
     <asp:GridView ID="WorkoutTable" runat="server" AllowPaging="True" 
         AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="WorkoutID" 
         DataSourceID="sdsWorkout">
@@ -55,8 +32,8 @@
             <asp:BoundField DataField="WorkoutID" HeaderText="WorkoutID" 
                 InsertVisible="False" ReadOnly="True" SortExpression="WorkoutID" 
                 Visible="False" />
-            <asp:BoundField DataField="Name" HeaderText="Workout Name" 
-                SortExpression="Name" />
+            <asp:BoundField DataField="WorkoutName" HeaderText="Workout Name" 
+                SortExpression="WorkoutName" />
             <asp:BoundField DataField="Description" HeaderText="Workout Description" 
                 SortExpression="Description" />
         </Columns>
@@ -71,7 +48,7 @@
             <asp:BoundField DataField="WorkoutID" HeaderText="WorkoutID" 
                 InsertVisible="False" ReadOnly="True" SortExpression="WorkoutID" 
                 Visible="False" />
-            <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
+            <asp:BoundField DataField="WorkoutName" HeaderText="WorkoutName" SortExpression="WorkoutName" />
             <asp:BoundField DataField="Description" HeaderText="Description" 
                 SortExpression="Description" />
             <asp:CommandField ShowInsertButton="True" ButtonType="Button" 
@@ -123,7 +100,7 @@
             <asp:Parameter Name="ExerciseID" Type="Int32" />
         </DeleteParameters>
         <InsertParameters>
-            <asp:Parameter Name="Name" Type="String" />
+            <asp:Parameter Name="ExerciseName" Type="String" />
             <asp:Parameter Name="Description" Type="String" />
         </InsertParameters>
         <SelectParameters>
@@ -132,12 +109,12 @@
         </SelectParameters>
         <UpdateParameters>
             <asp:Parameter Name="ExerciseID" Type="Int32" />
-            <asp:Parameter Name="Name" Type="String" />
+            <asp:Parameter Name="ExerciseName" Type="String" />
             <asp:Parameter Name="Description" Type="String" />
         </UpdateParameters>
     </asp:SqlDataSource>
     <asp:DropDownList ID="ddlExercise" runat="server" DataSourceID="sdsExercise" 
-        DataTextField="Name" DataValueField="ExerciseID" Visible="False">
+        DataTextField="ExerciseName" DataValueField="ExerciseID" Visible="False">
     </asp:DropDownList>
     <br />
     <asp:Button ID="btnAddExercise" runat="server" Text="Add Exercise to Workout" 

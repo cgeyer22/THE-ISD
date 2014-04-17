@@ -9,8 +9,6 @@ Partial Class LoginMaster
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
 
-
-
         If Session("activeUser") Is Nothing Then
             LogoutLink.Visible = False
             'Response.Redirect("~/ErrorLogin.aspx")
@@ -21,7 +19,7 @@ Partial Class LoginMaster
 
             LogoutLink.Visible = True
             HeadLoginView.Visible = False
-
+            Response.Redirect("~/RoleHome/RoleDefault.aspx")
         End If
 
     End Sub

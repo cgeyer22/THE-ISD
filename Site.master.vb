@@ -23,7 +23,7 @@ Partial Class Site
 
         If Session("activeUser") Is Nothing Then
             LogoutLink.Visible = False
-            Response.Redirect("~/ErrorLogin.aspx")
+            Response.Redirect("~/Account/ErrorLogin.aspx")
         Else
             Dim activeUserID = Session("activeUser")
             Debug.Print("activeUser is " + activeUserID)
