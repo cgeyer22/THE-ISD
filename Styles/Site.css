@@ -19,12 +19,12 @@
 
 body   
 {
-    background: #b6b7bc;
+    background-image: url('http://i208.photobucket.com/albums/bb64/Nintendude1313/8-Seamless-Dark-Metal-Grid-Patterns_08_zps2cef4e4d.jpg');
+    background-color: #202020;
     font-size: .80em;
     font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
     margin: 0px;
     padding: 0px;
-    color: #696969;
 }
 
 a:link, a:visited
@@ -105,9 +105,9 @@ first child of the left and right table columns */
 .page
 {
     width: 960px;
-    background-color: #fff;
+    background-color: rgba(255,255,255,0.8);
     margin: 20px auto 0px auto;
-    border: 1px solid #496077;
+    border: 1px solid #252525;
 }
 
 .header
@@ -115,7 +115,7 @@ first child of the left and right table columns */
     position: relative;
     margin: 0px;
     padding: 0px;
-    background: #4b6c9e;
+    background: #303030;
     width: 100%;
 }
 
@@ -160,7 +160,7 @@ first child of the left and right table columns */
 
 div.hideSkiplink
 {
-    background-color:#3a4f63;
+    background-color:#303030;
     width:100%;
 }
 
@@ -179,8 +179,8 @@ div.menu ul
 
 div.menu ul li a, div.menu ul li a:visited
 {
-    background-color: #465c71;
-    border: 1px #4e667d solid;
+    background-color: #252525;
+    border: 1px #353535 solid;
     color: #dde4ec;
     display: block;
     line-height: 1.35em;
@@ -191,8 +191,8 @@ div.menu ul li a, div.menu ul li a:visited
 
 div.menu ul li a:hover
 {
-    background-color: Yellow ;
-    color: #465c71;
+    background-color: #757575;
+    color: #ffffff;
     text-decoration: none;
 }
 
