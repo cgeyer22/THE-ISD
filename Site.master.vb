@@ -16,9 +16,18 @@ Partial Class Site
                 AdminNavMenu_Master.Visible = True
             Case "Athlete"
                 AthleteNavMenu.Visible = True
+
         End Select
 
-
+        'Check to see if there are multiple roles, if yes - show the dropdown
+        If Not (Page.IsPostBack) Then
+            RoleDropDown.DataBind()
+        End If
+        RoleDropDown.SelectedValue = Session("UserRole")
+        If RoleDropDown.Items.Count = 1 Then
+            RoleDropDown.Visible = "false"
+        End If
+        'End of Drop Down
 
 
         If Session("activeUser") Is Nothing Then
@@ -50,6 +59,12 @@ Partial Class Site
         Debug.Print("Log me out please")
         Response.Redirect("~/Account/Login.aspx")
 
+    End Sub
+
+    Protected Sub RoleDropDown_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles RoleDropDown.SelectedIndexChanged
+        'Session("UserRole") = RoleDropDown.SelectedIndex
+        'Debug.Print("New userrole is" + RoleDropDown.SelectedIndex)
+        'Response.Redirect("~/RoleHome/RoleDefault.aspx")
     End Sub
 End Class
 
