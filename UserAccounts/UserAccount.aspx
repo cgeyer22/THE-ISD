@@ -55,10 +55,7 @@
     </asp:SqlDataSource>
     <asp:DetailsView ID="NewAccountInformation" runat="server" Height="50px" Width="125px" 
         AutoGenerateRows="False" DataKeyNames="UserID" DataSourceID="SqlAccess" 
-        BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" 
-        CellPadding="2" ForeColor="Black" GridLines="None" DefaultMode="Insert">
-        <AlternatingRowStyle BackColor="PaleGoldenrod" />
-        <EditRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
+            DefaultMode="Insert">
         <Fields>
             <asp:BoundField DataField="UserID" HeaderText="UserID" InsertVisible="False" 
                 ReadOnly="True" SortExpression="UserID" />
@@ -85,18 +82,11 @@
                 SortExpression="Active" />
             <asp:CommandField ShowInsertButton="True" ButtonType="Button" />
         </Fields>
-        <FooterStyle BackColor="Tan" />
-        <HeaderStyle BackColor="Tan" Font-Bold="True" />
-        <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" 
-            HorizontalAlign="Center" />
     </asp:DetailsView>
     <br />
     <br />
     <asp:GridView ID="UserAccounts" runat="server" AllowSorting="True" 
-        AutoGenerateColumns="False" DataKeyNames="UserID" DataSourceID="SqlAccess" 
-        BackColor="LightGoldenrodYellow" BorderColor="Tan" BorderWidth="1px" 
-        CellPadding="2" ForeColor="Black" GridLines="None">
-        <AlternatingRowStyle BackColor="PaleGoldenrod" />
+        AutoGenerateColumns="False" DataKeyNames="UserID" DataSourceID="SqlAccess">
         <Columns>
             <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" 
                 ButtonType="Button" />
@@ -124,15 +114,6 @@
             <asp:CheckBoxField DataField="Active" HeaderText="Active" 
                 SortExpression="Active" />
         </Columns>
-        <FooterStyle BackColor="Tan" />
-        <HeaderStyle BackColor="Tan" Font-Bold="True" />
-        <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" 
-            HorizontalAlign="Center" />
-        <SelectedRowStyle BackColor="DarkSlateBlue" ForeColor="GhostWhite" />
-        <SortedAscendingCellStyle BackColor="#FAFAE7" />
-        <SortedAscendingHeaderStyle BackColor="#DAC09E" />
-        <SortedDescendingCellStyle BackColor="#E1DB9C" />
-        <SortedDescendingHeaderStyle BackColor="#C2A47B" />
     </asp:GridView>
     </div>
     </asp:Content>
