@@ -6,8 +6,18 @@
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 
     <h1>Create Exercise</h1>
-    </div>
-    <div class="PostionOfLeftColumn">
+    <asp:DetailsView ID="DetailsView1" runat="server" Height="50px" Width="125px" 
+        DefaultMode="Insert" AutoGenerateRows="False" BorderWidth="1px" CellPadding="2" DataKeyNames="ExerciseID" 
+        DataSourceID="sqlExerciseTable" GridLines="None">
+        <Fields>
+            <asp:BoundField DataField="ExerciseID" HeaderText="ExerciseID" 
+                InsertVisible="False" ReadOnly="True" SortExpression="ExerciseID" />
+            <asp:BoundField DataField="ExerciseName" HeaderText="ExerciseName" SortExpression="ExerciseName" />
+            <asp:BoundField DataField="Description" HeaderText="Description" 
+                SortExpression="Description" />
+            <asp:CommandField ShowInsertButton="True" ButtonType="Button" />
+        </Fields>
+    </asp:DetailsView>
     <asp:SqlDataSource ID="sqlExerciseTable" runat="server" 
         ConnectionString="<%$ ConnectionStrings:BetaSYS39414ConnectionString %>" 
         SelectCommand="ReadExercise" 
@@ -30,20 +40,8 @@
         </UpdateParameters>
 
     </asp:SqlDataSource>
-    <asp:DetailsView ID="DetailsView1" runat="server" Height="50px" Width="125px" 
-        DefaultMode="Insert" AutoGenerateRows="False" BorderWidth="1px" CellPadding="2" DataKeyNames="ExerciseID" 
-        DataSourceID="sqlExerciseTable" GridLines="None">
-        <Fields>
-            <asp:BoundField DataField="ExerciseID" HeaderText="ExerciseID" 
-                InsertVisible="False" ReadOnly="True" SortExpression="ExerciseID" />
-            <asp:BoundField DataField="ExerciseName" HeaderText="ExerciseName" SortExpression="ExerciseName" />
-            <asp:BoundField DataField="Description" HeaderText="Description" 
-                SortExpression="Description" />
-            <asp:CommandField ShowInsertButton="True" ButtonType="Button" />
-        </Fields>
-    </asp:DetailsView>
-    <br />
     <h2>List of Exercises</h2>
+
     <asp:GridView ID="GridView1" runat="server" 
         AllowSorting="True" AutoGenerateColumns="False" BackColor="White" 
         BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" 
@@ -61,6 +59,5 @@
                 SortExpression="Description" />
         </Columns>
     </asp:GridView>
-    </div>
-
+    
 </asp:Content>
