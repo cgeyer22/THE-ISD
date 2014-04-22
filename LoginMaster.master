@@ -13,9 +13,7 @@
     <div class="page">
         <div class="header">
             <div class="title">
-                <h1>
-                    Title Slide Photo
-                </h1>
+                <h1><img src="http://i208.photobucket.com/albums/bb64/Nintendude1313/TrojanTracker_zpsf711b08a.png" alt="Trojan Tracker"/></h1>
             </div>
             <div class="loginDisplay">
                 <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
