@@ -34,12 +34,10 @@ Partial Class UserAccounts_UserRoles
     End Sub
 
     Protected Sub btnNewRole_Click(sender As Object, e As System.EventArgs) Handles btnNewRole.Click
-
         Using con1 As New SqlConnection(connectionString)
-            'Dim con1 As New SqlConnection(connectionString)
-            Dim cmdUpdateRoles As New SqlCommand("EXEC UpdateRoleOfUser @Username, @Title", con1)
-            cmdUpdateRoles.Parameters.AddWithValue("@Username", ddlUsername.SelectedIndex)
-            cmdUpdateRoles.Parameters.AddWithValue("@Title", ddlRoles.SelectedIndex)
+            Dim cmdUpdateRoles As New SqlCommand("EXEC UpdateRoleOfUser @UserID, @Title", con1)
+            cmdUpdateRoles.Parameters.AddWithValue("@UserID", ddlUsername.SelectedValue)
+            cmdUpdateRoles.Parameters.AddWithValue("@Title", ddlRoles.SelectedValue)
             con1.Open()
             Dim rowsAffected As Integer = cmdUpdateRoles.ExecuteNonQuery
         End Using
