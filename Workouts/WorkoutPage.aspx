@@ -61,7 +61,8 @@
         ConnectionString="<%$ ConnectionStrings:BetaSYS39414WorkoutExercise %>" 
         DeleteCommand="DeleteWorkoutExercise" DeleteCommandType="StoredProcedure" 
         InsertCommand="CreateWorkoutExercise" InsertCommandType="StoredProcedure" 
-        SelectCommand="ReadWorkoutExercise" SelectCommandType="StoredProcedure">
+        SelectCommand="ReadWorkoutExercise" SelectCommandType="StoredProcedure"
+        UpdateCommand="UpdateSets" UpdateCommandType="StoredProcedure">
         <DeleteParameters>
             <asp:Parameter Name="ExerciseID" Type="Int32" />
             <asp:Parameter Name="WorkoutID" Type="Int32" />
@@ -74,20 +75,41 @@
             <asp:ControlParameter ControlID="WorkoutTable" DefaultValue="" Name="WorkoutID" 
                 PropertyName="SelectedValue" Type="Int32" />
         </SelectParameters>
+        <UpdateParameters>
+            <asp:ControlParameter ControlID="WorkoutTable" DefaultValue="" Name="WorkoutID" 
+                PropertyName="SelectedValue" Type="Int32" />
+            <asp:ControlParameter ControlID="gvWorkoutExercise" Name="ExerciseID" 
+                PropertyName="SelectedRow" Type="Int32" />
+            <%--<asp:Parameter Name="ExerciseID" Type="Int32" />--%>
+            <asp:ControlParameter ControlID="MainContent$gvWorkoutExercise$ctl06$txtSets" Name="NewSetCount" 
+                PropertyName="Text" Type="Int32" />
+        </UpdateParameters>
     </asp:SqlDataSource>
     <asp:GridView ID="gvWorkoutExercise" runat="server" AutoGenerateColumns="False" 
         DataSourceID="sdsWorkoutExercise" Visible="False">
         <Columns>
             <asp:BoundField DataField="Workout" HeaderText="Workout" 
-                SortExpression="Workout" />
+                SortExpression="Workout" ReadOnly="True" />
             <asp:BoundField DataField="Exercise" HeaderText="Exercise" 
-                SortExpression="Exercise" />
+                SortExpression="Exercise" ReadOnly="True" />
             <asp:BoundField DataField="WorkoutID" HeaderText="WorkoutID" 
                 InsertVisible="False" ReadOnly="True" SortExpression="WorkoutID" 
                 Visible="False" />
             <asp:BoundField DataField="ExerciseID" HeaderText="ExerciseID" 
                 InsertVisible="False" ReadOnly="True" SortExpression="ExerciseID" 
                 Visible="False" />
+            <asp:TemplateField HeaderText="Set Count" >
+                <ItemTemplate>
+                    <asp:Label ID="lblSets" Text='<%# ShowSetCount(Eval("WorkoutID"), Eval("ExerciseID"))  %>' runat="server"></asp:Label>
+                </ItemTemplate>
+                <EditItemTemplate>
+                    <asp:TextBox ID="txtSets" runat="server" Text='<%# ShowSetCount(Eval("WorkoutID"), Eval("ExerciseID"))  %>' ></asp:TextBox>
+                    <%--<asp:RegularExpressionValidator ValidationGroup="reg" ID="regexSetCount" ControlToValidate="txtSets"
+                        runat="server" ErrorMessage="Can only enter numbers"
+                        ValidationExpression="^[0-9]+$" >*</asp:RegularExpressionValidator>--%>
+                </EditItemTemplate>
+            </asp:TemplateField>
+            <asp:CommandField ShowEditButton="True" />
         </Columns>
     </asp:GridView>
     <asp:SqlDataSource ID="sdsExercise" runat="server" 
@@ -123,5 +145,9 @@
             <asp:Button ID="btnAssignWorkout" runat="server" 
                 Text="Assign Workouts to Athletes" />
     </div>
+    <div>
+        
+    </div>
+
     </asp:Content>
 

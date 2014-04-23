@@ -50,4 +50,51 @@ Partial Class Default3
     Protected Sub btnAssignWorkout_Click(sender As Object, e As System.EventArgs) Handles btnAssignWorkout.Click
         Response.Redirect("~/Workouts/AssignWorkouts.aspx")
     End Sub
+
+    Protected Function ShowSetCount(ByVal wID As Integer, ByVal eID As Integer) As Integer
+        Dim setCount As Integer = 0
+        Dim fakeSets As Integer = 666
+
+        'Dim item As GridViewRow = gvWorkoutExercise.
+        'For Each item As GridViewRow In gvWorkoutExercise.SelectedRow
+        'Debug.Print(item.ToString)
+        Using connection As New SqlConnection(connectionString)
+            Dim countSets As New SqlCommand("EXEC CountSets @WorkoutID, @ExerciseID", connection)
+            countSets.Parameters.AddWithValue("@WorkoutID", wID)
+            countSets.Parameters.AddWithValue("@ExerciseID", eID)
+            connection.Open()
+            'Dim rowsAffected As Integer = countSets.ExecuteNonQuery
+
+            Dim rowsAffected As SqlDataReader = countSets.ExecuteReader()
+
+
+
+            If rowsAffected.HasRows() Then
+
+                While rowsAffected.Read()
+                    setCount += 1
+                    Debug.Print(String.Format(rowsAffected("WorkoutID")))
+                    Debug.Print(String.Format(rowsAffected("ExerciseID")))
+                    Debug.Print(String.Format(rowsAffected("EnteredDataID")))
+                    Debug.Print("SPACE")
+                End While
+            Else
+                Debug.Print("else statement")
+            End If
+            
+
+
+
+        End Using
+        'Next
+
+        'Debug.Print(wID)
+        'Debug.Print(eID)
+        Debug.Print(setCount)
+
+
+
+        Return setCount
+    End Function
+
 End Class
