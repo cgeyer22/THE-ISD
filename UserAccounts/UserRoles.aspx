@@ -46,17 +46,27 @@
     </asp:SqlDataSource>
     
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False"
-        DataSourceID="SqlDataSource1">
+        DataSourceID="SqlDataSource1" DataKeyNames="RoleID">
         <Columns>
             <asp:BoundField DataField="Title" HeaderText="Title" SortExpression="Title"  />
+            <asp:BoundField DataField="RoleID" HeaderText="RoleID" InsertVisible="False" 
+                ReadOnly="True" SortExpression="RoleID" Visible="False" />
         </Columns>
     </asp:GridView>
         
         <asp:Button ID="btnChange" runat="server" Text="Change User Role" />
         
-        <asp:Label Text="Change Role of User to: " ID="lblChange" runat="server" Visible="false" />
-        <asp:DropDownList ID="ddlRoles" runat="server" Visible="false"
-            DataSourceID="SqlDataSource2" DataTextField="Title" DataValueField="Title">
+        <asp:Label ID="lblChange" runat="server" Text="Change" Visible="False"></asp:Label>
+        <asp:DropDownList ID="ddlChangeRole" runat="server" 
+            DataSourceID="SqlDataSource1" DataTextField="Title" DataValueField="RoleID" 
+            Visible="False">
+        </asp:DropDownList>
+        
+        <asp:Label Text="Role of User to: " ID="lblRole" runat="server" 
+            Visible="False" />
+        <asp:DropDownList ID="ddlRoles" runat="server" Visible="False"
+            DataSourceID="SqlDataSource2" DataTextField="Title" 
+            DataValueField="RoleID">
         </asp:DropDownList>
         <asp:Button ID="btnNewRole" runat="server" Text="Confirm" Visible="false" />
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
@@ -67,6 +77,15 @@
                     PropertyName="SelectedValue" Type="Int32" />
             </SelectParameters>
         </asp:SqlDataSource>
+
+        <asp:Button ID="btnAdd" runat="server" Text="Add User Role" />
+        <asp:Label ID="lblAdd1" runat="server" Text="Add" Visible="False"></asp:Label>
+        <asp:DropDownList ID="ddlAddRole" runat="server" DataSourceID="SqlDataSource2" 
+            DataTextField="Title" DataValueField="RoleID" Visible="False">
+        </asp:DropDownList>
+        <asp:Label ID="lblAdd2" runat="server" Text="Role to User" Visible="False"></asp:Label>
+        <asp:Button ID="btnAddRole" runat="server" Text="Confirm" Visible="False" />
+        <br />
 
     </div>
 
