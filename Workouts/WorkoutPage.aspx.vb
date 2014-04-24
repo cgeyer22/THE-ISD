@@ -5,6 +5,7 @@ Imports System.Data.SqlClient
 Partial Class Default3
     Inherits System.Web.UI.Page
     Dim connectionString As String = "Data Source=simon;Initial Catalog=BetaSYS39414;Persist Security Info=True;User ID=skrygshe;Password=vccviwhq"
+
     Protected Sub btnNewWorkout_Click(sender As Object, e As System.EventArgs) Handles btnNewWorkout.Click
         dvNewWorkout.Visible = True
         btnCancel.Visible = True
@@ -12,9 +13,44 @@ Partial Class Default3
     End Sub
 
     Protected Sub WorkoutTable_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles WorkoutTable.SelectedIndexChanged
+
         gvWorkoutExercise.Visible = True
         btnAddExercise.Visible = True
         ddlExercise.Visible = True
+
+        lblChangeSetCount.Visible = True
+        ddlExerInWO.Visible = True
+
+        lblIntro.Visible = False
+        lblPrevSetCount.Visible = False
+        txtNewSetCount.Visible = False
+        btnChangeSet.Visible = False
+
+        ddlExerInWO.ClearSelection()
+
+        'ddlExerInWO.AppendDataBoundItems() = False
+        'Dim li As New ListItem
+        'li.Value = ""
+        'li.Text = "--NOPE--"
+        'ddlExerInWO.Items.Add(li)
+        'ddlExerInWO.AppendDataBoundItems() = True
+
+    End Sub
+
+    Protected Sub ddlExerInWO_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles ddlExerInWO.SelectedIndexChanged
+        If Not ddlExerInWO.SelectedValue = "" Then
+            lblIntro.Visible = True
+            lblPrevSetCount.Visible = True
+            lblPrevSetCount.Text = ShowSetCount(WorkoutTable.SelectedValue, ddlExerInWO.SelectedValue)
+            txtNewSetCount.Visible = True
+            btnChangeSet.Visible = True
+            txtNewSetCount.Text = ""
+        Else
+            lblIntro.Visible = False
+            lblPrevSetCount.Visible = False
+            txtNewSetCount.Visible = False
+            btnChangeSet.Visible = False
+        End If
     End Sub
 
     Protected Sub btnAddExercise_Click(sender As Object, e As System.EventArgs) Handles btnAddExercise.Click
@@ -53,48 +89,49 @@ Partial Class Default3
 
     Protected Function ShowSetCount(ByVal wID As Integer, ByVal eID As Integer) As Integer
         Dim setCount As Integer = 0
-        Dim fakeSets As Integer = 666
 
-        'Dim item As GridViewRow = gvWorkoutExercise.
-        'For Each item As GridViewRow In gvWorkoutExercise.SelectedRow
-        'Debug.Print(item.ToString)
-        Using connection As New SqlConnection(connectionString)
-            Dim countSets As New SqlCommand("EXEC CountSets @WorkoutID, @ExerciseID", connection)
+        Using connection1 As New SqlConnection(connectionString)
+            Dim countSets As New SqlCommand("EXEC CountSets @WorkoutID, @ExerciseID", connection1)
             countSets.Parameters.AddWithValue("@WorkoutID", wID)
             countSets.Parameters.AddWithValue("@ExerciseID", eID)
-            connection.Open()
-            'Dim rowsAffected As Integer = countSets.ExecuteNonQuery
+            connection1.Open()
 
             Dim rowsAffected As SqlDataReader = countSets.ExecuteReader()
 
-
-
             If rowsAffected.HasRows() Then
-
                 While rowsAffected.Read()
                     setCount += 1
-                    Debug.Print(String.Format(rowsAffected("WorkoutID")))
-                    Debug.Print(String.Format(rowsAffected("ExerciseID")))
-                    Debug.Print(String.Format(rowsAffected("EnteredDataID")))
-                    Debug.Print("SPACE")
                 End While
-            Else
-                Debug.Print("else statement")
             End If
-            
-
-
-
         End Using
-        'Next
-
-        'Debug.Print(wID)
-        'Debug.Print(eID)
-        Debug.Print(setCount)
-
-
 
         Return setCount
     End Function
 
+    Protected Sub btnChangeSet_Click(sender As Object, e As System.EventArgs) Handles btnChangeSet.Click
+
+        If Regex.IsMatch(txtNewSetCount.Text, "^[0-9]+$") Then
+            Using updateConnection As New SqlConnection(connectionString)
+                Dim UpdateSets As New SqlCommand("EXEC UpdateSets @WorkoutID, @ExerciseID, @NewSetCount", updateConnection)
+                UpdateSets.Parameters.AddWithValue("@WorkoutID", WorkoutTable.SelectedValue)
+                UpdateSets.Parameters.AddWithValue("@ExerciseID", ddlExerInWO.SelectedValue)
+                UpdateSets.Parameters.AddWithValue("@NewSetCount", Convert.ToInt32(txtNewSetCount.Text))
+                updateConnection.Open()
+
+                Dim rowsAffected As Integer = UpdateSets.ExecuteNonQuery
+
+
+            End Using
+
+            lblIntro.Visible = False
+            lblPrevSetCount.Visible = False
+            txtNewSetCount.Visible = False
+            btnChangeSet.Visible = False
+
+            ddlExerInWO.ClearSelection()
+            gvWorkoutExercise.DataBind()
+        End If
+
+
+    End Sub
 End Class

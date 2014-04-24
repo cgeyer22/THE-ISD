@@ -61,8 +61,7 @@
         ConnectionString="<%$ ConnectionStrings:BetaSYS39414WorkoutExercise %>" 
         DeleteCommand="DeleteWorkoutExercise" DeleteCommandType="StoredProcedure" 
         InsertCommand="CreateWorkoutExercise" InsertCommandType="StoredProcedure" 
-        SelectCommand="ReadWorkoutExercise" SelectCommandType="StoredProcedure"
-        UpdateCommand="UpdateSets" UpdateCommandType="StoredProcedure">
+        SelectCommand="ReadWorkoutExercise" SelectCommandType="StoredProcedure">
         <DeleteParameters>
             <asp:Parameter Name="ExerciseID" Type="Int32" />
             <asp:Parameter Name="WorkoutID" Type="Int32" />
@@ -75,15 +74,6 @@
             <asp:ControlParameter ControlID="WorkoutTable" DefaultValue="" Name="WorkoutID" 
                 PropertyName="SelectedValue" Type="Int32" />
         </SelectParameters>
-        <UpdateParameters>
-            <asp:ControlParameter ControlID="WorkoutTable" DefaultValue="" Name="WorkoutID" 
-                PropertyName="SelectedValue" Type="Int32" />
-            <asp:ControlParameter ControlID="gvWorkoutExercise" Name="ExerciseID" 
-                PropertyName="SelectedRow" Type="Int32" />
-            <%--<asp:Parameter Name="ExerciseID" Type="Int32" />--%>
-            <asp:ControlParameter ControlID="MainContent$gvWorkoutExercise$ctl06$txtSets" Name="NewSetCount" 
-                PropertyName="Text" Type="Int32" />
-        </UpdateParameters>
     </asp:SqlDataSource>
     <asp:GridView ID="gvWorkoutExercise" runat="server" AutoGenerateColumns="False" 
         DataSourceID="sdsWorkoutExercise" Visible="False">
@@ -100,16 +90,15 @@
                 Visible="False" />
             <asp:TemplateField HeaderText="Set Count" >
                 <ItemTemplate>
-                    <asp:Label ID="lblSets" Text='<%# ShowSetCount(Eval("WorkoutID"), Eval("ExerciseID"))  %>' runat="server"></asp:Label>
+                    <asp:Label ID="lblSets" Text='<%#  ShowSetCount(Eval("WorkoutID"), Eval("ExerciseID"))  %>' runat="server"></asp:Label>
                 </ItemTemplate>
-                <EditItemTemplate>
+                <%--<EditItemTemplate>
                     <asp:TextBox ID="txtSets" runat="server" Text='<%# ShowSetCount(Eval("WorkoutID"), Eval("ExerciseID"))  %>' ></asp:TextBox>
-                    <%--<asp:RegularExpressionValidator ValidationGroup="reg" ID="regexSetCount" ControlToValidate="txtSets"
+                    <asp:RegularExpressionValidator ValidationGroup="reg" ID="regexSetCount" ControlToValidate="txtSets"
                         runat="server" ErrorMessage="Can only enter numbers"
-                        ValidationExpression="^[0-9]+$" >*</asp:RegularExpressionValidator>--%>
-                </EditItemTemplate>
+                        ValidationExpression="^[0-9]+$" >*</asp:RegularExpressionValidator>
+                </EditItemTemplate>--%>
             </asp:TemplateField>
-            <asp:CommandField ShowEditButton="True" />
         </Columns>
     </asp:GridView>
     <asp:SqlDataSource ID="sdsExercise" runat="server" 
@@ -141,9 +130,35 @@
     <br />
     <asp:Button ID="btnAddExercise" runat="server" Text="Add Exercise to Workout" 
         Visible="False" />
-    &nbsp;<asp:Button ID="btnNewExercise" runat="server" Text="Create a New Exercise" />
-            <asp:Button ID="btnAssignWorkout" runat="server" 
-                Text="Assign Workouts to Athletes" />
+        <asp:Button ID="btnNewExercise" runat="server" Text="Create a New Exercise" />
+    <br />
+    <br />
+    <br />
+    <br />
+    <asp:SqlDataSource ID="sqlExerciseList" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:BetaSYS39414ConnectionString3 %>" 
+            SelectCommand="ReadWorkoutExercise" SelectCommandType="StoredProcedure">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="WorkoutTable" Name="WorkoutID" 
+                PropertyName="SelectedValue" Type="Int32" />
+        </SelectParameters>
+        </asp:SqlDataSource>
+    <asp:Label Visible="false" ID="lblChangeSetCount" runat="server" Text="Change Set Count for " />
+    <asp:DropDownList Visible="false" ID="ddlExerInWO" runat="server" DataSourceID="sqlExerciseList" 
+            DataTextField="Exercise" DataValueField="ExerciseID" AutoPostBack="True" AppendDataBoundItems="true" >
+            <asp:ListItem Text="--Choose--" Value="" />
+    </asp:DropDownList>
+    
+    <asp:RequiredFieldValidator runat="server" ControlToValidate="ddlExerInWO" />
+    <br />
+    <asp:Label ID="lblIntro" Text="Previous Set Count: " Visible="false" runat="server" />
+    <asp:Label ID="lblPrevSetCount" Visible="false" runat="server" />
+    <asp:TextBox Visible="false" ID="txtNewSetCount" Text="" runat="server" />
+    <br />
+    <asp:Button Visible="false" ID="btnChangeSet" runat="server" Text="Confirm Changes" />
+    <br />
+    <br />
+    <asp:Button ID="btnAssignWorkout" runat="server" Text="Assign Workouts to Athletes" />
     </div>
     <div>
         
