@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Coach Home" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false"
+﻿<%@ Page Title="Home" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false"
     CodeFile="RoleDefault.aspx.vb" Inherits="Role_Default" %>
 
 

@@ -61,10 +61,11 @@ Partial Class Site
 
     End Sub
 
-    Protected Sub RoleDropDown_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles RoleDropDown.SelectedIndexChanged
-        'Session("UserRole") = RoleDropDown.SelectedIndex
-        'Debug.Print("New userrole is" + RoleDropDown.SelectedIndex)
-        'Response.Redirect("~/RoleHome/RoleDefault.aspx")
+
+    Protected Sub Button1_Click(sender As Object, e As System.EventArgs) Handles Button1.Click
+        Session("UserRole") = RoleDropDown.SelectedItem.Text
+        Debug.Print("New userrole is" + RoleDropDown.SelectedItem.Text)
+        Response.Redirect("~/RoleHome/RoleDefault.aspx")
     End Sub
 End Class
 
