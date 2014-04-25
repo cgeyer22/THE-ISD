@@ -23,14 +23,22 @@ Partial Class UserAccounts_UserRoles
         lblAdd2.Visible = False
         btnAddRole.Visible = False
 
+        btnDelete.Visible = True
+        lblRemove1.Visible = False
+        ddlDeleteRole.Visible = False
+        lblRemove2.Visible = False
+        btnDeleteRole.Visible = False
+
         GridView1.DataBind()
         ddlChangeRole.DataBind()
         ddlRoles.DataBind()
         ddlAddRole.DataBind()
+        ddlDeleteRole.DataBind()
 
         Select Case GridView1.Rows.Count()
             Case 0
                 btnChange.Visible = False
+                btnDelete.Visible = False
             Case 3
                 btnChange.Visible = False
                 btnAdd.Visible = False
@@ -52,6 +60,12 @@ Partial Class UserAccounts_UserRoles
         lblAdd2.Visible = False
         btnAddRole.Visible = False
 
+        btnDelete.Visible = True
+        lblRemove1.Visible = False
+        ddlDeleteRole.Visible = False
+        lblRemove2.Visible = False
+        btnDeleteRole.Visible = False
+
     End Sub
 
     Protected Sub btnNewRole_Click(sender As Object, e As System.EventArgs) Handles btnNewRole.Click
@@ -67,6 +81,8 @@ Partial Class UserAccounts_UserRoles
         ddlChangeRole.DataBind()
         ddlRoles.DataBind()
         ddlAddRole.DataBind()
+        ddlDeleteRole.DataBind()
+
     End Sub
 
     Protected Sub btnAdd_Click(sender As Object, e As System.EventArgs) Handles btnAdd.Click
@@ -83,6 +99,12 @@ Partial Class UserAccounts_UserRoles
         btnNewRole.Visible = False
         btnChange.Visible = True
 
+        btnDelete.Visible = True
+        lblRemove1.Visible = False
+        ddlDeleteRole.Visible = False
+        lblRemove2.Visible = False
+        btnDeleteRole.Visible = False
+
     End Sub
 
     Protected Sub btnAddRole_Click(sender As Object, e As System.EventArgs) Handles btnAddRole.Click
@@ -97,6 +119,46 @@ Partial Class UserAccounts_UserRoles
         ddlChangeRole.DataBind()
         ddlRoles.DataBind()
         ddlAddRole.DataBind()
+        ddlDeleteRole.DataBind()
+
+    End Sub
+
+    Protected Sub btnDelete_Click(sender As Object, e As System.EventArgs) Handles btnDelete.Click
+        btnDelete.Visible = False
+        lblRemove1.Visible = True
+        ddlDeleteRole.Visible = True
+        lblRemove2.Visible = True
+        btnDeleteRole.Visible = True
+
+        btnAdd.Visible = True
+        lblAdd1.Visible = False
+        ddlAddRole.Visible = False
+        lblAdd2.Visible = False
+        btnAddRole.Visible = False
+
+        lblChange.Visible = False
+        ddlChangeRole.Visible = False
+        lblRole.Visible = False
+        ddlRoles.Visible = False
+        btnNewRole.Visible = False
+        btnChange.Visible = True
+
+    End Sub
+
+    Protected Sub btnDeleteRole_Click(sender As Object, e As System.EventArgs) Handles btnDeleteRole.Click
+        Using con3 As New SqlConnection(connectionString)
+            Dim cmdDeleteRole As New SqlCommand("EXEC DeleteUserRole @UserID, @RoleID", con3)
+            cmdDeleteRole.Parameters.AddWithValue("@UserID", ddlUsername.SelectedValue)
+            cmdDeleteRole.Parameters.AddWithValue("@RoleID", ddlDeleteRole.SelectedValue)
+            con3.Open()
+            Dim rowsAffected As Integer = cmdDeleteRole.ExecuteNonQuery
+        End Using
+        GridView1.DataBind()
+        ddlChangeRole.DataBind()
+        ddlRoles.DataBind()
+        ddlAddRole.DataBind()
+        ddlDeleteRole.DataBind()
+
     End Sub
 
 End Class

@@ -32,6 +32,8 @@
             <asp:Parameter Name="NewRoleID" Type="Int32" />
         </UpdateParameters>
     </asp:SqlDataSource>
+        <br />
+        <br />
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
         ConnectionString="<%$ ConnectionStrings:BetaSYS39414ConnectionString2UpdateUserRole %>" 
         SelectCommand="SelectRoleOfUser" SelectCommandType="StoredProcedure" 
@@ -41,8 +43,9 @@
                 PropertyName="SelectedValue" Type="Int32" />
         </SelectParameters>
         <UpdateParameters>
-            <asp:Parameter Name="UserName" Type="String" />
-            <asp:Parameter Name="Title" Type="String" />
+            <asp:Parameter Name="UserID" Type="Int32" />
+            <asp:Parameter Name="ChangeRoleID" Type="Int32" />
+            <asp:Parameter Name="NewRoleID" Type="Int32" />
         </UpdateParameters>
     </asp:SqlDataSource>
     
@@ -50,8 +53,6 @@
         DataSourceID="SqlDataSource1" DataKeyNames="RoleID">
         <Columns>
             <asp:BoundField DataField="Title" HeaderText="Title" SortExpression="Title"  />
-            <asp:BoundField DataField="RoleID" HeaderText="RoleID" InsertVisible="False" 
-                ReadOnly="True" SortExpression="RoleID" Visible="False" />
         </Columns>
     </asp:GridView>
         
@@ -83,6 +84,8 @@
 
         <br />
 
+        <br />
+
         <asp:Button ID="btnAdd" runat="server" Text="Add User Role" />
         <asp:Label ID="lblAdd1" runat="server" Text="Add" Visible="False"></asp:Label>
         <asp:DropDownList ID="ddlAddRole" runat="server" DataSourceID="SqlDataSource2" 
@@ -90,6 +93,16 @@
         </asp:DropDownList>
         <asp:Label ID="lblAdd2" runat="server" Text="Role to User" Visible="False"></asp:Label>
         <asp:Button ID="btnAddRole" runat="server" Text="Confirm" Visible="False" />
+        <br />
+        <br />
+        <asp:Button ID="btnDelete" runat="server" Text="Delete User Role" />
+        <asp:Label ID="lblRemove1" runat="server" Text="Remove" Visible="False"></asp:Label>
+        <asp:DropDownList ID="ddlDeleteRole" runat="server" 
+            DataSourceID="SqlDataSource1" DataTextField="Title" DataValueField="RoleID" 
+            Visible="False">
+        </asp:DropDownList>
+        <asp:Label ID="lblRemove2" runat="server" Text="Role from User" Visible="False"></asp:Label>
+        <asp:Button ID="btnDeleteRole" runat="server" Text="Confirm" Visible="False" />
         <br />
 
     </div>
