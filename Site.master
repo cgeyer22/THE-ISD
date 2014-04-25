@@ -5,6 +5,7 @@
 <head runat="server">
     <title></title>
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Coda' rel='stylesheet' type='text/css'>
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -53,11 +54,11 @@
                     <Items>
                         <asp:MenuItem NavigateUrl="~/RoleHome/RoleDefault.aspx" Text="My Home"/>
                         <asp:MenuItem NavigateUrl="~/Workouts/WorkoutPage.aspx" Text="Workouts" />
-                        <asp:MenuItem NavigateUrl="#" Text="Exercises" >
+                        <asp:MenuItem NavigateUrl="~/Workouts/WorkoutPage.aspx" Text="Exercises" >
                             <asp:MenuItem NavigateUrl="~/Workouts/ExercisePage.aspx" Text="Create Exercises" 
                                 Value="Create Exercises"></asp:MenuItem>
-                            <asp:MenuItem NavigateUrl="~/Workouts/AssignExercises.aspx" Text="New Item" 
-                                Value="New Item"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Workouts/WorkoutPage.aspx" Text="Add Exercises to Workouts" 
+                                Value="Assign Exercises"></asp:MenuItem>
                         </asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/ReportPage.aspx" Text="Workout Reports" />
                         <asp:MenuItem NavigateUrl="~/Workouts/AttendancePage.aspx" Text="Attendance Reports" />

@@ -21,7 +21,7 @@
         </UpdateParameters>
     </asp:SqlDataSource>
     
-    <div id="CurrentWorkouts" class="PostionOfLeftColumn">
+    <div id="CurrentWorkouts">
     <asp:GridView ID="WorkoutTable" runat="server" AllowPaging="True" 
         AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="WorkoutID" 
         DataSourceID="sdsWorkout">
@@ -55,7 +55,8 @@
                 InsertText="Save New Workout" ShowCancelButton="False" />
         </Fields>
     </asp:DetailsView>
-    <asp:Button ID="btnCancel" runat="server" Text="Cancel" Visible="False" />
+    <asp:Button ID="btnCancel" runat="server" Text="Cancel" Visible="False" 
+            Height="31px" />
     <br />
     <asp:SqlDataSource ID="sdsWorkoutExercise" runat="server" 
         ConnectionString="<%$ ConnectionStrings:BetaSYS39414WorkoutExercise %>" 
@@ -75,7 +76,9 @@
                 PropertyName="SelectedValue" Type="Int32" />
         </SelectParameters>
     </asp:SqlDataSource>
-    <asp:GridView ID="gvWorkoutExercise" runat="server" AutoGenerateColumns="False" 
+
+    <div>
+        <asp:GridView ID="gvWorkoutExercise" runat="server" AutoGenerateColumns="False" 
         DataSourceID="sdsWorkoutExercise" Visible="False">
         <Columns>
             <asp:BoundField DataField="Workout" HeaderText="Workout" 
@@ -149,7 +152,7 @@
             <asp:ListItem Text="--Choose--" Value="" />
     </asp:DropDownList>
     
-    <asp:RequiredFieldValidator runat="server" ControlToValidate="ddlExerInWO" />
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlExerInWO" />
     <br />
     <asp:Label ID="lblIntro" Text="Previous Set Count: " Visible="false" runat="server" />
     <asp:Label ID="lblPrevSetCount" Visible="false" runat="server" />
@@ -159,9 +162,7 @@
     <br />
     <br />
     <asp:Button ID="btnAssignWorkout" runat="server" Text="Assign Workouts to Athletes" />
-    </div>
-    <div>
-        
+    </div>    
     </div>
 
     </asp:Content>
