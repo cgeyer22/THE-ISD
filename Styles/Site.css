@@ -108,6 +108,7 @@ first child of the left and right table columns */
     background-color: rgba(255,255,255,0.8);
     margin: 20px auto 0px auto;
     border: 1px solid #252525;
+    z-index: -100px;
 }
 
 .header
@@ -154,6 +155,13 @@ first child of the left and right table columns */
     line-height: normal;
 }
 
+.positionLoginImage
+{
+    position: relative;
+    top: -250px;
+    left: 225px;
+    z-index: -1;
+}
 
 /* TAB MENU   
 ----------------------------------------------------------*/
@@ -210,7 +218,7 @@ fieldset
 {
     margin: 1em 0px;
     padding: 1em;
-    border: 1px solid #ccc;
+    border: 5px solid #bbb;
 }
 
 fieldset p 
@@ -235,21 +243,20 @@ legend
     padding: 2px 4px 8px 4px;
 }
 
-input.textEntry 
+.loginEntry
 {
     width: 320px;
+    height: 25px;
     border: 1px solid #ccc;
-}
-
-input.passwordEntry 
-{
-    width: 320px;
-    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 div.accountInfo
 {
     width: 42%;
+    margin: 20px auto 0px auto;
 }
 
 
@@ -311,7 +318,7 @@ div.accountInfo
 
 .submitButton
 {
-    text-align: right;
+    text-align: center;
+	text-shadow: 1px 1px 3px #ffffff;
     padding-right: 10px;
 }
-

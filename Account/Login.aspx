@@ -23,14 +23,15 @@
                     <legend>Account Information</legend>
                     <p>
                         <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">Username:</asp:Label>
-                        <asp:TextBox ID="UserName" runat="server" CssClass="textEntry"></asp:TextBox>
+                        <asp:TextBox ID="UserName" runat="server" CssClass="loginEntry" 
+                            ToolTip="Username"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" 
                              CssClass="failureNotification" ErrorMessage="User Name is required." ToolTip="User Name is required." 
                              ValidationGroup="LoginUserValidationGroup">*</asp:RequiredFieldValidator>
                     </p>
                     <p>
                         <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Password:</asp:Label>
-                        <asp:TextBox ID="Password" runat="server" CssClass="passwordEntry" TextMode="Password"></asp:TextBox>
+                        <asp:TextBox ID="Password" runat="server" CssClass="loginEntry" TextMode="Password"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" 
                              CssClass="failureNotification" ErrorMessage="Password is required." ToolTip="Password is required." 
                              ValidationGroup="LoginUserValidationGroup">*</asp:RequiredFieldValidator>
@@ -40,10 +41,14 @@
                         <asp:Label ID="RememberMeLabel" runat="server" AssociatedControlID="RememberMe" CssClass="inline">Keep me logged in</asp:Label>
                     </p>
                 </fieldset>
+                </div>
                 <p class="submitButton">
                     <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Log In" 
                         ValidationGroup="LoginUserValidationGroup" onclick="LoginButton_Click"/>
                 </p>
+                <div class="positionLoginImage"><asp:Image ID="LoginImage" runat="server" 
+                    ImageUrl="http://i208.photobucket.com/albums/bb64/Nintendude1313/Login_zps18821369.png" />
+                </div>
             </div>
         </LayoutTemplate>
     </asp:Login>

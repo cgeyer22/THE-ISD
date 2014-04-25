@@ -8,6 +8,8 @@
         About
     </h2>
     <p>
-        Put content here.
-    </p>
+        Trojan Tracker is a system designed to assist coaches and athletes by 
+        streamlining the process of assigning workouts to athletes.&nbsp; With this 
+        system, athletes can access descriptions of their workouts online and can fill 
+        out how they performed so that their coaches can see and track their progress.</p>
 </asp:Content>
