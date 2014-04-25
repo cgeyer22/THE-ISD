@@ -28,6 +28,14 @@ Partial Class UserAccounts_UserRoles
         ddlRoles.DataBind()
         ddlAddRole.DataBind()
 
+        Select Case GridView1.Rows.Count()
+            Case 0
+                btnChange.Visible = False
+            Case 3
+                btnChange.Visible = False
+                btnAdd.Visible = False
+        End Select
+
     End Sub
 
     Protected Sub btnChange_Click(sender As Object, e As System.EventArgs) Handles btnChange.Click
@@ -38,6 +46,11 @@ Partial Class UserAccounts_UserRoles
         btnNewRole.Visible = True
         btnChange.Visible = False
 
+        btnAdd.Visible = True
+        lblAdd1.Visible = False
+        ddlAddRole.Visible = False
+        lblAdd2.Visible = False
+        btnAddRole.Visible = False
 
     End Sub
 
@@ -62,6 +75,14 @@ Partial Class UserAccounts_UserRoles
         ddlAddRole.Visible = True
         lblAdd2.Visible = True
         btnAddRole.Visible = True
+
+        lblChange.Visible = False
+        ddlChangeRole.Visible = False
+        lblRole.Visible = False
+        ddlRoles.Visible = False
+        btnNewRole.Visible = False
+        btnChange.Visible = True
+
     End Sub
 
     Protected Sub btnAddRole_Click(sender As Object, e As System.EventArgs) Handles btnAddRole.Click
@@ -77,4 +98,5 @@ Partial Class UserAccounts_UserRoles
         ddlRoles.DataBind()
         ddlAddRole.DataBind()
     End Sub
+
 End Class

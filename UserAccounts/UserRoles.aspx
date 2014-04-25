@@ -27,8 +27,9 @@
         SelectCommand="SelectUsers" SelectCommandType="StoredProcedure" 
             UpdateCommand="UpdateRoleOfUser" UpdateCommandType="StoredProcedure" >
         <UpdateParameters>
-            <asp:Parameter Name="UserName" Type="String" />
-            <asp:Parameter Name="Title" Type="String" />
+            <asp:Parameter Name="UserID" Type="Int32" />
+            <asp:Parameter Name="ChangeRoleID" Type="Int32" />
+            <asp:Parameter Name="NewRoleID" Type="Int32" />
         </UpdateParameters>
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
@@ -54,6 +55,8 @@
         </Columns>
     </asp:GridView>
         
+        <br />
+        
         <asp:Button ID="btnChange" runat="server" Text="Change User Role" />
         
         <asp:Label ID="lblChange" runat="server" Text="Change" Visible="False"></asp:Label>
@@ -77,6 +80,8 @@
                     PropertyName="SelectedValue" Type="Int32" />
             </SelectParameters>
         </asp:SqlDataSource>
+
+        <br />
 
         <asp:Button ID="btnAdd" runat="server" Text="Add User Role" />
         <asp:Label ID="lblAdd1" runat="server" Text="Add" Visible="False"></asp:Label>
