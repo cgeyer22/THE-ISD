@@ -44,6 +44,7 @@ Partial Class _Default
                 Debug.Print("value: " + item.Value)
                 Debug.Print("WorkoutTable: " + WorkoutTable.SelectedDataKey.Value.ToString)
 
+
                 Using con1 As New SqlConnection(conStr)
                     Dim sqlCommand As New SqlCommand("EXEC CreateAssignedWO @UserID, @WorkoutID", con1)
                     sqlCommand.Parameters.AddWithValue("@UserID", item.Value)

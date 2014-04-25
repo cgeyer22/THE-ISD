@@ -25,16 +25,23 @@ Partial Class Default3
         lblPrevSetCount.Visible = False
         txtNewSetCount.Visible = False
         btnChangeSet.Visible = False
-
         ddlExerInWO.ClearSelection()
+
 
         'ddlExerInWO.AppendDataBoundItems() = False
         'Dim li As New ListItem
         'li.Value = ""
         'li.Text = "--NOPE--"
-        'ddlExerInWO.Items.Add(li)
+        'ddlExerInWO.Items.Clear()
         'ddlExerInWO.AppendDataBoundItems() = True
+        'ddlExerInWO.Items.Insert(0, "--Select One--")
 
+
+    End Sub
+
+    Protected Sub ddlExerInWO_DataBinding(sender As Object, e As System.EventArgs) Handles ddlExerInWO.DataBinding
+        ddlExerInWO.Items.Clear()
+        ddlExerInWO.Items.Insert(0, "--Select One--")
     End Sub
 
     Protected Sub ddlExerInWO_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles ddlExerInWO.SelectedIndexChanged
@@ -51,6 +58,9 @@ Partial Class Default3
             txtNewSetCount.Visible = False
             btnChangeSet.Visible = False
         End If
+       
+
+
     End Sub
 
     Protected Sub btnAddExercise_Click(sender As Object, e As System.EventArgs) Handles btnAddExercise.Click
@@ -63,6 +73,7 @@ Partial Class Default3
         End Using
         gvWorkoutExercise.DataBind()
         ddlExercise.DataBind()
+
     End Sub
 
     Protected Sub btnCancel_Click(sender As Object, e As System.EventArgs) Handles btnCancel.Click
@@ -132,6 +143,18 @@ Partial Class Default3
             gvWorkoutExercise.DataBind()
         End If
 
+
+    End Sub
+
+    Protected Sub txtNewSetCount_TextChanged(sender As Object, e As System.EventArgs) Handles txtNewSetCount.TextChanged
+
+    End Sub
+
+    Protected Sub sdsWorkoutExercise_Selecting(sender As Object, e As System.Web.UI.WebControls.SqlDataSourceSelectingEventArgs) Handles sdsWorkoutExercise.Selecting
+        ddlExerInWO.AppendDataBoundItems() = True
+    End Sub
+
+    Protected Sub gvWorkoutExercise_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles gvWorkoutExercise.SelectedIndexChanged
 
     End Sub
 End Class
