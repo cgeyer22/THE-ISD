@@ -45,7 +45,7 @@ Partial Class Default3
     End Sub
 
     Protected Sub ddlExerInWO_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles ddlExerInWO.SelectedIndexChanged
-        If Not ddlExerInWO.SelectedValue = "" Then
+        If Not ddlExerInWO.SelectedValue = "--Select One--" Then
             lblIntro.Visible = True
             lblPrevSetCount.Visible = True
             lblPrevSetCount.Text = ShowSetCount(WorkoutTable.SelectedValue, ddlExerInWO.SelectedValue)

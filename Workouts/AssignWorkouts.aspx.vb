@@ -27,31 +27,96 @@ Partial Class _Default
     End Sub
 
     Protected Sub btnAssign_Click(sender As Object, e As System.EventArgs) Handles btnAssign.Click
-        Debug.Print("assign")
+        Debug.Print("assign workoutID is next")
         Debug.Print(WorkoutTable.SelectedDataKey.Value)
         'Debug.Print(checklistAthletes.Items
         lblAssignmentResult.Visible = True
         lblAssignmentResult.Text = origText
         lblDublicate.Text = dubOrig
 
-        'checklistAthletes_SelectedIndexChanged()
-
         For Each item As ListItem In checklistAthletes.Items
             If item.Selected Then
-                'Debug.Print("value: " + item.Value)
-
 
                 Debug.Print("value: " + item.Value)
                 Debug.Print("WorkoutTable: " + WorkoutTable.SelectedDataKey.Value.ToString)
 
-
                 Using con1 As New SqlConnection(conStr)
-                    Dim sqlCommand As New SqlCommand("EXEC CreateAssignedWO @UserID, @WorkoutID", con1)
-                    sqlCommand.Parameters.AddWithValue("@UserID", item.Value)
-                    sqlCommand.Parameters.AddWithValue("@WorkoutID", WorkoutTable.SelectedDataKey.Value)
+                    Dim sqlCommand1 As New SqlCommand("EXEC CreateAssignedWO @UserID, @WorkoutID", con1)
+                    sqlCommand1.Parameters.AddWithValue("@UserID", item.Value)
+                    sqlCommand1.Parameters.AddWithValue("@WorkoutID", WorkoutTable.SelectedDataKey.Value)
                     con1.Open()
-                    Dim rowsAffected As Integer = sqlCommand.ExecuteNonQuery()
-                    If rowsAffected > 0 Then
+                    Dim rowsAffected1 As Integer = sqlCommand1.ExecuteNonQuery()
+                    If rowsAffected1 > 0 Then
+
+                        Using con2 As New SqlConnection(conStr)
+                            Dim sqlCommand2 As New SqlCommand("EXEC FindExercise @WorkoutID", con2)
+                            sqlCommand2.Parameters.AddWithValue("@WorkoutID", WorkoutTable.SelectedDataKey.Value)
+                            con2.Open()
+
+                            Dim rowsAffected2 As SqlDataReader = sqlCommand2.ExecuteReader()
+
+                            If rowsAffected2.HasRows() Then
+                                While rowsAffected2.Read()
+
+                                    Dim setCount As Integer = 0
+
+                                    Dim ExerciseID As Integer = rowsAffected2("ExerciseID")
+
+                                    Debug.Print("START ExerciseID is below")
+                                    'Debug.Print(rowsAffected2("WorkoutID"))
+                                    Debug.Print(rowsAffected2("ExerciseID"))
+
+
+                                    'Counts the set counts for each exercise
+                                    Using con3 As New SqlConnection(conStr)
+                                        Dim sqlCommand3 As New SqlCommand("EXEC CountSets @WorkoutID, @ExerciseID", con3)
+                                        sqlCommand3.Parameters.AddWithValue("@WorkoutID", WorkoutTable.SelectedDataKey.Value)
+                                        sqlCommand3.Parameters.AddWithValue("@ExerciseID", ExerciseID)
+                                        con3.Open()
+
+                                        Dim rowsAffected3 As SqlDataReader = sqlCommand3.ExecuteReader()
+
+                                        If rowsAffected3.HasRows() Then
+                                            While rowsAffected3.Read()
+                                                setCount += 1
+                                            End While
+                                        End If
+                                    End Using
+
+                                    Debug.Print("STOP Set Count below")
+                                    Debug.Print(setCount)
+
+                                    Using con4 As New SqlConnection(conStr)
+                                        Dim sqlCommand4 As New SqlCommand("EXEC AssignWorkoutExerciseSetsToAthletes @WorkoutID, @ExerciseID, @UserID, @SetCount", con4)
+                                        sqlCommand4.Parameters.AddWithValue("@WorkoutID", WorkoutTable.SelectedDataKey.Value)
+                                        sqlCommand4.Parameters.AddWithValue("@ExerciseID", ExerciseID)
+                                        sqlCommand4.Parameters.AddWithValue("@UserID", item.Value)
+                                        sqlCommand4.Parameters.AddWithValue("@SetCount", setCount)
+                                        con4.Open()
+
+                                        Dim rowsAffected4 As Integer = sqlCommand4.ExecuteNonQuery()
+                                        If rowsAffected4 > 0 Then
+                                            Debug.Print("IT worked")
+                                        Else
+                                            Debug.Print("nope")
+                                        End If
+
+
+                                    End Using
+
+                                End While
+                                
+
+                            Else
+
+                            End If
+
+                            
+
+
+
+                        End Using
+
                         Dim itemS As String = item.ToString
                         Dim length As Integer = itemS.IndexOf(", ")
                         'Debug.Print(item.ToString)
@@ -80,6 +145,10 @@ Partial Class _Default
 
             End If
         Next
+
+
+
+
 
     End Sub
 
