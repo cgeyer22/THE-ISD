@@ -154,9 +154,9 @@ Partial Class _Default
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
 
-        Select Case Session("ActiveUser")
+        Select Case Session("UserRole")
             Case "Athlete"
-                Response.Redirect("~/Athlete/AthleteDefault.aspx")
+                Response.Redirect("~/RoleHome/RoleDefault.aspx")
         End Select
 
     End Sub
