@@ -20,7 +20,8 @@
     <div>
     <asp:DropDownList ID="ddlUsername" runat="server" 
         DataSourceID="sqlDSUserRole" DataTextField="Username" 
-            DataValueField="UserID" AutoPostBack="True">
+            DataValueField="UserID" AutoPostBack="True" AppendDataBoundItems="true" >
+        <asp:ListItem Selected="True" Value="-1">--Select One--</asp:ListItem>
     </asp:DropDownList>
     <asp:SqlDataSource ID="sqlDSUserRole" runat="server" 
         ConnectionString="<%$ ConnectionStrings:BetaSYS39414ConnectionString2UserRole %>" 
@@ -58,7 +59,8 @@
         
         <br />
         
-        <asp:Button ID="btnChange" runat="server" Text="Change User Role" />
+        <asp:Button ID="btnChange" runat="server" Text="Change User Role" 
+            Visible="False" />
         
         <asp:Label ID="lblChange" runat="server" Text="Change" Visible="False"></asp:Label>
         <asp:DropDownList ID="ddlChangeRole" runat="server" 
@@ -86,7 +88,7 @@
 
         <br />
 
-        <asp:Button ID="btnAdd" runat="server" Text="Add User Role" />
+        <asp:Button ID="btnAdd" runat="server" Text="Add User Role" Visible="False" />
         <asp:Label ID="lblAdd1" runat="server" Text="Add" Visible="False"></asp:Label>
         <asp:DropDownList ID="ddlAddRole" runat="server" DataSourceID="SqlDataSource2" 
             DataTextField="Title" DataValueField="RoleID" Visible="False">
@@ -95,7 +97,8 @@
         <asp:Button ID="btnAddRole" runat="server" Text="Confirm" Visible="False" />
         <br />
         <br />
-        <asp:Button ID="btnDelete" runat="server" Text="Delete User Role" />
+        <asp:Button ID="btnDelete" runat="server" Text="Delete User Role" 
+            Visible="False" />
         <asp:Label ID="lblRemove1" runat="server" Text="Remove" Visible="False"></asp:Label>
         <asp:DropDownList ID="ddlDeleteRole" runat="server" 
             DataSourceID="SqlDataSource1" DataTextField="Title" DataValueField="RoleID" 

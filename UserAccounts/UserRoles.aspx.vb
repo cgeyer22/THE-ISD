@@ -8,41 +8,51 @@ Partial Class UserAccounts_UserRoles
     Dim connectionString As String = "Data Source=SIMON;Initial Catalog=BetaSYS39414;Persist Security Info=True;User ID=sking;Password=pxdrlgyu"
 
     Protected Sub ddlUsername_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles ddlUsername.SelectedIndexChanged
+        If Not ddlUsername.SelectedValue = -1 Then
 
-        GridView1.Visible = True
-        lblChange.Visible = False
-        ddlChangeRole.Visible = False
-        ddlRoles.Visible = False
-        btnNewRole.Visible = False
-        lblRole.Visible = False
-        btnChange.Visible = True
+            GridView1.Visible = True
+            lblChange.Visible = False
+            ddlChangeRole.Visible = False
+            ddlRoles.Visible = False
+            btnNewRole.Visible = False
+            lblRole.Visible = False
+            btnChange.Visible = True
 
-        btnAdd.Visible = True
-        lblAdd1.Visible = False
-        ddlAddRole.Visible = False
-        lblAdd2.Visible = False
-        btnAddRole.Visible = False
+            btnAdd.Visible = True
+            lblAdd1.Visible = False
+            ddlAddRole.Visible = False
+            lblAdd2.Visible = False
+            btnAddRole.Visible = False
 
-        btnDelete.Visible = True
-        lblRemove1.Visible = False
-        ddlDeleteRole.Visible = False
-        lblRemove2.Visible = False
-        btnDeleteRole.Visible = False
+            btnDelete.Visible = True
+            lblRemove1.Visible = False
+            ddlDeleteRole.Visible = False
+            lblRemove2.Visible = False
+            btnDeleteRole.Visible = False
 
-        GridView1.DataBind()
-        ddlChangeRole.DataBind()
-        ddlRoles.DataBind()
-        ddlAddRole.DataBind()
-        ddlDeleteRole.DataBind()
+            GridView1.DataBind()
+            ddlChangeRole.DataBind()
+            ddlRoles.DataBind()
+            ddlAddRole.DataBind()
+            ddlDeleteRole.DataBind()
 
-        Select Case GridView1.Rows.Count()
-            Case 0
-                btnChange.Visible = False
-                btnDelete.Visible = False
-            Case 3
-                btnChange.Visible = False
-                btnAdd.Visible = False
-        End Select
+            Select Case GridView1.Rows.Count()
+                Case 0
+                    btnChange.Visible = False
+                    btnDelete.Visible = False
+                Case 3
+                    btnChange.Visible = False
+                    btnAdd.Visible = False
+            End Select
+
+        Else
+
+            GridView1.Visible = False
+            btnChange.Visible = False
+            btnAdd.Visible = False
+            btnDelete.Visible = False
+
+        End If
 
     End Sub
 
@@ -152,6 +162,19 @@ Partial Class UserAccounts_UserRoles
         lblAdd2.Visible = False
         btnAddRole.Visible = False
 
+        lblChange.Visible = False
+        ddlChangeRole.Visible = False
+        lblRole.Visible = False
+        ddlRoles.Visible = False
+        btnNewRole.Visible = False
+        btnChange.Visible = True
+
+        btnDelete.Visible = True
+        lblRemove1.Visible = False
+        ddlDeleteRole.Visible = False
+        lblRemove2.Visible = False
+        btnDeleteRole.Visible = False
+
         Select Case GridView1.Rows.Count()
             Case 0
                 btnChange.Visible = False
@@ -213,6 +236,19 @@ Partial Class UserAccounts_UserRoles
         ddlDeleteRole.Visible = False
         lblRemove2.Visible = False
         btnDeleteRole.Visible = False
+
+        btnAdd.Visible = True
+        lblAdd1.Visible = False
+        ddlAddRole.Visible = False
+        lblAdd2.Visible = False
+        btnAddRole.Visible = False
+
+        lblChange.Visible = False
+        ddlChangeRole.Visible = False
+        lblRole.Visible = False
+        ddlRoles.Visible = False
+        btnNewRole.Visible = False
+        btnChange.Visible = True
 
         Select Case GridView1.Rows.Count()
             Case 0
