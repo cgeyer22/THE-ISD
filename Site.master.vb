@@ -23,7 +23,7 @@ Partial Class Site
         If Not (Page.IsPostBack) Then
             RoleDropDown.DataBind()
         End If
-        RoleDropDown.SelectedValue = Session("UserRole")
+        'RoleDropDown.SelectedValue = Session("UserRole")
         If RoleDropDown.Items.Count = 1 Then
             RoleDropDown.Visible = "false"
         End If
@@ -45,6 +45,7 @@ Partial Class Site
 
     End Sub
 
+
     Protected Sub LogoutLink_Click(sender As Object, e As System.EventArgs) Handles LogoutLink.Click
 
         If Session("activeUser") Then
@@ -62,9 +63,8 @@ Partial Class Site
     End Sub
 
 
-    Protected Sub Button1_Click(sender As Object, e As System.EventArgs) Handles Button1.Click
+    Protected Sub RoleDropDown_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles RoleDropDown.SelectedIndexChanged
         Session("UserRole") = RoleDropDown.SelectedItem.Text
-        Debug.Print("New userrole is" + RoleDropDown.SelectedItem.Text)
         Response.Redirect("~/RoleHome/RoleDefault.aspx")
     End Sub
 End Class

@@ -19,7 +19,8 @@
             <div class="loginDisplay">
             <p>Welcome <%= Session("UserName")%> </p>
                 <asp:DropDownList ID="RoleDropDown" runat="server" 
-                    DataSourceID="SqlDataSource1" DataTextField="Title" DataValueField="Title" >
+                    DataSourceID="SqlDataSource1" DataTextField="Title" DataValueField="Title" AutoPostBack="true" AppendDataBoundItems="true">
+                    <asp:ListItem Text="--View As--" Value="" /> 
                 </asp:DropDownList>
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
                     ConnectionString="<%$ ConnectionStrings:BetaSYS39414RoleDropDownInHeader %>" 
@@ -28,7 +29,6 @@
                         <asp:SessionParameter Name="UserID" SessionField="activeUser" Type="Int32" />
                     </SelectParameters>
                 </asp:SqlDataSource>
-                <asp:button id="Button1" runat="server" onclick="Button1_Click" text="Button" />
                 <br />
                 <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
                     <AnonymousTemplate>
