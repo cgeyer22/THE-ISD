@@ -49,6 +49,12 @@ p
     line-height: 1.6em;
 }
 
+table
+{
+    width:100%;
+    max-width: 500px;
+}
+
 *
 {
     font-family: 'Coda', 'cursive';
@@ -263,6 +269,11 @@ div.accountInfo
     margin: 20px auto 0px auto;
 }
 
+#gridDiv
+{
+    width:100%;
+    overflow:scroll;
+}
 
 /* Workout Page Layout
 ----------------------------------------------------------*/

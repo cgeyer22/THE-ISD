@@ -68,8 +68,17 @@
             <asp:BoundField DataField="LastName" HeaderText="LastName" 
                 SortExpression="LastName" />
             <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
-            <asp:BoundField DataField="Gender" HeaderText="Gender" 
-                SortExpression="Gender" />
+            <asp:TemplateField HeaderText="Gender" SortExpression="Gender" 
+                ConvertEmptyStringToNull="False">
+                <ItemTemplate>
+                    <asp:DropDownList ID="ddlGender" DataField="Gender" DataValueField="Gender" DataTextField="Gender" runat="server">
+                        <asp:ListItem Text="Male" Value="True">
+                        </asp:ListItem>
+                        <asp:ListItem Text="Female" Value="False">
+                        </asp:ListItem>
+                    </asp:DropDownList>
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:BoundField DataField="TaylorID" HeaderText="TaylorID" 
                 SortExpression="TaylorID" />
             <asp:BoundField DataField="Height" HeaderText="Height" 
@@ -85,6 +94,7 @@
     </asp:DetailsView>
     <br />
     <br />
+    <div id="gridDiv">
     <asp:GridView ID="UserAccounts" runat="server" AllowSorting="True" 
         AutoGenerateColumns="False" DataKeyNames="UserID" DataSourceID="SqlAccess">
         <Columns>
@@ -115,6 +125,7 @@
                 SortExpression="Active" />
         </Columns>
     </asp:GridView>
+    </div>
     </div>
     </asp:Content>
     
