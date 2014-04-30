@@ -35,7 +35,7 @@
         </InsertParameters>
         <UpdateParameters>
             <asp:Parameter Name="ExerciseID" Type="Int32" />
-            <asp:Parameter Name="Name" Type="String" />
+            <asp:Parameter Name="ExerciseName" Type="String" />
             <asp:Parameter Name="Description" Type="String" />
         </UpdateParameters>
 
