@@ -11,7 +11,11 @@ Partial Class _Default
 
     Protected Sub WorkoutTable_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles WorkoutTable.SelectedIndexChanged
         checklistAthletes.Visible = True
-        btnAssign.Visible = True
+        btnWeightsReps.Visible = True
+        lblInput.Visible = True
+        'divWeightRep.Visible = True
+
+        'btnAssign.Visible = True
         lblAssignmentResult.Visible = False
         lblAssignmentResult.Text = origText
         lblDublicate.Visible = False
@@ -20,10 +24,6 @@ Partial Class _Default
         For Each item As ListItem In checklistAthletes.Items
             item.Selected = False
         Next
-    End Sub
-
-    Protected Sub checklistAthletes_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles checklistAthletes.SelectedIndexChanged
-
     End Sub
 
     Protected Sub btnAssign_Click(sender As Object, e As System.EventArgs) Handles btnAssign.Click
@@ -105,15 +105,11 @@ Partial Class _Default
                                     End Using
 
                                 End While
-                                
+
 
                             Else
 
                             End If
-
-                            
-
-
 
                         End Using
 
@@ -146,10 +142,6 @@ Partial Class _Default
             End If
         Next
 
-
-
-
-
     End Sub
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
@@ -160,4 +152,99 @@ Partial Class _Default
         End Select
 
     End Sub
+
+    Protected Sub btnWeightsReps_Click(sender As Object, e As System.EventArgs) Handles btnWeightsReps.Click
+        divWeightRep.Visible = True
+        gvExercises.DataBind()
+
+        For Each item As ListItem In checklistAthletes.Items
+            If item.Selected = True Then
+                Dim dgv As New DataGrid
+                Dim c As Integer = 5
+                Dim r As Integer = 10
+                dgv.DataSource() = sqlListExercises
+
+                dgv.DataBind()
+
+                'dgv.Columns.Remove("ExerciseID")
+                'Debug.Print(dgv.Columns.Count)
+                'Me.Controls.Add(dgv)
+                'Me.Controls.AddAt(Me.Controls.IndexOf(divWeightRep), dgv)
+                'Me.lblInput.Parent.Controls.Add(dgv)
+                Me.divWeightRep.Controls.Add(dgv)
+                'dgv.Columns.RemoveAt(0)
+                'Debug.Print(dgv.Columns.Item(0).ToString())
+                If Not dgv.Items(0) Is Nothing Then
+                    Debug.Print(dgv.Items(0).Cells(3).Text)
+                    dgv.Items(0).Cells(3).Text = "HELLO"
+
+                Else
+                    Debug.Print("BB")
+                End If
+
+            Else
+
+            End If
+        Next
+
+    End Sub
+
+    Protected Function ShowSetCount(ByVal wID As Integer, ByVal eID As Integer) As Integer
+        Dim setCount As Integer = 0
+
+        Using connection1 As New SqlConnection(conStr)
+            Dim countSets As New SqlCommand("EXEC CountSets @WorkoutID, @ExerciseID", connection1)
+            countSets.Parameters.AddWithValue("@WorkoutID", wID)
+            countSets.Parameters.AddWithValue("@ExerciseID", eID)
+            connection1.Open()
+
+            Dim rowsAffected As SqlDataReader = countSets.ExecuteReader()
+
+            If rowsAffected.HasRows() Then
+                While rowsAffected.Read()
+                    setCount += 1
+                End While
+            End If
+        End Using
+
+        Return setCount
+    End Function
+
+    Protected Function ShowAthleteName(ByVal index As Integer) As String
+        Dim name As String = "TESTTING"
+
+
+        For Each item As ListItem In checklistAthletes.Items
+            If item.Selected = True Then
+                name = item.ToString
+            Else
+
+            End If
+        Next
+
+
+        Return name
+    End Function
+
+    Protected Sub checklistAthletes_DataBinding(sender As Object, e As System.EventArgs) Handles checklistAthletes.DataBinding
+        'checklistAthletes.Items.Clear()
+        'checklistAthletes.Items.Insert(0, "--Select One--")
+
+        'For Each item As ListItem In checklistAthletes.Items
+        '    If item.Selected = True Then
+        '        Dim dgv As New DataGrid
+        '        Dim c As Integer = 5
+        '        Dim r As Integer = 10
+        '        dgv.DataSource() = sqlListExercises
+        '        dgv.DataBind()
+        '        Me.Controls.Add(dgv)
+
+        '        'name = item.ToString
+        '    Else
+
+        '    End If
+        'Next
+
+    End Sub
+
 End Class
