@@ -55,8 +55,7 @@
     <div id="divWeightRep" runat="server" visible="false" >
         <asp:Label ID="lblInput" Text= "Input Rep counts and Weight assignments below." runat="server" Visible="true" />
         <asp:GridView ID="gvExercises" runat="server" AutoGenerateColumns="False" 
-            DataKeyNames="ExerciseID,WorkoutID,ExerciseID1" 
-            DataSourceID="sqlListExercises" >
+            DataKeyNames="ExerciseID,WorkoutID,ExerciseID1" DataSourceID="sqlListExercises" >
             <Columns>
                 
                 <asp:TemplateField HeaderText="Athlete Name">

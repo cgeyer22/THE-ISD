@@ -26,10 +26,6 @@ Partial Class _Default
         Next
     End Sub
 
-    Protected Sub checklistAthletes_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles checklistAthletes.SelectedIndexChanged
-
-    End Sub
-
     Protected Sub btnAssign_Click(sender As Object, e As System.EventArgs) Handles btnAssign.Click
         Debug.Print("assign workoutID is next")
         Debug.Print(WorkoutTable.SelectedDataKey.Value)
@@ -115,10 +111,6 @@ Partial Class _Default
 
                             End If
 
-                            
-
-
-
                         End Using
 
                         Dim itemS As String = item.ToString
@@ -150,10 +142,6 @@ Partial Class _Default
             End If
         Next
 
-
-
-
-
     End Sub
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
@@ -166,7 +154,7 @@ Partial Class _Default
     End Sub
 
     Protected Sub btnWeightsReps_Click(sender As Object, e As System.EventArgs) Handles btnWeightsReps.Click
-        'divWeightRep.Visible = True
+        divWeightRep.Visible = True
         gvExercises.DataBind()
 
         For Each item As ListItem In checklistAthletes.Items
@@ -175,10 +163,25 @@ Partial Class _Default
                 Dim c As Integer = 5
                 Dim r As Integer = 10
                 dgv.DataSource() = sqlListExercises
-                dgv.DataBind()
-                Me.Controls.Add(dgv)
 
-                'name = item.ToString
+                dgv.DataBind()
+
+                'dgv.Columns.Remove("ExerciseID")
+                'Debug.Print(dgv.Columns.Count)
+                'Me.Controls.Add(dgv)
+                'Me.Controls.AddAt(Me.Controls.IndexOf(divWeightRep), dgv)
+                'Me.lblInput.Parent.Controls.Add(dgv)
+                Me.divWeightRep.Controls.Add(dgv)
+                'dgv.Columns.RemoveAt(0)
+                'Debug.Print(dgv.Columns.Item(0).ToString())
+                If Not dgv.Items(0) Is Nothing Then
+                    Debug.Print(dgv.Items(0).Cells(3).Text)
+                    dgv.Items(0).Cells(3).Text = "HELLO"
+
+                Else
+                    Debug.Print("BB")
+                End If
+                
             Else
 
             End If
