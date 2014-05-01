@@ -6,6 +6,10 @@
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 
     <h1>Create Exercise</h1>
+    <asp:Button ID="backButton" runat="server" Text="← Back to Workouts" 
+            Visible="False" />
+    <br />
+    <br />
     <asp:DetailsView ID="DetailsView1" runat="server" Height="50px" Width="125px" 
         DefaultMode="Insert" AutoGenerateRows="False" BorderWidth="1px" CellPadding="2" DataKeyNames="ExerciseID" 
         DataSourceID="sqlExerciseTable" GridLines="None">
@@ -59,5 +63,4 @@
                 SortExpression="Description" />
         </Columns>
     </asp:GridView>
-    
 </asp:Content>
