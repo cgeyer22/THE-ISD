@@ -62,11 +62,25 @@ input[type="submit"]
     color: #fff;
 }
 
-.button
+input[type="submit"]:Hover  
+{
+     background-color: #aaa;
+     border-radius: 4px;
+     color: #fff;
+}
+
+input[type="button"]
 {
     background-color: #999;
     border-radius: 4px;
     color: #fff;
+}
+
+input[type="button"]:Hover  
+{
+     background-color: #aaa;
+     border-radius: 4px;
+     color: #fff;
 }
 
 *
