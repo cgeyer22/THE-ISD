@@ -28,7 +28,7 @@
         <Columns>
             <asp:CommandField ShowEditButton="True" ShowSelectButton="True" 
                 ButtonType="Button" EditText="Rename" SelectText="Edit Exercises" 
-                UpdateText="Save" />
+                UpdateText="Save" ControlStyle-CssClass="button"/>
             <asp:BoundField DataField="WorkoutID" HeaderText="WorkoutID" 
                 InsertVisible="False" ReadOnly="True" SortExpression="WorkoutID" 
                 Visible="False" />
@@ -38,7 +38,7 @@
                 SortExpression="Description" />
         </Columns>
     </asp:GridView>
-    <asp:Button ID="btnNewWorkout" runat="server" Text="Add Workout" />
+    <asp:Button ID="btnNewWorkout" runat="server" Text="Add Workout" Class="button" />
     
     <br />
     <asp:DetailsView ID="dvNewWorkout" runat="server" AutoGenerateRows="False" 
@@ -56,7 +56,7 @@
         </Fields>
     </asp:DetailsView>
     <asp:Button ID="btnCancel" runat="server" Text="Cancel" Visible="False" 
-            Height="31px" />
+            Height="31px" Class="button" />
     <br />
     <asp:SqlDataSource ID="sdsWorkoutExercise" runat="server" 
         ConnectionString="<%$ ConnectionStrings:BetaSYS39414WorkoutExercise %>" 
@@ -132,8 +132,8 @@
     </asp:DropDownList>
     <br />
     <asp:Button ID="btnAddExercise" runat="server" Text="Add Exercise to Workout" 
-        Visible="False" />
-        <asp:Button ID="btnNewExercise" runat="server" Text="Create a New Exercise" />
+        Visible="False" Class="button" />
+        <asp:Button ID="btnNewExercise" runat="server" Text="Create a New Exercise" Class="button" />
     <br />
     <br />
     <br />

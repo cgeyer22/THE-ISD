@@ -72,9 +72,9 @@
                 ConvertEmptyStringToNull="False">
                 <ItemTemplate>
                     <asp:DropDownList ID="ddlGender" DataField="Gender" DataValueField="Gender" DataTextField="Gender" runat="server">
-                        <asp:ListItem Text="Male" Value="True">
+                        <asp:ListItem Text="Male" Value="1">
                         </asp:ListItem>
-                        <asp:ListItem Text="Female" Value="False">
+                        <asp:ListItem Text="Female" Value="0">
                         </asp:ListItem>
                     </asp:DropDownList>
                 </ItemTemplate>

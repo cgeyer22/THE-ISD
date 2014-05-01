@@ -18,6 +18,9 @@
             <asp:Parameter Name="Description" Type="String" />
         </UpdateParameters>
     </asp:SqlDataSource>
+    <asp:Button ID="Button1" runat="server" Text="← Back to Workout Info" />
+    <br />
+    <br />
     <asp:GridView ID="WorkoutTable" runat="server" AllowPaging="True" 
         AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="WorkoutID" 
         DataSourceID="sdsWorkout">
@@ -92,6 +95,7 @@
 
     <br /><br />
     <asp:Button ID="btnAssign" runat="server" Text="Assign" Visible="False" />
+    <br />
     <br />
     <asp:Label ID="lblAssignmentResult" runat="server" Text="Assigned to: " Visible="false" />
     <br />
