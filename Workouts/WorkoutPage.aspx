@@ -20,6 +20,40 @@
             <asp:Parameter Name="Description" Type="String" />
         </UpdateParameters>
     </asp:SqlDataSource>
+    <asp:SqlDataSource ID="WorkoutSearchConnection" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:BetaSYS39414ConnectionStringWorkoutSearch %>" 
+        SelectCommand="SearchWorkouts" SelectCommandType="StoredProcedure" 
+        UpdateCommand="UpdateWorkout" UpdateCommandType="StoredProcedure">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="WorkoutSearch" Name="WorkoutName" 
+                PropertyName="Text" Type="String" />
+        </SelectParameters>
+        <UpdateParameters>
+            <asp:Parameter Name="WorkoutID" Type="Int32" />
+            <asp:Parameter Name="WorkoutName" Type="String" />
+            <asp:Parameter Name="Description" Type="String" />
+        </UpdateParameters>
+    </asp:SqlDataSource>
+    <h2>Search for Workout</h2>
+    <asp:Label Text="Workout Name" runat="server"></asp:Label>
+    <asp:TextBox ID="WorkoutSearch" runat="server" />
+    <asp:Button ID="SubmitSearchWorkout" Text="search" runat="server" />
+    <br />
+    <br />
+    <asp:GridView ID="SearchResultsAccounts" runat="server" 
+            DataSourceID="WorkoutSearchConnection" AutoGenerateColumns="False" 
+            DataKeyNames="WorkoutID" AllowSorting="True">
+        <Columns>
+            <asp:BoundField Visible="false" DataField="WorkoutID" HeaderText="WorkoutID" 
+                InsertVisible="False" ReadOnly="True" SortExpression="WorkoutID" />
+            <asp:BoundField DataField="WorkoutName" HeaderText="WorkoutName" 
+                SortExpression="WorkoutName" />
+            <asp:BoundField DataField="Description" HeaderText="Description" 
+                SortExpression="Description" />
+        </Columns>
+    </asp:GridView>
+    <br />
+    <br />
     
     <div id="CurrentWorkouts">
     <asp:GridView ID="WorkoutTable" runat="server" AllowPaging="True" 

@@ -94,13 +94,80 @@
     </asp:DetailsView>
     <br />
     <br />
+    <asp:SqlDataSource ID="SearchSQLConnection" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:BetaSYS39414ConnectionStringSearchAccounts %>" 
+            SelectCommand="SearchAccounts" SelectCommandType="StoredProcedure" 
+            UpdateCommand="UpdateAccount" UpdateCommandType="StoredProcedure">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="GivenFirstName" Name="FirstName" 
+                PropertyName="Text" Type="String" />
+            <asp:ControlParameter ControlID="GivenLastName" Name="LastName" PropertyName="Text" 
+                Type="String" />
+        </SelectParameters>
+        <UpdateParameters>
+            <asp:Parameter Name="UserID" Type="Int32" />
+            <asp:Parameter Name="Username" Type="String" />
+            <asp:Parameter Name="Password" Type="String" />
+            <asp:Parameter Name="FirstName" Type="String" />
+            <asp:Parameter Name="LastName" Type="String" />
+            <asp:Parameter Name="Email" Type="String" />
+            <asp:Parameter Name="Gender" Type="String" />
+            <asp:Parameter Name="TaylorID" Type="Int32" />
+            <asp:Parameter Name="Height" Type="String" />
+            <asp:Parameter Name="BodyWeight" Type="String" />
+            <asp:Parameter Name="SchoolYear" Type="String" />
+            <asp:Parameter Name="Active" Type="Boolean" />
+        </UpdateParameters>
+        </asp:SqlDataSource>
+        <br />
+        <h2>Search for Account</h2>
+    <asp:Label Text="First Name" runat="server"></asp:Label>
+    <asp:TextBox ID="GivenFirstName" runat="server" />
+    <asp:Label Text="Last Name" runat="server"></asp:Label>
+    <asp:TextBox ID="GivenLastName" runat="server" />
+    <asp:Button ID="SubmitSearchAccount" Text="search" runat="server" />
+    <br />
+    <br />
+    <asp:GridView ID="SearchResultsAccounts" runat="server" 
+            DataSourceID="SearchSQLConnection" AutoGenerateColumns="False" 
+            DataKeyNames="UserID" AllowSorting="True">
+        <Columns>
+            <asp:CommandField ShowEditButton="True" />
+            <asp:BoundField DataField="UserID" HeaderText="UserID" InsertVisible="False" 
+                ReadOnly="True" SortExpression="UserID" />
+            <asp:BoundField DataField="Username" HeaderText="Username" 
+                SortExpression="Username" />
+            <asp:BoundField DataField="Password" HeaderText="Password" 
+                SortExpression="Password" />
+            <asp:BoundField DataField="FirstName" HeaderText="FirstName" 
+                SortExpression="FirstName" />
+            <asp:BoundField DataField="LastName" HeaderText="LastName" 
+                SortExpression="LastName" />
+            <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
+            <asp:CheckBoxField DataField="Gender" HeaderText="Gender" 
+                SortExpression="Gender" />
+            <asp:BoundField DataField="TaylorID" HeaderText="TaylorID" 
+                SortExpression="TaylorID" />
+            <asp:BoundField DataField="Height" HeaderText="Height" 
+                SortExpression="Height" />
+            <asp:BoundField DataField="BodyWeight" HeaderText="BodyWeight" 
+                SortExpression="BodyWeight" />
+            <asp:BoundField DataField="SchoolYear" HeaderText="SchoolYear" 
+                SortExpression="SchoolYear" />
+            <asp:CheckBoxField DataField="Active" HeaderText="Active" 
+                SortExpression="Active" />
+        </Columns>
+    </asp:GridView>
+
+    <br />
+    <br />
     <div id="gridDiv">
     <asp:GridView ID="UserAccounts" runat="server" AllowSorting="True" 
         AutoGenerateColumns="False" DataKeyNames="UserID" DataSourceID="SqlAccess">
         <Columns>
             <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" 
                 ButtonType="Button" />
-            <asp:BoundField DataField="UserID" HeaderText="UserID" InsertVisible="False" 
+            <asp:BoundField Visible="false" DataField="UserID" HeaderText="UserID" InsertVisible="False" 
                 ReadOnly="True" SortExpression="UserID" />
             <asp:BoundField DataField="Username" HeaderText="Username" 
                 SortExpression="Username" />

@@ -157,4 +157,16 @@ Partial Class Default3
     Protected Sub gvWorkoutExercise_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles gvWorkoutExercise.SelectedIndexChanged
 
     End Sub
+
+    Protected Sub SubmitSearchWorkout_Click(sender As Object, e As System.EventArgs) Handles SubmitSearchWorkout.Click
+        Using connection As New SqlConnection(connectionString)
+            Dim searchWorkouts As New SqlCommand("EXEC SearchWorkouts @WorkoutName", connection)
+            searchWorkouts.Parameters.AddWithValue("@WorkoutName", WorkoutSearch.Text)
+
+
+
+
+        End Using
+
+    End Sub
 End Class
