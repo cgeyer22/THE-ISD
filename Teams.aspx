@@ -37,14 +37,14 @@
                 SortExpression="Description" />
             <asp:CheckBoxField DataField="Active" HeaderText="Active" 
                 SortExpression="Active" />
-            <asp:CommandField ShowInsertButton="True" />
+            <asp:CommandField ShowInsertButton="True" ButtonType="Button" />
         </Fields>
     </asp:DetailsView>
     <br />
 <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" 
         AutoGenerateColumns="False" DataKeyNames="TeamID" DataSourceID="sdsTeam">
     <Columns>
-        <asp:CommandField ShowEditButton="True" />
+        <asp:CommandField ShowEditButton="True" ButtonType="Button" />
         <asp:BoundField DataField="TeamID" HeaderText="TeamID" InsertVisible="False" 
             ReadOnly="True" SortExpression="TeamID" Visible="False" />
         <asp:BoundField DataField="Sport" HeaderText="Sport" SortExpression="Sport" />
