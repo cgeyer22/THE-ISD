@@ -44,6 +44,33 @@
         </UpdateParameters>
 
     </asp:SqlDataSource>
+    <h2>Search Exercies</h2>
+    <asp:Label runat="server">Enter Exercise Name</asp:Label>
+    <asp:TextBox ID="ExerciseSearchBar" runat="server"></asp:TextBox>
+    <asp:Button ID="SearchExerciesButton" Text="Search" runat="server" onclick="Unnamed2_Click" />
+    <br />
+    <asp:SqlDataSource runat="server" ID="SqlExerciseSearchConnection" 
+    ConnectionString="<%$ ConnectionStrings:BetaSYS39414ConnectionStringExerciseSearch %>" 
+    SelectCommand="SearchExercies" SelectCommandType="StoredProcedure" 
+    UpdateCommand="UpdateExerciseTable" UpdateCommandType="StoredProcedure">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="ExerciseSearchBar" Name="ExerciseName" 
+                PropertyName="Text" Type="String" />
+        </SelectParameters>
+        <UpdateParameters>
+            <asp:Parameter Name="ExerciseID" Type="Int32" />
+            <asp:Parameter Name="ExerciseName" Type="String" />
+            <asp:Parameter Name="Description" Type="String" />
+        </UpdateParameters>
+</asp:SqlDataSource>
+    <asp:GridView runat="server" ID="ExerciseSearchResults" AllowSorting="True" 
+        DataSourceID="SqlExerciseSearchConnection">
+        <Columns>
+            <asp:CommandField ShowEditButton="True" />
+        </Columns>
+    </asp:GridView>
+    <br />
+    <br />
     <h2>List of Exercises</h2>
 
     <asp:GridView ID="GridView1" runat="server" 
@@ -56,7 +83,8 @@
             <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ButtonType="Button" />
           
             <asp:BoundField DataField="ExerciseID" HeaderText="ExerciseID" 
-                SortExpression="ExerciseID" InsertVisible="False" ReadOnly="True" />
+                SortExpression="ExerciseID" InsertVisible="False" ReadOnly="True" 
+                Visible="False" />
             <asp:BoundField DataField="ExerciseName" HeaderText="ExerciseName" 
                 SortExpression="ExerciseName" />
             <asp:BoundField DataField="Description" HeaderText="Description" 
