@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head id="Head1" runat="server">
     <title></title>
-    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" media='screen and (min-width: 645px)'/>
+    <link href="~/Styles/SiteSmall.css" rel="stylesheet" type="text/css" media='screen and (max-width: 644px)'/>
     <link href='http://fonts.googleapis.com/css?family=Coda' rel='stylesheet' type='text/css'>
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
@@ -14,7 +15,7 @@
     <div class="page">
         <div class="header">
             <div class="title">
-                <h1><img src="http://i208.photobucket.com/albums/bb64/Nintendude1313/TrojanTracker_zpsf711b08a.png" alt="Trojan Tracker"/></h1>
+                <h1><img src="http://i208.photobucket.com/albums/bb64/Nintendude1313/TrojanTracker_zpsf711b08a.png" alt="Trojan Tracker" id="Logo" /></h1>
             </div>
             <div class="loginDisplay">
                 <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
@@ -22,7 +23,7 @@
                         [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Log In</a> ]
                     </AnonymousTemplate>
                     <LoggedInTemplate>
-                        Welcome <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
+                        Welcome, <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
                         [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/"/> ]
                     </LoggedInTemplate>
                 </asp:LoginView>

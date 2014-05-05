@@ -41,11 +41,9 @@
         <UpdateParameters>
             <asp:Parameter Name="UserID" Type="Int32" />
             <asp:Parameter Name="UserName" Type="String" />
-            <asp:Parameter Name="Password" Type="String" />
             <asp:Parameter Name="FirstName" Type="String" />
             <asp:Parameter Name="LastName" Type="String" />
             <asp:Parameter Name="Email" Type="String" />
-            <asp:Parameter Name="Gender" Type="String" />
             <asp:Parameter Name="TaylorID" Type="Int32" />
             <asp:Parameter Name="Height" Type="String" />
             <asp:Parameter Name="BodyWeight" Type="String" />
@@ -130,22 +128,22 @@
     <br />
     <asp:GridView ID="SearchResultsAccounts" runat="server" 
             DataSourceID="SearchSQLConnection" AutoGenerateColumns="False" 
-            DataKeyNames="UserID" AllowSorting="True">
+            DataKeyNames="UserID" AllowSorting="True" AllowPaging="True">
         <Columns>
             <asp:CommandField ShowEditButton="True" />
             <asp:BoundField DataField="UserID" HeaderText="UserID" InsertVisible="False" 
-                ReadOnly="True" SortExpression="UserID" />
+                ReadOnly="True" SortExpression="UserID" Visible="False" />
             <asp:BoundField DataField="Username" HeaderText="Username" 
                 SortExpression="Username" />
             <asp:BoundField DataField="Password" HeaderText="Password" 
-                SortExpression="Password" />
+                SortExpression="Password" Visible="False" />
             <asp:BoundField DataField="FirstName" HeaderText="FirstName" 
                 SortExpression="FirstName" />
             <asp:BoundField DataField="LastName" HeaderText="LastName" 
                 SortExpression="LastName" />
             <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
             <asp:CheckBoxField DataField="Gender" HeaderText="Gender" 
-                SortExpression="Gender" />
+                SortExpression="Gender" Visible="False" />
             <asp:BoundField DataField="TaylorID" HeaderText="TaylorID" 
                 SortExpression="TaylorID" />
             <asp:BoundField DataField="Height" HeaderText="Height" 
@@ -163,7 +161,8 @@
     <br />
     <div id="gridDiv">
     <asp:GridView ID="UserAccounts" runat="server" AllowSorting="True" 
-        AutoGenerateColumns="False" DataKeyNames="UserID" DataSourceID="SqlAccess">
+        AutoGenerateColumns="False" DataKeyNames="UserID" DataSourceID="SqlAccess" 
+            AllowPaging="True">
         <Columns>
             <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" 
                 ButtonType="Button" />
@@ -172,14 +171,14 @@
             <asp:BoundField DataField="Username" HeaderText="Username" 
                 SortExpression="Username" />
             <asp:BoundField DataField="Password" HeaderText="Password" 
-                SortExpression="Password" />
+                SortExpression="Password" Visible="False" />
             <asp:BoundField DataField="FirstName" HeaderText="FirstName" 
                 SortExpression="FirstName" />
             <asp:BoundField DataField="LastName" HeaderText="LastName" 
                 SortExpression="LastName" />
             <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
             <asp:BoundField DataField="Gender" HeaderText="Gender" 
-                SortExpression="Gender" />
+                SortExpression="Gender" Visible="False" />
             <asp:BoundField DataField="TaylorID" HeaderText="TaylorID" 
                 SortExpression="TaylorID" />
             <asp:BoundField DataField="Height" HeaderText="Height" 

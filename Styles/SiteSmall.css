@@ -251,7 +251,6 @@ div.menu ul li a:active
 
 fieldset
 {
-    width: auto;
     margin: 1em 0px;
     padding: 1em;
     border: 5px solid #bbb;
@@ -291,8 +290,7 @@ legend
 
 div.accountInfo
 {
-    width: 40%;
-    height: 100%;
+    width: 42%;
     margin: 20px auto 0px auto;
 }
 
@@ -360,13 +358,14 @@ div.accountInfo
 
 #LoginImage
 {
-    float: left;
+    float:right;
+    position:absolute;
+    visibility:hidden;
 }
-
 #LoginBox
 {
     float: left;
-    width: 82%;
+    width: 100%;
 }
 
 #LoginButton
