@@ -154,38 +154,76 @@ Partial Class _Default
     End Sub
 
     Protected Sub btnWeightsReps_Click(sender As Object, e As System.EventArgs) Handles btnWeightsReps.Click
+        'checklistAthletes.
         divWeightRep.Visible = True
-        gvExercises.DataBind()
+        'gvExercises.DataBind()
+        
 
         For Each item As ListItem In checklistAthletes.Items
             If item.Selected = True Then
                 Dim dgv As New DataGrid
-                Dim c As Integer = 5
-                Dim r As Integer = 10
                 dgv.DataSource() = sqlListExercises
+
+                'sqlListExercises.SelectCommand() = "ListExercises"
+                'sqlListExercises.SelectParameters(1) = New System.Web.UI.WebControls.Parameter("UserID", DbType.Int32, item.Value)
+                'Debug.Print(sqlListExercises.SelectParameters(1).ToString)
+                'sqlListExercises.SelectParameters(
+                'sqlListExercises.SelectParameters(0) = sql  1
 
                 dgv.DataBind()
 
-                'dgv.Columns.Remove("ExerciseID")
-                'Debug.Print(dgv.Columns.Count)
-                'Me.Controls.Add(dgv)
-                'Me.Controls.AddAt(Me.Controls.IndexOf(divWeightRep), dgv)
-                'Me.lblInput.Parent.Controls.Add(dgv)
+                Dim itemS As String = item.ToString
+                Dim length As Integer = itemS.IndexOf(", ")
+                'Debug.Print(item.ToString)
+                'Debug.Print(item.ToString.IndexOf(", "))
+
+                Dim lastName As String = itemS.Substring(0, length)
+                Dim firstName As String = itemS.Substring(length + 2)
+
+
+                Using con2 As New SqlConnection(conStr)
+                    Dim sqlCommand2 As New SqlCommand("EXEC FindExercise @WorkoutID", con2)
+                    sqlCommand2.Parameters.AddWithValue("@WorkoutID", WorkoutTable.SelectedDataKey.Value)
+                    con2.Open()
+
+                    Dim rowsAffected2 As SqlDataReader = sqlCommand2.ExecuteReader()
+
+                    If rowsAffected2.HasRows() Then
+                        Dim i As Integer = 0
+                        While rowsAffected2.Read()
+                            'Dim setCount As Integer = 0
+
+                            Dim ExerciseID As Integer = rowsAffected2("ExerciseID")
+
+                            Dim textboxR As New TextBox
+                            textboxR.ID = "txtRep5" + i.ToString
+                            textboxR.Width() = 25
+
+                            Dim textboxW As New TextBox
+                            textboxW.ID = "txtWeight6" + i.ToString
+                            textboxW.Width() = 30
+
+                            dgv.Items(i).Cells(0).Text = firstName
+                            dgv.Items(i).Cells(1).Text = lastName
+                            dgv.Items(i).Cells(4).Text = ShowSetCount(WorkoutTable.SelectedValue, ExerciseID)
+                            dgv.Items(i).Cells(5).Controls.Add(textboxR)
+                            dgv.Items(i).Cells(6).Controls.Add(textboxW)
+
+                            i += 1
+                        End While
+                    End If
+
+                End Using
+
                 Me.divWeightRep.Controls.Add(dgv)
-                'dgv.Columns.RemoveAt(0)
-                'Debug.Print(dgv.Columns.Item(0).ToString())
-                If Not dgv.Items(0) Is Nothing Then
-                    Debug.Print(dgv.Items(0).Cells(3).Text)
-                    dgv.Items(0).Cells(3).Text = "HELLO"
 
-                Else
-                    Debug.Print("BB")
-                End If
+                
 
-            Else
-
+                
             End If
         Next
+
+
 
     End Sub
 

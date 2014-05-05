@@ -20,6 +20,10 @@
             <asp:ValidationSummary ID="LoginUserValidationSummary" runat="server" CssClass="failureNotification" 
                  ValidationGroup="LoginUserValidationGroup"/>
             <div class="accountInfo">
+                <div id="LoginImage"><img
+                    src="http://i208.photobucket.com/albums/bb64/Nintendude1313/Login_zpscf7b8075.png"/>
+                </div>
+                <div id="LoginBox">
                 <fieldset class="login">
                     <legend>Account Information</legend>
                     <p>
@@ -43,14 +47,10 @@
                     </p>
                 </fieldset>
                 </div>
-                <p class="submitButton">
-                    <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Log In" 
-                        ValidationGroup="LoginUserValidationGroup" onclick="LoginButton_Click"/>
-                </p>
-                <div class="positionLoginImage"><asp:Image ID="LoginImage" runat="server" 
-                    ImageUrl="http://i208.photobucket.com/albums/bb64/Nintendude1313/Login_zps18821369.png" />
-                </div>
             </div>
+            <p id="LoginButton" class="submitButton">
+                <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Log In" ValidationGroup="LoginUserValidationGroup" onclick="LoginButton_Click"/>
+            </p>
         </LayoutTemplate>
     </asp:Login>
 </asp:Content>
