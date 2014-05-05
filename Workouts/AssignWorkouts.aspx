@@ -49,7 +49,8 @@
     <asp:Button ID="btnWeightsReps" runat="server" Text="Assign Weight and Rep Counts" Visible="false" />
     <asp:SqlDataSource ID="sqlListExercises" runat="server" 
         ConnectionString="<%$ ConnectionStrings:BetaSYS39414ConnectionString4ListExercises %>" 
-        SelectCommand="ListExercises" SelectCommandType="StoredProcedure">
+        SelectCommand="ListExercisesForAthletes" 
+        SelectCommandType="StoredProcedure">
         <SelectParameters>
             <asp:ControlParameter ControlID="WorkoutTable" Name="WorkoutID" 
                 PropertyName="SelectedValue" Type="Int32" />
@@ -57,40 +58,6 @@
     </asp:SqlDataSource>
     <div id="divWeightRep" runat="server" visible="false" >
         <asp:Label ID="lblInput" Text= "Input Rep counts and Weight assignments below." runat="server" Visible="true" />
-        <asp:GridView ID="gvExercises" runat="server" AutoGenerateColumns="False" 
-            DataKeyNames="ExerciseID,WorkoutID,ExerciseID1" DataSourceID="sqlListExercises" >
-            <Columns>
-                
-                <asp:TemplateField HeaderText="Athlete Name">
-                    <ItemTemplate>
-                        <asp:Label ID="lblName1" Text='<%#  ShowAthleteName(1)  %>' runat="server"></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:BoundField DataField="ExerciseID" HeaderText="ExerciseID" ReadOnly="True" 
-                    SortExpression="ExerciseID" Visible="False" />
-                <asp:BoundField DataField="WorkoutID" HeaderText="WorkoutID" ReadOnly="True" 
-                    SortExpression="WorkoutID" Visible="False" />
-                <asp:BoundField DataField="ExerciseID1" HeaderText="ExerciseID1" 
-                    InsertVisible="False" ReadOnly="True" SortExpression="ExerciseID1" 
-                    Visible="False" />
-                <asp:BoundField DataField="ExerciseName" HeaderText="ExerciseName" 
-                    SortExpression="ExerciseName" />
-                <asp:BoundField DataField="Description" HeaderText="Description" 
-                    SortExpression="Description" Visible="False" />
-                <asp:TemplateField HeaderText="Set Count" >
-                <ItemTemplate>
-                    <asp:Label ID="lblSetCount" Text='<%#  ShowSetCount(Eval("WorkoutID"), Eval("ExerciseID"))  %>' runat="server"></asp:Label>
-                </ItemTemplate>
-                <%--<EditItemTemplate>
-                    <asp:TextBox ID="txtSets" runat="server" Text='<%# ShowSetCount(Eval("WorkoutID"), Eval("ExerciseID"))  %>' ></asp:TextBox>
-                    <asp:RegularExpressionValidator ValidationGroup="reg" ID="regexSetCount" ControlToValidate="txtSets"
-                        runat="server" ErrorMessage="Can only enter numbers"
-                        ValidationExpression="^[0-9]+$" >*</asp:RegularExpressionValidator>
-                </EditItemTemplate>--%>
-            </asp:TemplateField>
-
-            </Columns>
-        </asp:GridView>
     </div>
 
     <br /><br />

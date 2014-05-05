@@ -155,7 +155,7 @@ Partial Class _Default
 
     Protected Sub btnWeightsReps_Click(sender As Object, e As System.EventArgs) Handles btnWeightsReps.Click
         divWeightRep.Visible = True
-        gvExercises.DataBind()
+        'gvExercises.DataBind()
 
         For Each item As ListItem In checklistAthletes.Items
             If item.Selected = True Then
@@ -166,7 +166,7 @@ Partial Class _Default
 
                 dgv.DataBind()
 
-                'dgv.Columns.Remove("ExerciseID")
+                'dgv.Columns().Visible = False
                 'Debug.Print(dgv.Columns.Count)
                 'Me.Controls.Add(dgv)
                 'Me.Controls.AddAt(Me.Controls.IndexOf(divWeightRep), dgv)
@@ -174,16 +174,17 @@ Partial Class _Default
                 Me.divWeightRep.Controls.Add(dgv)
                 'dgv.Columns.RemoveAt(0)
                 'Debug.Print(dgv.Columns.Item(0).ToString())
-                If Not dgv.Items(0) Is Nothing Then
-                    Debug.Print(dgv.Items(0).Cells(3).Text)
-                    dgv.Items(0).Cells(3).Text = "HELLO"
+                'If Not dgv.Items(0) Is Nothing Then
+                'Debug.Print(dgv.Items(0).Cells(3).Text)
+                'dgv.Items(0).Cells(3).Text = "HELLO"
 
-                Else
-                    Debug.Print("BB")
-                End If
+                'Else
+                'Debug.Print("BB")
+                ' If
 
-            Else
+                'Else
 
+                'End If
             End If
         Next
 
