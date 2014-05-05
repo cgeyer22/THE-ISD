@@ -154,6 +154,7 @@ Partial Class _Default
     End Sub
 
     Protected Sub btnWeightsReps_Click(sender As Object, e As System.EventArgs) Handles btnWeightsReps.Click
+        'checklistAthletes.
         divWeightRep.Visible = True
         'gvExercises.DataBind()
         
@@ -164,14 +165,20 @@ Partial Class _Default
                 dgv.DataSource() = sqlListExercises
 
                 'sqlListExercises.SelectCommand() = "ListExercises"
-                sqlListExercises.SelectParameters(1) = New System.Web.UI.WebControls.Parameter("UserID", DbType.Int32, item.Value)
-                Debug.Print(sqlListExercises.SelectParameters(1).ToString)
+                'sqlListExercises.SelectParameters(1) = New System.Web.UI.WebControls.Parameter("UserID", DbType.Int32, item.Value)
+                'Debug.Print(sqlListExercises.SelectParameters(1).ToString)
                 'sqlListExercises.SelectParameters(
                 'sqlListExercises.SelectParameters(0) = sql  1
 
                 dgv.DataBind()
 
-                
+                Dim itemS As String = item.ToString
+                Dim length As Integer = itemS.IndexOf(", ")
+                'Debug.Print(item.ToString)
+                'Debug.Print(item.ToString.IndexOf(", "))
+
+                Dim lastName As String = itemS.Substring(0, length)
+                Dim firstName As String = itemS.Substring(length + 2)
 
 
                 Using con2 As New SqlConnection(conStr)
@@ -196,6 +203,8 @@ Partial Class _Default
                             textboxW.ID = "txtWeight6" + i.ToString
                             textboxW.Width() = 30
 
+                            dgv.Items(i).Cells(0).Text = firstName
+                            dgv.Items(i).Cells(1).Text = lastName
                             dgv.Items(i).Cells(4).Text = ShowSetCount(WorkoutTable.SelectedValue, ExerciseID)
                             dgv.Items(i).Cells(5).Controls.Add(textboxR)
                             dgv.Items(i).Cells(6).Controls.Add(textboxW)
@@ -208,13 +217,7 @@ Partial Class _Default
 
                 Me.divWeightRep.Controls.Add(dgv)
 
-                Dim itemS As String = item.ToString
-                Dim length As Integer = itemS.IndexOf(", ")
-                'Debug.Print(item.ToString)
-                'Debug.Print(item.ToString.IndexOf(", "))
-
-                Dim lastName As String = itemS.Substring(0, length)
-                Dim firstName As String = itemS.Substring(length + 2)
+                
 
                 
             End If
