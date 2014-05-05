@@ -54,6 +54,7 @@
         <SelectParameters>
             <asp:ControlParameter ControlID="WorkoutTable" Name="WorkoutID" 
                 PropertyName="SelectedValue" Type="Int32" />
+            <asp:Parameter Name="UserID" Type="Int32" />
         </SelectParameters>
     </asp:SqlDataSource>
     <div id="divWeightRep" runat="server" visible="false" >
