@@ -158,10 +158,13 @@ Partial Class _Default
         divWeightRep.Visible = True
         'gvExercises.DataBind()
         
-
+        Dim j As Integer = 0
         For Each item As ListItem In checklistAthletes.Items
+
             If item.Selected = True Then
                 Dim dgv As New DataGrid
+                Dim br As New HtmlGenericControl("br")
+                dgv.ID = "RepsAndWeightGrid"
                 dgv.DataSource() = sqlListExercises
 
                 'sqlListExercises.SelectCommand() = "ListExercises"
@@ -209,6 +212,8 @@ Partial Class _Default
                             dgv.Items(i).Cells(5).Controls.Add(textboxR)
                             dgv.Items(i).Cells(6).Controls.Add(textboxW)
 
+                            dgv.ID = "dgvWR" + j.ToString
+
                             i += 1
                         End While
                     End If
@@ -216,11 +221,12 @@ Partial Class _Default
                 End Using
 
                 Me.divWeightRep.Controls.Add(dgv)
+                Me.divWeightRep.Controls.Add(br)
 
-                
 
-                
+
             End If
+            j += 1
         Next
 
 
@@ -287,5 +293,35 @@ Partial Class _Default
 
     Protected Sub Button1_Click(sender As Object, e As System.EventArgs) Handles Button1.Click
         Response.Redirect("~/Workouts/WorkoutPage.aspx")
+    End Sub
+
+    Protected Sub EnterAssignedRepsAndWeight_Click(sender As Object, e As System.EventArgs) Handles EnterAssignedRepsAndWeight.Click
+        'Using con2 As New SqlConnection(conStr)
+        '    Dim ConnectSQLToReps As New SqlCommand("EXEC EnterWeightAndRepsAssignment @Assigned_weight, @Assigned_reps,@UserID,@WorkoutID,@ExerciseID", con2)
+        '    ConnectSQLToReps.Parameters.AddWithValue("@Assigned_weight", textboxW.text)
+        'End Using
+
+        'Me.FindControl("dgvWR0").Controls.Item(0).Controls
+
+        Dim x As String = "txtRep50"
+
+        If Not Me.FindControl(x) Is DBNull.Value Then
+            Dim dgv As TextBox = Me.FindControl(x)
+            'Debug.Print(dgv.Controls(0))
+            Debug.Print(dgv.Text)
+            'Me.FindControl(x).Controls.Item(0)
+            'Debug.Print(dgv.Items(0).Cells(0))
+            'Debug.Print(dgv.Items(0).Cells(0).Text)
+            'Debug.Print(dgv.Items(0).Cells(1).Text)
+            'Debug.Print(dgv.Items(0).Cells(3).Text)
+
+        End If
+
+
+        '.items(0).cells(5)
+
+
+        'Debug.Print(
+
     End Sub
 End Class

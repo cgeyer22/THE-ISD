@@ -68,5 +68,7 @@
     <asp:Label ID="lblAssignmentResult" runat="server" Text="Assigned to: " Visible="false" />
     <br />
     <asp:Label ID="lblDublicate" runat="server" Text="Previously Assigned to: " Visible="false" />
+    <br />
+    <asp:Button ID="EnterAssignedRepsAndWeight" Text="Submit" runat="server" />
 </asp:Content>
 
