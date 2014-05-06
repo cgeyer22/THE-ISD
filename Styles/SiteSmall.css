@@ -3,7 +3,7 @@
 
 .NavBar
 {
-    width:200px;
+    width:100%;
     padding-left:50px;
     
 }
@@ -25,6 +25,7 @@ body
     font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
     margin: 0px;
     padding: 0px;
+    width: 100%;
 }
 
 a:link, a:visited
@@ -298,6 +299,12 @@ div.accountInfo
 {
     width:100%;
     overflow:auto;
+}
+
+.identification
+{
+    position: absolute;
+    visibility: hidden;
 }
 
 /* Workout Page Layout

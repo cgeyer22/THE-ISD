@@ -2,10 +2,11 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<meta name="viewport" content="width=device-width, user-scalable=no">
 <head runat="server">
     <title></title>
-    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" media='screen and (min-width: 645px)'/>
-    <link href="~/Styles/SiteSmall.css" rel="stylesheet" type="text/css" media='screen and (max-width: 644px)'/>
+    <%--<link href="~/Styles/Site.css" rel="stylesheet" type="text/css" media='screen and (min-device-width: 645px)'/>--%>
+    <link href="~/Styles/SiteSmall.css" rel="stylesheet" type="text/css" />
     <link href='http://fonts.googleapis.com/css?family=Coda' rel='stylesheet' type='text/css'>
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
@@ -18,8 +19,8 @@
                 <h1><img src="http://i208.photobucket.com/albums/bb64/Nintendude1313/TrojanTracker_zpsf711b08a.png" alt="Trojan Tracker" id="Logo" /></h1>
             </div>
             <div class="loginDisplay">
-            <p>Welcome, <%= Session("UserName")%> </p>
-                <asp:DropDownList ID="RoleDropDown" runat="server" 
+            <p class="identification">Welcome, <%= Session("UserName")%> </p>
+                <asp:DropDownList ID="RoleDropDown" class="identification" runat="server" 
                     DataSourceID="SqlDataSource1" DataTextField="Title" DataValueField="Title" AutoPostBack="true" AppendDataBoundItems="true">
                     <asp:ListItem Text="--View As--" Value="" /> 
                 </asp:DropDownList>
