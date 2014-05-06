@@ -37,16 +37,14 @@
                 SortExpression="Description" />
             <asp:CheckBoxField DataField="Active" HeaderText="Active" 
                 SortExpression="Active" />
-            <asp:CommandField ShowInsertButton="True" ButtonType="Button" />
         </Fields>
     </asp:DetailsView>
     <br />
 <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" 
         AutoGenerateColumns="False" DataKeyNames="TeamID" DataSourceID="sdsTeam">
     <Columns>
-        <asp:CommandField ShowEditButton="True" ButtonType="Button" />
         <asp:BoundField DataField="TeamID" HeaderText="TeamID" InsertVisible="False" 
-            ReadOnly="True" SortExpression="TeamID" Visible="False" />
+            ReadOnly="True" SortExpression="TeamID" />
         <asp:BoundField DataField="Sport" HeaderText="Sport" SortExpression="Sport" />
         <asp:BoundField DataField="Gender" HeaderText="Gender" 
             SortExpression="Gender" />
@@ -56,5 +54,23 @@
             SortExpression="Active" />
     </Columns>
 </asp:GridView>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    Add Athletes to Team:<br />
+    <br />
+    <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" 
+        DataSourceID="SqlDataSource1" DataTextField="Sport" DataValueField="Sport">
+        <asp:ListItem Text="--Select A Team--" Value="" />
+    </asp:DropDownList>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:BetaSYS39414ConnectionString7 %>" 
+        SelectCommand="GetTeamName" SelectCommandType="StoredProcedure">
+    </asp:SqlDataSource>
+    <br />
+    <br />
     </asp:Content>
 

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="Teams.aspx.vb" Inherits="Default3" %>
+﻿<%@ Page Title="" Language="VB" MasterPageFile="~/Site.master" AutoEventWireup="false" CodeFile="Positions.aspx.vb" Inherits="_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
 </asp:Content>
@@ -65,10 +65,25 @@
     <br />
   
     <br />
+    <br />
+  
+    <br />
     Add
-    <asp:DropDownList ID="DropDownList4" runat="server">
-    </asp:DropDownList>
-&nbsp;to this position.
+    athletes to this position:
+    <asp:CheckBoxList ID="CheckBoxList1" runat="server" 
+        DataSourceID="SqlDataSource4" DataTextField="Column1" DataValueField="Column1">
+    </asp:CheckBoxList>
+    <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
+        ConnectionString="<%$ ConnectionStrings:BetaSYS39414ConnectionString5 %>" 
+        SelectCommand="AthleteNotInPosition" SelectCommandType="StoredProcedure">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="DropDownList2" Name="PosName" 
+                PropertyName="SelectedValue" Type="String" />
+            <asp:ControlParameter ControlID="DropDownList1" Name="TeamName" 
+                PropertyName="SelectedValue" Type="String" />
+        </SelectParameters>
+    </asp:SqlDataSource>
+    <asp:Button ID="AddButton" runat="server" Text="Add" />
   
     <br />
   
