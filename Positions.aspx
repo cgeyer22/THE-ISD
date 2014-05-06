@@ -17,7 +17,7 @@
     <br />
     <asp:Label ID="Label2" runat="server" Text="Position:"></asp:Label>
     <asp:DropDownList ID="DropDownList2" runat="server" 
-        DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="Name" AutoPostBack="true" >
+        DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="Name" AutoPostBack="true" Visible="false" >
         <asp:ListItem Text="--Select A Position--" Value="" />
     </asp:DropDownList>
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
@@ -30,9 +30,9 @@
     </asp:SqlDataSource>
     <br />
     <br />
-    <asp:Label ID="Label3" runat="server" Text="Athletes:"></asp:Label>
+    <asp:Label ID="Label3" runat="server" Text="Athletes:" Visible="false"></asp:Label>
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
-    DataSourceID="SqlDataSource3"  DataKeyNames="LastName,FirstName">
+    DataSourceID="SqlDataSource3"  DataKeyNames="LastName,FirstName" Visible="false">
         <Columns>
             <asp:CommandField ShowDeleteButton="True" />
             <asp:BoundField DataField="LastName" HeaderText="LastName" 
@@ -68,10 +68,11 @@
     <br />
   
     <br />
+    <div ID="assign" runat="server" visible="false">
     Add
     athletes to this position:
     <asp:CheckBoxList ID="CheckBoxList1" runat="server" 
-        DataSourceID="SqlDataSource4" DataTextField="Column1" DataValueField="Column1">
+        DataSourceID="SqlDataSource4" DataTextField="Column1" DataValueField="UserID">
     </asp:CheckBoxList>
     <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
         ConnectionString="<%$ ConnectionStrings:BetaSYS39414ConnectionString5 %>" 
@@ -83,7 +84,8 @@
                 PropertyName="SelectedValue" Type="String" />
         </SelectParameters>
     </asp:SqlDataSource>
-    <asp:Button ID="AddButton" runat="server" Text="Add" />
+    <asp:Button ID="AddButton" runat="server" Text="Add" AutoPostBack="true" />
+    </div>
   
     <br />
   

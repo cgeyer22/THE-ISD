@@ -12,22 +12,31 @@ Partial Class _Default
         For Each item As ListItem In CheckBoxList1.Items
             If item.Selected Then
                 Using con1 As New SqlConnection(conStr)
-                    Dim sqlCommand1 As New SqlCommand("EXEC AssignToPosition @LastName, @FirstName, @Position", con1)
-                    Dim s As String = item.Value
-                    Dim split As String() = s.Split(New Char() {" "c})
-                    Dim FirstName As String = split(0)
-                    Dim LastName As String = split(1)
-                    Debug.Print("last name " + LastName)
-                    Debug.Print("first name " + FirstName)
-                    sqlCommand1.Parameters.AddWithValue("@LastName", LastName)
-                    sqlCommand1.Parameters.AddWithValue("@FirstName", FirstName)
+                    Dim sqlCommand1 As New SqlCommand("EXEC AssignToPosition @UserID, @Position", con1)
+                    sqlCommand1.Parameters.AddWithValue("@UserID", item.Value)
                     sqlCommand1.Parameters.AddWithValue("@Position", DropDownList2.SelectedValue)
-                    Debug.Print(DropDownList2.SelectedValue)
                     con1.Open()
+                    Dim rowsAfftected As Integer = sqlCommand1.ExecuteNonQuery
 
-                    'THINGS I NEED TO GET WORKING: THIS  SQLCOMMAND AND THE STORED PROCEDURE FOR ATHLETENOTINPOSITION
+                    'THINGS I NEED TO GET WORKING: THE STORED PROCEDURE FOR ATHLETENOTINPOSITION
                 End Using
             End If
         Next
+        GridView1.DataBind()
+    End Sub
+
+    Protected Sub DropDownList2_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles DropDownList2.SelectedIndexChanged
+        Label3.Visible = True
+        assign.Visible = True
+        GridView1.Visible = True
+        GridView1.DataBind()
+    End Sub
+
+    Protected Sub DropDownList1_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles DropDownList1.SelectedIndexChanged
+        DropDownList2.Visible = True
+        GridView1.Visible = False
+        Label3.Visible = False
+        assign.Visible = False
+        GridView1.DataBind()
     End Sub
 End Class

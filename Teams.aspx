@@ -63,13 +63,13 @@
     Add Athletes to Team:<br />
     <br />
     <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" 
-        DataSourceID="SqlDataSource1" DataTextField="Sport" DataValueField="Sport">
+    DataSourceID="SqlDataSource1" DataTextField="Sport" DataValueField="Sport">
         <asp:ListItem Text="--Select A Team--" Value="" />
     </asp:DropDownList>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-        ConnectionString="<%$ ConnectionStrings:BetaSYS39414ConnectionString7 %>" 
-        SelectCommand="GetTeamName" SelectCommandType="StoredProcedure">
-    </asp:SqlDataSource>
+    ConnectionString="<%$ ConnectionStrings:BetaSYS39414ConnectionString7 %>" 
+    SelectCommand="GetTeamName" SelectCommandType="StoredProcedure">
+</asp:SqlDataSource>
     <br />
     <br />
     </asp:Content>
