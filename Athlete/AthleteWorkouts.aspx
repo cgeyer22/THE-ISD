@@ -25,7 +25,8 @@
         <TodayDayStyle BackColor="#CCCCCC" />
     </asp:Calendar>
     <asp:GridView ID="gvAssignedWO" runat="server" AllowSorting="True" 
-        AutoGenerateColumns="False" DataSourceID="sdsAssignedWorkouts" Visible="False">
+        AutoGenerateColumns="False" DataSourceID="sdsAssignedWorkouts" 
+        Visible="False" BorderStyle="Groove">
         <Columns>
             <asp:CommandField ButtonType="Button" SelectText="Enter Results" 
                 ShowSelectButton="True" />
