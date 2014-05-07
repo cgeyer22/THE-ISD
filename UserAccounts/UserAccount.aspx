@@ -128,7 +128,8 @@
     <br />
     <asp:GridView ID="SearchResultsAccounts" runat="server" 
             DataSourceID="SearchSQLConnection" AutoGenerateColumns="False" 
-            DataKeyNames="UserID" AllowSorting="True" AllowPaging="True">
+            DataKeyNames="UserID" AllowSorting="True" AllowPaging="True" 
+            CssClass="gridView">
         <Columns>
             <asp:CommandField ShowEditButton="True" />
             <asp:BoundField DataField="UserID" HeaderText="UserID" InsertVisible="False" 
@@ -161,7 +162,7 @@
     <br />
     <div id="gridDiv">
     <asp:GridView ID="UserAccounts" runat="server" AllowSorting="True" 
-        AutoGenerateColumns="False" DataKeyNames="UserID" DataSourceID="SqlAccess" 
+        AutoGenerateColumns="False" DataKeyNames="UserID" CssClass="gridView" DataSourceID="SqlAccess" 
             AllowPaging="True">
         <Columns>
             <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" 
