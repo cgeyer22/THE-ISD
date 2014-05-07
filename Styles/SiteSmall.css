@@ -61,6 +61,7 @@ input[type="submit"]
     background-color: #999;
     border-radius: 4px;
     color: #fff;
+    margin-left: 0px;
 }
 
 input[type="submit"]:Hover  
@@ -305,6 +306,8 @@ div.accountInfo
 {
     position: absolute;
     visibility: hidden;
+    top: 303px;
+    left: 1307px;
 }
 
 /* Workout Page Layout

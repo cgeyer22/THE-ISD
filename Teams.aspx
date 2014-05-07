@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     <h1>Teams</h1>
-
+    <div ID="CreateTeam" runat="server">
     <br />
     <asp:SqlDataSource ID="sdsTeam" runat="server" 
     ConnectionString="<%$ ConnectionStrings:BetaSYS39414ConnectionString %>" 
@@ -41,7 +41,7 @@
     </asp:DetailsView>
     <br />
 <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" 
-        AutoGenerateColumns="False" DataKeyNames="TeamID" DataSourceID="sdsTeam">
+        AutoGenerateColumns="False" DataKeyNames="TeamID" DataSourceID="sdsTeam" DataValueField="UserID" >
     <Columns>
         <asp:BoundField DataField="TeamID" HeaderText="TeamID" InsertVisible="False" 
             ReadOnly="True" SortExpression="TeamID" />
@@ -55,12 +55,15 @@
     </Columns>
 </asp:GridView>
     <br />
+    <asp:Button ID="Button1" runat="server" Text="Add Athletes To A Team" />
     <br />
     <br />
     <br />
     <br />
+    </div>
     <br />
-    Add Athletes to Team:<br />
+    <div id="AddAthletes" runat="server" Visible="false">
+    Team:
     <br />
     <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" 
     DataSourceID="SqlDataSource1" DataTextField="Sport" DataValueField="Sport">
@@ -70,6 +73,54 @@
     ConnectionString="<%$ ConnectionStrings:BetaSYS39414ConnectionString7 %>" 
     SelectCommand="GetTeamName" SelectCommandType="StoredProcedure">
 </asp:SqlDataSource>
+        <br />
+        Athletes:<br />
+    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" 
+            DataKeyNames="UserID" DataSourceID="SqlDataSource2" DataValueField="UserID">
+        <Columns>
+            <asp:CommandField ShowDeleteButton="True" />
+            <asp:BoundField DataField="FirstName" HeaderText="FirstName" 
+                SortExpression="FirstName" />
+            <asp:BoundField DataField="LastName" HeaderText="LastName" 
+                SortExpression="LastName" />
+        </Columns>
+    </asp:GridView>
+
+
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:BetaSYS39414GetAthletesFromTeam %>" 
+            SelectCommand="GetAthletesFromTeam" SelectCommandType="StoredProcedure"
+            DeleteCommand="DeleteTeamFromAthlete" DeleteCommandType="StoredProcedure">
+                <DeleteParameters>
+                <asp:ControlParameter ControlID="GridView2" Name="LastName" 
+                    Type="String" PropertyName="SelectedDataKey[1]"  />
+                <asp:ControlParameter ControlID="GridView2" Name="FirstName" 
+                    Type="String" PropertyName="SelectedDataKey[0]"  />
+                <asp:ControlParameter ControlID="DropDownList1" Name="Sport" 
+                    PropertyName="SelectedValue" Type="String" />
+                 </DeleteParameters>
+            <SelectParameters>
+                <asp:ControlParameter ControlID="DropDownList1" Name="Sport" 
+                    PropertyName="SelectedValue" Type="String" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+        <br />
+        Add Athletes:<asp:CheckBoxList ID="CheckBoxList1" runat="server" 
+            DataValueField="UserID" DataSourceID="SqlDataSource3" DataTextField="Column1" >
+    </asp:CheckBoxList>
+        <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:BetaSYS39414GetAthletesNotInTeam %>" 
+            SelectCommand="GetAthletesNotInTeam" SelectCommandType="StoredProcedure">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="DropDownList1" Name="Sport" 
+                    PropertyName="SelectedValue" Type="String" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+        <br />
+    <asp:Button ID="Button2" runat="server" Text="Add" />
+    <asp:Button ID="Button3" runat="server" Text="Cancel" />
+        <br />
+    </div>
     <br />
     <br />
     </asp:Content>

@@ -10,9 +10,24 @@
     DataSourceID="SqlDataSource1" DataTextField="Sport" DataValueField="Sport" AutoPostBack="true" AppendDataBoundItems="true">
         <asp:ListItem Text="--Select A Team--" Value="" /> 
 </asp:DropDownList>
+    <br />
+    <br />
 <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
     ConnectionString="<%$ ConnectionStrings:BetaSYS39414GetTeams %>" 
     SelectCommand="SELECT [Sport] FROM [Team]"></asp:SqlDataSource>
+    <br />
+    <div id="newPos" runat="server" Visible="false">
+    New Position Name:<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        <br />
+        New Position Description:
+        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+        <br />
+        <br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+    <asp:Button ID="Button1" runat="server" Text="Submit" />
+    &nbsp;&nbsp;&nbsp;
+    <asp:Button ID="Button2" runat="server" Text="Cancel" /> 
+    </div>
     <br />
     <br />
     <asp:Label ID="Label2" runat="server" Text="Position:"></asp:Label>
@@ -20,6 +35,7 @@
         DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="Name" AutoPostBack="true" Visible="false" >
         <asp:ListItem Text="--Select A Position--" Value="" />
     </asp:DropDownList>
+    <br />
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
         ConnectionString="<%$ ConnectionStrings:BetaSYS39414GetPositions %>" 
         SelectCommand="GetPositionsBasedOnTeam" SelectCommandType="StoredProcedure">
@@ -28,6 +44,7 @@
                 PropertyName="SelectedValue" Type="String" />
         </SelectParameters>
     </asp:SqlDataSource>
+    <asp:Button ID="PosButton" runat="server" Visible="false" Text="Creat New Position"  />
     <br />
     <br />
     <asp:Label ID="Label3" runat="server" Text="Athletes:" Visible="false"></asp:Label>

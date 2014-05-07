@@ -25,6 +25,15 @@ Partial Class _Default
         GridView1.DataBind()
     End Sub
 
+    Protected Sub DropDownList1_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles DropDownList1.SelectedIndexChanged
+        DropDownList2.Visible = True
+        PosButton.Visible = True
+        GridView1.Visible = False
+        Label3.Visible = False
+        assign.Visible = False
+        GridView1.DataBind()
+    End Sub
+
     Protected Sub DropDownList2_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles DropDownList2.SelectedIndexChanged
         Label3.Visible = True
         assign.Visible = True
@@ -32,11 +41,28 @@ Partial Class _Default
         GridView1.DataBind()
     End Sub
 
-    Protected Sub DropDownList1_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles DropDownList1.SelectedIndexChanged
-        DropDownList2.Visible = True
-        GridView1.Visible = False
+   
+
+    Protected Sub PosButton_Click(sender As Object, e As System.EventArgs) Handles PosButton.Click
+        newPos.Visible = True
         Label3.Visible = False
+        GridView1.Visible = False
         assign.Visible = False
-        GridView1.DataBind()
+        PosButton.Visible = False
+        DropDownList2.Visible = False
+        Label3.Visible = False
+    End Sub
+
+    Protected Sub Button2_Click(sender As Object, e As System.EventArgs) Handles Button2.Click
+        Label3.Visible = True
+        assign.Visible = True
+        GridView1.Visible = True
+        PosButton.Visible = True
+        newPos.Visible = False
+        DropDownList2.Visible = True
+    End Sub
+
+    Protected Sub Button1_Click(sender As Object, e As System.EventArgs) Handles Button1.Click
+
     End Sub
 End Class
