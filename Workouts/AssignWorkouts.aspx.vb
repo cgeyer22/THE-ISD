@@ -164,7 +164,6 @@ Partial Class _Default
             If item.Selected = True Then
                 Dim dgv As New DataGrid
                 Dim br As New HtmlGenericControl("br")
-                dgv.ID = "RepsAndWeightGrid"
                 dgv.DataSource() = sqlListExercises
 
                 'sqlListExercises.SelectCommand() = "ListExercises"
@@ -304,18 +303,19 @@ Partial Class _Default
         'Me.FindControl("dgvWR0").Controls.Item(0).Controls
 
         Dim x As String = "txtRep50"
+        Debug.Print(x)
+        'If Not Me.FindControl(x) Is DBNull.Value Then
+        Dim dgv As TextBox = Me.FindControl(x)
 
-        If Not Me.FindControl(x) Is DBNull.Value Then
-            Dim dgv As TextBox = Me.FindControl(x)
-            'Debug.Print(dgv.Controls(0))
-            Debug.Print(dgv.Text)
-            'Me.FindControl(x).Controls.Item(0)
-            'Debug.Print(dgv.Items(0).Cells(0))
-            'Debug.Print(dgv.Items(0).Cells(0).Text)
-            'Debug.Print(dgv.Items(0).Cells(1).Text)
-            'Debug.Print(dgv.Items(0).Cells(3).Text)
+        'Debug.Print(dgv.Controls(0))
+        Debug.Print(dgv.Text)
+        'Me.FindControl(x).Controls.Item(0)
+        'Debug.Print(dgv.Items(0).Cells(0))
+        'Debug.Print(dgv.Items(0).Cells(0).Text)
+        'Debug.Print(dgv.Items(0).Cells(1).Text)
+        'Debug.Print(dgv.Items(0).Cells(3).Text)
 
-        End If
+        ' End If
 
 
         '.items(0).cells(5)
