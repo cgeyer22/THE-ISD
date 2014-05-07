@@ -280,9 +280,19 @@ legend
     padding: 2px 4px 8px 4px;
 }
 
+.login
+{
+    width: 100%;
+}
+
+#loginBox
+{
+    width: 100%;
+}
+
 .loginEntry
 {
-    width: 80%;
+    width: 95%;
     height: 25px;
     border: 1px solid #ccc;
     border-radius: 3px;
@@ -293,7 +303,7 @@ legend
 div.accountInfo
 {
     width: 40%;
-    height: 100%;
+    height: 100px;
     margin: 20px auto 0px auto;
 }
 

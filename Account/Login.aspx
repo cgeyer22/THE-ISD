@@ -49,7 +49,7 @@
                 </div>
             </div>
             <p id="LoginButton" class="submitButton">
-                <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Log In" ValidationGroup="LoginUserValidationGroup" onclick="LoginButton_Click"/>
+                <asp:Button runat="server" CommandName="Login" Text="Log In" ValidationGroup="LoginUserValidationGroup" onclick="LoginButton_Click"/>
             </p>
         </LayoutTemplate>
     </asp:Login>

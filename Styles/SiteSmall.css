@@ -280,6 +280,16 @@ legend
     padding: 2px 4px 8px 4px;
 }
 
+.login
+{
+    width: 100%;
+}
+
+#loginBox
+{
+    width: 100%;
+}
+
 .loginEntry
 {
     width: 80%;
@@ -293,7 +303,9 @@ legend
 div.accountInfo
 {
     width: 42%;
-    margin: 20px auto 0px auto;
+    height: 100px;
+    margin: 20px 40% 0px auto;
+    padding-left: -100px;
 }
 
 #gridDiv
@@ -376,6 +388,7 @@ div.accountInfo
 {
     float: left;
     width: 100%;
+    min-width: 160px;
 }
 
 #LoginButton
