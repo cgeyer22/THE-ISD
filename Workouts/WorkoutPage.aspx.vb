@@ -10,6 +10,8 @@ Partial Class Default3
         dvNewWorkout.Visible = True
         btnCancel.Visible = True
         btnNewWorkout.Visible = False
+        btnAddWorkout.Visible = True
+
     End Sub
 
     Protected Sub WorkoutTable_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles WorkoutTable.SelectedIndexChanged
@@ -80,6 +82,8 @@ Partial Class Default3
         btnNewWorkout.Visible = True
         dvNewWorkout.Visible = False
         btnCancel.Visible = False
+        btnAddWorkout.Visible = False
+
     End Sub
 
     Protected Sub Page_Load(sender As Object, e As System.EventArgs) Handles Me.Load
@@ -167,6 +171,32 @@ Partial Class Default3
 
 
         End Using
+
+    End Sub
+
+    Protected Sub btnWorkoutVis_Click(sender As Object, e As System.EventArgs) Handles btnWorkoutVis.Click
+        WorkoutTable.Visible = True
+        btnNewWorkout.Visible = True
+
+        btnWorkoutVis.Visible = False
+    End Sub
+
+    Protected Sub btnAddWorkout_Click(sender As Object, e As System.EventArgs) Handles btnAddWorkout.Click
+        Debug.Print(dvNewWorkout.Fields(0).ToString)
+        Debug.Print(dvNewWorkout.Fields(1).ToString)
+
+        dvNewWorkout.InsertItem(False)
+
+        'Using addWorkout As New SqlConnection(connectionString)
+        '    Dim NewWorkout As New SqlCommand("EXEC CreateWorkout @WorkoutName, @Description", addWorkout)
+        '    NewWorkout.Parameters.AddWithValue("@WorkoutName", dvNewWorkout.Fields(1).ToString)
+        '    NewWorkout.Parameters.AddWithValue("@Description", dvNewWorkout.Fields(2).ToString)
+        '    addWorkout.Open()
+
+        '    Dim rowsAffected As Integer = NewWorkout.ExecuteNonQuery
+
+
+        'End Using
 
     End Sub
 End Class

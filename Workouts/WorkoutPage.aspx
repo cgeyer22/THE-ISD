@@ -39,6 +39,8 @@
     <asp:TextBox ID="WorkoutSearch" runat="server" />
     <asp:Button ID="SubmitSearchWorkout" Text="search" runat="server" />
     <br />
+    <asp:Button ID="btnWorkoutVis" runat="server" Text="View all workouts" />
+    <br />
     <br />
     <asp:GridView ID="SearchResultsAccounts" runat="server" 
             DataSourceID="WorkoutSearchConnection" AutoGenerateColumns="False" 
@@ -58,7 +60,7 @@
     <div id="CurrentWorkouts">
     <asp:GridView ID="WorkoutTable" runat="server" AllowPaging="True" 
         AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="WorkoutID" 
-        DataSourceID="sdsWorkout">
+        DataSourceID="sdsWorkout" Visible="False" >
         <Columns>
             <asp:CommandField ShowEditButton="True" ShowSelectButton="True" 
                 ButtonType="Button" EditText="Rename" SelectText="Edit Exercises" 
@@ -72,11 +74,22 @@
                 SortExpression="Description" />
         </Columns>
     </asp:GridView>
-    <asp:Button ID="btnNewWorkout" runat="server" Text="Add Workout" Class="button" />
+    <asp:Button ID="btnNewWorkout" runat="server" Text="Add Workout" Class="button" Visible="false" />
+    
+        <br />
+        <asp:SqlDataSource ID="sqlAddNewWorkout" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:BetaSYS39414ConnectionString8AddNewWorkout %>" 
+            InsertCommand="CreateWorkout" InsertCommandType="StoredProcedure" 
+            SelectCommand="ReadWorkout" SelectCommandType="StoredProcedure">
+            <InsertParameters>
+                <asp:Parameter Name="WorkoutName" Type="String" />
+                <asp:Parameter Name="Description" Type="String" />
+            </InsertParameters>
+        </asp:SqlDataSource>
     
     <br />
     <asp:DetailsView ID="dvNewWorkout" runat="server" AutoGenerateRows="False" 
-        DataKeyNames="WorkoutID" DataSourceID="sdsWorkout" DefaultMode="Insert" 
+        DataKeyNames="WorkoutID" DataSourceID="sqlAddNewWorkout" DefaultMode="Insert" 
         Height="50px" Width="125px" Visible="False">
         <Fields>
             <asp:BoundField DataField="WorkoutID" HeaderText="WorkoutID" 
@@ -85,10 +98,10 @@
             <asp:BoundField DataField="WorkoutName" HeaderText="WorkoutName" SortExpression="WorkoutName" />
             <asp:BoundField DataField="Description" HeaderText="Description" 
                 SortExpression="Description" />
-            <asp:CommandField ShowInsertButton="True" ButtonType="Button" 
-                InsertText="Save New Workout" ShowCancelButton="False" />
-        </Fields>
+            </Fields>
     </asp:DetailsView>
+    <br />
+    <asp:Button ID="btnAddWorkout" runat="server" Text="Save New Workout" Visible="false" Height="31px" class="button" />
     <asp:Button ID="btnCancel" runat="server" Text="Cancel" Visible="False" 
             Height="31px" Class="button" />
     <br />
