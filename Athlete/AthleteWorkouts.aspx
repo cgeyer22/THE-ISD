@@ -51,7 +51,12 @@
             </asp:BoundField>
         </Columns>
     </asp:GridView>
-    <asp:GridView ID="GridView1" runat="server">
+    <asp:Label ID="lblWorkout" runat="server" Font-Bold="True" Font-Italic="True" 
+        Font-Size="XX-Large" Text="Label" Visible="False"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <asp:Button ID="btnWorkouts" runat="server" BorderColor="#330066" 
+        ForeColor="#330066" Text="Back to Workouts" Visible="False" />
+    <asp:GridView ID="GridView1" runat="server" Visible="False">
     </asp:GridView>
     <br />
     <br />
