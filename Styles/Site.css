@@ -59,13 +59,20 @@ table
 .gridView
 {
     background-color: #999;
-    color: #ffffff;
+    border-collapse: collapse;
+    color: #000000;
     padding: 10px 5px 10px 5px;
-    border: 1px solid #bbbbbb;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     font-weight: normal;
     text-transform:capitalize;
+    width:100%;
+}
+
+.gridView th
+{
+    color: #fff;
+    background: #424242 url(http://i208.photobucket.com/albums/bb64/Nintendude1313/gridView_head_zps00f122b7.png) repeat-x top;
 }
 
 .gridView tr:nth-child(2n+2)

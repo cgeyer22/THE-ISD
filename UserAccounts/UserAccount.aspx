@@ -129,7 +129,10 @@
     <asp:GridView ID="SearchResultsAccounts" runat="server" 
             DataSourceID="SearchSQLConnection" AutoGenerateColumns="False" 
             DataKeyNames="UserID" AllowSorting="True" AllowPaging="True" 
-            CssClass="gridView">
+            CssClass="gridView" BackColor="White" BorderColor="#999999" 
+            BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" 
+            GridLines="Vertical">
+        <AlternatingRowStyle BackColor="#CCCCCC" />
         <Columns>
             <asp:CommandField ShowEditButton="True" />
             <asp:BoundField DataField="UserID" HeaderText="UserID" InsertVisible="False" 
@@ -156,6 +159,14 @@
             <asp:CheckBoxField DataField="Active" HeaderText="Active" 
                 SortExpression="Active" />
         </Columns>
+        <FooterStyle BackColor="#CCCCCC" />
+        <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+        <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+        <SortedAscendingHeaderStyle BackColor="#808080" />
+        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+        <SortedDescendingHeaderStyle BackColor="#383838" />
     </asp:GridView>
 
     <br />
@@ -163,7 +174,10 @@
     <div id="gridDiv">
     <asp:GridView ID="UserAccounts" runat="server" AllowSorting="True" 
         AutoGenerateColumns="False" DataKeyNames="UserID" CssClass="gridView" DataSourceID="SqlAccess" 
-            AllowPaging="True">
+            AllowPaging="True" BackColor="White" BorderColor="#999999" 
+            BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" 
+            GridLines="Vertical">
+        <AlternatingRowStyle BackColor="#CCCCCC" />
         <Columns>
             <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" 
                 ButtonType="Button" />
@@ -191,6 +205,14 @@
             <asp:CheckBoxField DataField="Active" HeaderText="Active" 
                 SortExpression="Active" />
         </Columns>
+        <FooterStyle BackColor="#CCCCCC" />
+        <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+        <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+        <SortedAscendingHeaderStyle BackColor="#808080" />
+        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+        <SortedDescendingHeaderStyle BackColor="#383838" />
     </asp:GridView>
     </div>
     </div>

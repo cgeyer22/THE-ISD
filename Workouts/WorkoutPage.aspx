@@ -44,7 +44,10 @@
     <br />
     <asp:GridView ID="SearchResultsAccounts" runat="server" 
             DataSourceID="WorkoutSearchConnection" AutoGenerateColumns="False" 
-            DataKeyNames="WorkoutID" AllowSorting="True">
+            DataKeyNames="WorkoutID" AllowSorting="True" BackColor="White" 
+        BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" 
+        ForeColor="Black" GridLines="Vertical">
+        <AlternatingRowStyle BackColor="#CCCCCC" />
         <Columns>
             <asp:BoundField Visible="false" DataField="WorkoutID" HeaderText="WorkoutID" 
                 InsertVisible="False" ReadOnly="True" SortExpression="WorkoutID" />
@@ -53,6 +56,14 @@
             <asp:BoundField DataField="Description" HeaderText="Description" 
                 SortExpression="Description" />
         </Columns>
+        <FooterStyle BackColor="#CCCCCC" />
+        <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+        <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+        <SortedAscendingHeaderStyle BackColor="#808080" />
+        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+        <SortedDescendingHeaderStyle BackColor="#383838" />
     </asp:GridView>
     <br />
     <br />
@@ -60,11 +71,16 @@
     <div id="CurrentWorkouts">
     <asp:GridView ID="WorkoutTable" runat="server" AllowPaging="True" 
         AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="WorkoutID" 
-        DataSourceID="sdsWorkout" Visible="False" >
+        DataSourceID="sdsWorkout" Visible="False" BackColor="White" 
+            BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" 
+            ForeColor="Black" GridLines="Vertical" >
+        <AlternatingRowStyle BackColor="#CCCCCC" />
         <Columns>
             <asp:CommandField ShowEditButton="True" ShowSelectButton="True" 
                 ButtonType="Button" EditText="Rename" SelectText="Edit Exercises" 
-                UpdateText="Save" ControlStyle-CssClass="button"/>
+                UpdateText="Save" ControlStyle-CssClass="button">
+<ControlStyle CssClass="button"></ControlStyle>
+            </asp:CommandField>
             <asp:BoundField DataField="WorkoutID" HeaderText="WorkoutID" 
                 InsertVisible="False" ReadOnly="True" SortExpression="WorkoutID" 
                 Visible="False" />
@@ -73,6 +89,14 @@
             <asp:BoundField DataField="Description" HeaderText="Workout Description" 
                 SortExpression="Description" />
         </Columns>
+        <FooterStyle BackColor="#CCCCCC" />
+        <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+        <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+        <SortedAscendingHeaderStyle BackColor="#808080" />
+        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+        <SortedDescendingHeaderStyle BackColor="#383838" />
     </asp:GridView>
     <asp:Button ID="btnNewWorkout" runat="server" Text="Add Workout" Class="button" Visible="false" />
     
@@ -127,7 +151,10 @@
     <div>
         <asp:Label ID="lblWorkoutName" runat="server" Visible="false" Text="Selected Workout Name" />
         <asp:GridView ID="gvWorkoutExercise" runat="server" AutoGenerateColumns="False" 
-        DataSourceID="sdsWorkoutExercise" Visible="False">
+        DataSourceID="sdsWorkoutExercise" Visible="False" BackColor="White" 
+            BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" 
+            ForeColor="Black" GridLines="Vertical">
+            <AlternatingRowStyle BackColor="#CCCCCC" />
         <Columns>
             <asp:BoundField DataField="Workout" HeaderText="Workout" 
                 SortExpression="Workout" ReadOnly="True" />
@@ -151,6 +178,14 @@
                 </EditItemTemplate>--%>
             </asp:TemplateField>
         </Columns>
+            <FooterStyle BackColor="#CCCCCC" />
+            <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+            <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+            <SortedAscendingHeaderStyle BackColor="#808080" />
+            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+            <SortedDescendingHeaderStyle BackColor="#383838" />
     </asp:GridView>
     <asp:SqlDataSource ID="sdsExercise" runat="server" 
         ConnectionString="<%$ ConnectionStrings:BetaSYS39414Exercise %>" 
