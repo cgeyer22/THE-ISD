@@ -23,7 +23,10 @@
     <br />
     <asp:GridView ID="WorkoutTable" runat="server" AllowPaging="True" 
         AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="WorkoutID" 
-        DataSourceID="sdsWorkout">
+        DataSourceID="sdsWorkout" BackColor="White" BorderColor="#999999" 
+        BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" 
+        GridLines="Vertical">
+        <AlternatingRowStyle BackColor="#CCCCCC" />
         <Columns>
             <asp:CommandField ShowSelectButton="True" 
                 ButtonType="Button" EditText="" SelectText="Assign to Athletes" 
@@ -36,6 +39,14 @@
             <asp:BoundField DataField="Description" HeaderText="Workout Description" 
                 SortExpression="Description" />
         </Columns>
+        <FooterStyle BackColor="#CCCCCC" />
+        <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+        <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+        <SortedAscendingHeaderStyle BackColor="#808080" />
+        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+        <SortedDescendingHeaderStyle BackColor="#383838" />
     </asp:GridView>
     <asp:SqlDataSource ID="sdsAthletes" runat="server" 
         ConnectionString="<%$ ConnectionStrings:BetaSYS39414ConnectionWorkout %>" 

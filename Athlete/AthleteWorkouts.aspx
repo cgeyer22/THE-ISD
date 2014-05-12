@@ -54,7 +54,10 @@
         style="margin-top: 0px; margin-bottom: 0px" Visible="False" Width="38px" />
     <asp:GridView ID="gvAssignedWO" runat="server" AllowSorting="True" 
         AutoGenerateColumns="False" DataKeyNames="WorkoutID" 
-        DataSourceID="sdsAssignedWorkouts">
+        DataSourceID="sdsAssignedWorkouts" BackColor="White" BorderColor="#999999" 
+        BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" 
+        GridLines="Vertical">
+        <AlternatingRowStyle BackColor="#CCCCCC" />
         <Columns>
             <asp:CommandField ButtonType="Button" SelectText="View Exercises" 
                 ShowSelectButton="True">
@@ -72,6 +75,14 @@
             <HeaderStyle ForeColor="#330066" />
             </asp:BoundField>
         </Columns>
+        <FooterStyle BackColor="#CCCCCC" />
+        <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+        <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+        <SortedAscendingHeaderStyle BackColor="#808080" />
+        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+        <SortedDescendingHeaderStyle BackColor="#383838" />
     </asp:GridView>
     <asp:Label ID="lblWorkout" runat="server" Font-Bold="True" Font-Italic="True" 
         Font-Size="XX-Large" Text="Label" Visible="False"></asp:Label>
@@ -81,7 +92,10 @@
         Font-Bold="True" />
     <asp:GridView ID="gvExercises" runat="server" Visible="False" 
         AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="ExerciseID" 
-        DataSourceID="sdsAssignedExercises">
+        DataSourceID="sdsAssignedExercises" BackColor="White" 
+        BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" 
+        ForeColor="Black" GridLines="Vertical">
+        <AlternatingRowStyle BackColor="#CCCCCC" />
         <Columns>
             <asp:CommandField ButtonType="Button" SelectText="Enter Results" 
                 ShowSelectButton="True">
@@ -99,6 +113,14 @@
             <HeaderStyle ForeColor="#330066" />
             </asp:BoundField>
         </Columns>
+        <FooterStyle BackColor="#CCCCCC" />
+        <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+        <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+        <SortedAscendingHeaderStyle BackColor="#808080" />
+        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+        <SortedDescendingHeaderStyle BackColor="#383838" />
     </asp:GridView>
     <asp:Label ID="lblExercise" runat="server" Font-Bold="True" Font-Italic="True" 
         Font-Size="XX-Large" Text="Label" Visible="False"></asp:Label>
