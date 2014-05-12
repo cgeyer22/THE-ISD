@@ -31,5 +31,35 @@ Partial Class Default2
         lblDate.Visible = False
         imgbtnCal.Visible = False
         gvAssignedWO.Visible = False
+        lblWorkout.Text = gvAssignedWO.SelectedRow.Cells(2).Text
+        lblWorkout.Visible = True
+        btnWorkouts.Visible = True
+        gvExercises.Visible = True
+    End Sub
+
+    Protected Sub btnWorkouts_Click(sender As Object, e As System.EventArgs) Handles btnWorkouts.Click
+        lblWorkout.Visible = False
+        btnWorkouts.Visible = False
+        gvExercises.Visible = False
+        lblDate.Visible = True
+        imgbtnCal.Visible = True
+        gvAssignedWO.Visible = True
+    End Sub
+
+    Protected Sub gvExercises_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles gvExercises.SelectedIndexChanged
+        lblWorkout.Visible = False
+        btnWorkouts.Visible = False
+        gvExercises.Visible = False
+        lblExercise.Text = gvExercises.SelectedRow.Cells(2).Text
+        lblExercise.Visible = True
+        btnExercises.Visible = True
+    End Sub
+
+    Protected Sub btnExercises_Click(sender As Object, e As System.EventArgs) Handles btnExercises.Click
+        lblExercise.Visible = False
+        btnExercises.Visible = False
+        lblWorkout.Visible = True
+        btnWorkouts.Visible = True
+        gvExercises.Visible = True
     End Sub
 End Class
