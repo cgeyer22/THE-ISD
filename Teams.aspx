@@ -39,6 +39,8 @@
                 SortExpression="Active" />
         </Fields>
     </asp:DetailsView>
+        <asp:Button ID="AddTeam" runat="server" Text="Add Team" />
+        <br />
     <br />
 <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" 
         AutoGenerateColumns="False" DataKeyNames="TeamID" DataSourceID="sdsTeam" 

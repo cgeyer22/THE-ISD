@@ -17,10 +17,10 @@
     SelectCommand="SELECT [Sport] FROM [Team]"></asp:SqlDataSource>
     <br />
     <div id="newPos" runat="server" Visible="false">
-    New Position Name:<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+    New Position Name:<asp:TextBox ID="Position" runat="server"></asp:TextBox>
         <br />
         New Position Description:
-        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+        <asp:TextBox ID="Description" runat="server"></asp:TextBox>
         <br />
         <br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
@@ -30,7 +30,7 @@
     </div>
     <br />
     <br />
-    <asp:Label ID="Label2" runat="server" Text="Position:"></asp:Label>
+    <asp:Label ID="Label2" runat="server" Text="Position:" Visible="false"></asp:Label>
     <asp:DropDownList ID="DropDownList2" runat="server" 
         DataSourceID="SqlDataSource2" DataTextField="Name" DataValueField="Name" AutoPostBack="true" Visible="false" >
         <asp:ListItem Text="--Select A Position--" Value="" />

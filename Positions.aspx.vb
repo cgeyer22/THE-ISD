@@ -29,6 +29,7 @@ Partial Class _Default
         DropDownList2.Visible = True
         PosButton.Visible = True
         GridView1.Visible = False
+        Label2.Visible = True
         Label3.Visible = False
         assign.Visible = False
         GridView1.DataBind()
@@ -50,6 +51,7 @@ Partial Class _Default
         assign.Visible = False
         PosButton.Visible = False
         DropDownList2.Visible = False
+        Label2.Visible = False
         Label3.Visible = False
     End Sub
 
@@ -59,10 +61,30 @@ Partial Class _Default
         GridView1.Visible = True
         PosButton.Visible = True
         newPos.Visible = False
+        Label2.Visible = True
         DropDownList2.Visible = True
     End Sub
 
     Protected Sub Button1_Click(sender As Object, e As System.EventArgs) Handles Button1.Click
+        Using con1 As New SqlConnection(conStr)
+            Dim cmdUpdatePos As New SqlCommand("EXEC CreatePosition @Name, @Description, @Sport", con1)
+            cmdUpdatePos.Parameters.AddWithValue("@Name", Position.Text)
+            cmdUpdatePos.Parameters.AddWithValue("@Description", Description.Text)
+            cmdUpdatePos.Parameters.AddWithValue("@Sport", DropDownList1.SelectedValue)
+            con1.Open()
+            Dim rowsAffected As Integer = cmdUpdatePos.ExecuteNonQuery
+        End Using
+        GridView1.DataBind()
+        DropDownList1.DataBind()
+        DropDownList2.DataBind()
+
+        Label3.Visible = True
+        assign.Visible = True
+        GridView1.Visible = True
+        PosButton.Visible = True
+        newPos.Visible = False
+        Label2.Visible = True
+        DropDownList2.Visible = True
 
     End Sub
 End Class
