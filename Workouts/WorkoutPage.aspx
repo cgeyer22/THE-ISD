@@ -35,7 +35,7 @@
         </UpdateParameters>
     </asp:SqlDataSource>
     <h2>Search for Workout</h2>
-    <asp:Label Text="Workout Name" runat="server"></asp:Label>
+    <asp:Label ID="Label1" Text="Workout Name" runat="server"></asp:Label>
     <asp:TextBox ID="WorkoutSearch" runat="server" />
     <asp:Button ID="SubmitSearchWorkout" Text="search" runat="server" />
     <br />
@@ -125,6 +125,7 @@
     </asp:SqlDataSource>
 
     <div>
+        -----<asp:Button ID="btnNewExercise" runat="server" Text="Create a New Exercise" Class="button" />
         <asp:GridView ID="gvWorkoutExercise" runat="server" AutoGenerateColumns="False" 
         DataSourceID="sdsWorkoutExercise" Visible="False">
         <Columns>
@@ -180,7 +181,39 @@
     <br />
     <asp:Button ID="btnAddExercise" runat="server" Text="Add Exercise to Workout" 
         Visible="False" Class="button" />
-        <asp:Button ID="btnNewExercise" runat="server" Text="Create a New Exercise" Class="button" />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    -----<asp:DropDownList ID="ddlRemoveExercise" runat="server" AutoPostBack="True" 
+            DataSourceID="sqlRemoveExercise" DataTextField="ExerciseName" 
+            DataValueField="ExerciseID">
+        </asp:DropDownList>
+        <br />
+    <asp:Button ID="btnRemoveExercise" runat="server" Text="Remove an Exercise" 
+        Visible="false" class="button" />
+    -----
+        
+    
+        -----<asp:SqlDataSource ID="sqlRemoveExercise" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:BetaSYS39414ConnectionString8RemoveExerciseFromWorkout %>" 
+            DeleteCommand="DeleteWorkoutExercise" DeleteCommandType="StoredProcedure" 
+            SelectCommand="ReadAddedExercise" SelectCommandType="StoredProcedure">
+            <DeleteParameters>
+                <asp:Parameter Name="ExerciseID" Type="Int32" />
+                <asp:Parameter Name="WorkoutID" Type="Int32" />
+            </DeleteParameters>
+            <SelectParameters>
+                <asp:ControlParameter ControlID="WorkoutTable" Name="WorkoutID" 
+                    PropertyName="SelectedValue" Type="Int32" />
+            </SelectParameters>
+        </asp:SqlDataSource>
+    
+    -----<br />
+
+    
+        
     <br />
     <br />
     <br />

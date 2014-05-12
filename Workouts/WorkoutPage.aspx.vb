@@ -19,6 +19,7 @@ Partial Class Default3
         gvWorkoutExercise.Visible = True
         btnAddExercise.Visible = True
         ddlExercise.Visible = True
+        btnRemoveExercise.Visible = True
 
         lblChangeSetCount.Visible = True
         ddlExerInWO.Visible = True
@@ -60,7 +61,7 @@ Partial Class Default3
             txtNewSetCount.Visible = False
             btnChangeSet.Visible = False
         End If
-       
+
 
 
     End Sub
@@ -75,6 +76,7 @@ Partial Class Default3
         End Using
         gvWorkoutExercise.DataBind()
         ddlExercise.DataBind()
+        ddlRemoveExercise.DataBind()
 
     End Sub
 
@@ -187,6 +189,8 @@ Partial Class Default3
 
         dvNewWorkout.InsertItem(False)
 
+        WorkoutTable.DataBind()
+
         'Using addWorkout As New SqlConnection(connectionString)
         '    Dim NewWorkout As New SqlCommand("EXEC CreateWorkout @WorkoutName, @Description", addWorkout)
         '    NewWorkout.Parameters.AddWithValue("@WorkoutName", dvNewWorkout.Fields(1).ToString)
@@ -199,4 +203,23 @@ Partial Class Default3
         'End Using
 
     End Sub
+
+    Protected Sub btnRemoveExercise_Click(sender As Object, e As System.EventArgs) Handles btnRemoveExercise.Click
+        Using updateConnection As New SqlConnection(connectionString)
+            Dim RemoveExerciseFromWorkout As New SqlCommand("EXEC DeleteExerciseFromWorkout @WorkoutID, @ExerciseID", updateConnection)
+            RemoveExerciseFromWorkout.Parameters.AddWithValue("@WorkoutID", WorkoutTable.SelectedValue)
+            RemoveExerciseFromWorkout.Parameters.AddWithValue("@ExerciseID", ddlRemoveExercise.SelectedValue)
+            'RemoveExerciseFromWorkout.Parameters.AddWithValue("@NewSetCount", Convert.ToInt32(txtNewSetCount.Text))
+            updateConnection.Open()
+
+            Dim rowsAffected As Integer = RemoveExerciseFromWorkout.ExecuteNonQuery
+
+
+        End Using
+
+        gvWorkoutExercise.DataBind()
+        ddlRemoveExercise.DataBind()
+
+    End Sub
+
 End Class
