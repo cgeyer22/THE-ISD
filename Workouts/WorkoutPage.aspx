@@ -125,7 +125,7 @@
     </asp:SqlDataSource>
 
     <div>
-        -----<asp:Button ID="btnNewExercise" runat="server" Text="Create a New Exercise" Class="button" />
+        <asp:Label ID="lblWorkoutName" runat="server" Visible="false" Text="Selected Workout Name" />
         <asp:GridView ID="gvWorkoutExercise" runat="server" AutoGenerateColumns="False" 
         DataSourceID="sdsWorkoutExercise" Visible="False">
         <Columns>
@@ -183,20 +183,21 @@
         Visible="False" Class="button" />
     <br />
     <br />
-    <br />
-    <br />
+    
 
-    -----<asp:DropDownList ID="ddlRemoveExercise" runat="server" AutoPostBack="True" 
+    <asp:DropDownList ID="ddlRemoveExercise" runat="server" AutoPostBack="True" 
             DataSourceID="sqlRemoveExercise" DataTextField="ExerciseName" 
-            DataValueField="ExerciseID">
+            DataValueField="ExerciseID" Visible="false" >
         </asp:DropDownList>
         <br />
     <asp:Button ID="btnRemoveExercise" runat="server" Text="Remove an Exercise" 
         Visible="false" class="button" />
-    -----
-        
     
-        -----<asp:SqlDataSource ID="sqlRemoveExercise" runat="server" 
+        <br />
+        <br />
+        <asp:Button ID="btnNewExercise" runat="server" Text="Create a New Exercise" Class="button" />
+    
+        <asp:SqlDataSource ID="sqlRemoveExercise" runat="server" 
             ConnectionString="<%$ ConnectionStrings:BetaSYS39414ConnectionString8RemoveExerciseFromWorkout %>" 
             DeleteCommand="DeleteWorkoutExercise" DeleteCommandType="StoredProcedure" 
             SelectCommand="ReadAddedExercise" SelectCommandType="StoredProcedure">
@@ -210,7 +211,7 @@
             </SelectParameters>
         </asp:SqlDataSource>
     
-    -----<br />
+    <br />
 
     
         

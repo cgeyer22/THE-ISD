@@ -17,19 +17,35 @@ Partial Class Default3
     Protected Sub WorkoutTable_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles WorkoutTable.SelectedIndexChanged
 
         gvWorkoutExercise.Visible = True
-        btnAddExercise.Visible = True
-        ddlExercise.Visible = True
-        btnRemoveExercise.Visible = True
-
         lblChangeSetCount.Visible = True
         ddlExerInWO.Visible = True
-
+        lblWorkoutName.Text = "Selected Workout: " + WorkoutTable.SelectedRow.Cells(2).Text
+        lblWorkoutName.Font.Size = 20
+        lblWorkoutName.Visible = True
         lblIntro.Visible = False
         lblPrevSetCount.Visible = False
         txtNewSetCount.Visible = False
         btnChangeSet.Visible = False
         ddlExerInWO.ClearSelection()
 
+        ddlExercise.DataBind()
+        ddlRemoveExercise.DataBind()
+
+        If ddlRemoveExercise.Items.Count = 0 Then
+            ddlRemoveExercise.Visible = False
+            btnRemoveExercise.Visible = False
+        Else
+            btnRemoveExercise.Visible = True
+            ddlRemoveExercise.Visible = True
+        End If
+
+        If ddlExercise.Items.Count = 0 Then
+            ddlExercise.Visible = False
+            btnAddExercise.Visible = False
+        Else
+            btnAddExercise.Visible = True
+            ddlExercise.Visible = True
+        End If
 
         'ddlExerInWO.AppendDataBoundItems() = False
         'Dim li As New ListItem
@@ -67,16 +83,28 @@ Partial Class Default3
     End Sub
 
     Protected Sub btnAddExercise_Click(sender As Object, e As System.EventArgs) Handles btnAddExercise.Click
-        Using connection As New SqlConnection(connectionString)
-            Dim JoelandSam4ever As New SqlCommand("EXEC CreateWorkoutExercise @ExerciseID, @WorkoutID", connection)
-            JoelandSam4ever.Parameters.AddWithValue("@ExerciseID", ddlExercise.SelectedValue)
-            JoelandSam4ever.Parameters.AddWithValue("@WorkoutID", WorkoutTable.SelectedValue)
-            connection.Open()
-            Dim rowsAffected As Integer = JoelandSam4ever.ExecuteNonQuery
-        End Using
-        gvWorkoutExercise.DataBind()
-        ddlExercise.DataBind()
-        ddlRemoveExercise.DataBind()
+        If Not ddlExercise.Items.Count = 0 Then
+            Using connection As New SqlConnection(connectionString)
+                Dim JoelandSam4ever As New SqlCommand("EXEC CreateWorkoutExercise @ExerciseID, @WorkoutID", connection)
+                JoelandSam4ever.Parameters.AddWithValue("@ExerciseID", ddlExercise.SelectedValue)
+                JoelandSam4ever.Parameters.AddWithValue("@WorkoutID", WorkoutTable.SelectedValue)
+                connection.Open()
+                Dim rowsAffected As Integer = JoelandSam4ever.ExecuteNonQuery
+            End Using
+            gvWorkoutExercise.DataBind()
+            ddlExercise.DataBind()
+            ddlRemoveExercise.DataBind()
+        End If
+
+        If ddlExercise.Items.Count = 0 Then
+            ddlExercise.Visible = False
+            btnAddExercise.Visible = False
+        End If
+
+        If Not ddlRemoveExercise.Items.Count = 0 Then
+            ddlRemoveExercise.Visible = True
+            btnRemoveExercise.Visible = True
+        End If
 
     End Sub
 
@@ -205,20 +233,33 @@ Partial Class Default3
     End Sub
 
     Protected Sub btnRemoveExercise_Click(sender As Object, e As System.EventArgs) Handles btnRemoveExercise.Click
-        Using updateConnection As New SqlConnection(connectionString)
-            Dim RemoveExerciseFromWorkout As New SqlCommand("EXEC DeleteExerciseFromWorkout @WorkoutID, @ExerciseID", updateConnection)
-            RemoveExerciseFromWorkout.Parameters.AddWithValue("@WorkoutID", WorkoutTable.SelectedValue)
-            RemoveExerciseFromWorkout.Parameters.AddWithValue("@ExerciseID", ddlRemoveExercise.SelectedValue)
-            'RemoveExerciseFromWorkout.Parameters.AddWithValue("@NewSetCount", Convert.ToInt32(txtNewSetCount.Text))
-            updateConnection.Open()
+        If Not ddlRemoveExercise.Items.Count = 0 Then
+            Using updateConnection As New SqlConnection(connectionString)
+                Dim RemoveExerciseFromWorkout As New SqlCommand("EXEC DeleteExerciseFromWorkout @WorkoutID, @ExerciseID", updateConnection)
+                RemoveExerciseFromWorkout.Parameters.AddWithValue("@WorkoutID", WorkoutTable.SelectedValue)
+                RemoveExerciseFromWorkout.Parameters.AddWithValue("@ExerciseID", ddlRemoveExercise.SelectedValue)
+                'RemoveExerciseFromWorkout.Parameters.AddWithValue("@NewSetCount", Convert.ToInt32(txtNewSetCount.Text))
+                updateConnection.Open()
 
-            Dim rowsAffected As Integer = RemoveExerciseFromWorkout.ExecuteNonQuery
+                Dim rowsAffected As Integer = RemoveExerciseFromWorkout.ExecuteNonQuery
 
 
-        End Using
+            End Using
 
-        gvWorkoutExercise.DataBind()
-        ddlRemoveExercise.DataBind()
+            gvWorkoutExercise.DataBind()
+            ddlRemoveExercise.DataBind()
+            ddlExercise.DataBind()
+        End If
+
+        If ddlRemoveExercise.Items.Count = 0 Then
+            ddlRemoveExercise.Visible = False
+            btnRemoveExercise.Visible = False
+        End If
+
+        If Not ddlExercise.Items.Count = 0 Then
+            ddlExercise.Visible = True
+            btnAddExercise.Visible = True
+        End If
 
     End Sub
 
