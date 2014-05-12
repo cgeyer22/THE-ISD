@@ -22,7 +22,8 @@
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="sdsEnteredData" runat="server" 
         ConnectionString="<%$ ConnectionStrings:BetaSYS39414EnteredData %>" 
-        SelectCommand="ReadExerciseSets" SelectCommandType="StoredProcedure">
+        SelectCommand="ReadExerciseSets" SelectCommandType="StoredProcedure" 
+        UpdateCommand="UpdateEnteredData" UpdateCommandType="StoredProcedure">
         <SelectParameters>
             <asp:SessionParameter Name="UserID" SessionField="ActiveUser" Type="Int32" />
             <asp:ControlParameter ControlID="gvAssignedWO" Name="WorkoutID" 
@@ -32,6 +33,11 @@
             <asp:ControlParameter ControlID="Calendar1" DbType="Date" Name="DateID" 
                 PropertyName="SelectedDate" />
         </SelectParameters>
+        <UpdateParameters>
+            <asp:Parameter Name="EnteredDataID" Type="Int32" />
+            <asp:Parameter Name="Entered_weight" Type="Int32" />
+            <asp:Parameter Name="Entered_reps" Type="Int32" />
+        </UpdateParameters>
     </asp:SqlDataSource>
     <asp:Calendar ID="Calendar1" runat="server" BackColor="White" 
         BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" 
@@ -127,6 +133,37 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <asp:Button ID="btnExercises" runat="server" BorderColor="Black" 
         Font-Bold="True" ForeColor="#330066" Text="Back to Exercises" Visible="False" />
+    <asp:GridView ID="gvEnterData" runat="server" AutoGenerateColumns="False" 
+        DataKeyNames="EnteredDataID,EnteredDataID1" DataSourceID="sdsEnteredData" 
+        Visible="False">
+        <Columns>
+            <asp:CommandField ButtonType="Button" ShowEditButton="True">
+            <ControlStyle ForeColor="#330066" />
+            </asp:CommandField>
+            <asp:BoundField DataField="WorkoutID" HeaderText="WorkoutID" 
+                SortExpression="WorkoutID" Visible="False" />
+            <asp:BoundField DataField="ExerciseID" HeaderText="ExerciseID" 
+                SortExpression="ExerciseID" Visible="False" />
+            <asp:BoundField DataField="EnteredDataID" HeaderText="EnteredDataID" 
+                ReadOnly="True" SortExpression="EnteredDataID" Visible="False" />
+            <asp:BoundField DataField="UserID" HeaderText="UserID" SortExpression="UserID" 
+                Visible="False" />
+            <asp:BoundField DataField="DateID" HeaderText="DateID" SortExpression="DateID" 
+                Visible="False" />
+            <asp:BoundField DataField="Assigned_weight" HeaderText="Target Weight" 
+                SortExpression="Assigned_weight" />
+            <asp:BoundField DataField="Entered_weight" HeaderText="Actual Weight" 
+                SortExpression="Entered_weight" />
+            <asp:BoundField DataField="Assigned_reps" HeaderText="Target Reps" 
+                SortExpression="Assigned_reps" />
+            <asp:BoundField DataField="Entered_reps" HeaderText="Actual Reps" 
+                SortExpression="Entered_reps" />
+            <asp:BoundField DataField="Rest_time_minutes" HeaderText="Rest Time (mins)" 
+                SortExpression="Rest_time_minutes" />
+            <asp:BoundField DataField="Rest_time_seconds" HeaderText="Rest Time (sec)" 
+                SortExpression="Rest_time_seconds" />
+        </Columns>
+    </asp:GridView>
     <br />
     <br />
     <br />
