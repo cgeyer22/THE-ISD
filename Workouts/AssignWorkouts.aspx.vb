@@ -154,7 +154,6 @@ Partial Class _Default
     End Sub
 
     Protected Sub btnWeightsReps_Click(sender As Object, e As System.EventArgs) Handles btnWeightsReps.Click
-        'checklistAthletes.
         divWeightRep.Visible = True
         'gvExercises.DataBind()
         
@@ -166,18 +165,10 @@ Partial Class _Default
                 Dim br As New HtmlGenericControl("br")
                 dgv.DataSource() = sqlListExercises
 
-                'sqlListExercises.SelectCommand() = "ListExercises"
-                'sqlListExercises.SelectParameters(1) = New System.Web.UI.WebControls.Parameter("UserID", DbType.Int32, item.Value)
-                'Debug.Print(sqlListExercises.SelectParameters(1).ToString)
-                'sqlListExercises.SelectParameters(
-                'sqlListExercises.SelectParameters(0) = sql  1
-
                 dgv.DataBind()
 
                 Dim itemS As String = item.ToString
                 Dim length As Integer = itemS.IndexOf(", ")
-                'Debug.Print(item.ToString)
-                'Debug.Print(item.ToString.IndexOf(", "))
 
                 Dim lastName As String = itemS.Substring(0, length)
                 Dim firstName As String = itemS.Substring(length + 2)
@@ -221,8 +212,6 @@ Partial Class _Default
 
                 Me.divWeightRep.Controls.Add(dgv)
                 Me.divWeightRep.Controls.Add(br)
-
-
 
             End If
             j += 1
@@ -268,27 +257,6 @@ Partial Class _Default
 
         Return name
     End Function
-
-    Protected Sub checklistAthletes_DataBinding(sender As Object, e As System.EventArgs) Handles checklistAthletes.DataBinding
-        'checklistAthletes.Items.Clear()
-        'checklistAthletes.Items.Insert(0, "--Select One--")
-
-        'For Each item As ListItem In checklistAthletes.Items
-        '    If item.Selected = True Then
-        '        Dim dgv As New DataGrid
-        '        Dim c As Integer = 5
-        '        Dim r As Integer = 10
-        '        dgv.DataSource() = sqlListExercises
-        '        dgv.DataBind()
-        '        Me.Controls.Add(dgv)
-
-        '        'name = item.ToString
-        '    Else
-
-        '    End If
-        'Next
-
-    End Sub
 
     Protected Sub Button1_Click(sender As Object, e As System.EventArgs) Handles Button1.Click
         Response.Redirect("~/Workouts/WorkoutPage.aspx")
