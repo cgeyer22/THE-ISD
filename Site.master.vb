@@ -14,8 +14,9 @@ Partial Class Site
                 CoachNavMenu_Master.Visible = True
             Case "Admin"
                 AdminNavMenu_Master.Visible = True
-            Case "Athlete"
-                AthleteNavMenu.Visible = True
+                'Case "Athlete"
+                '    AthleteNavMenu.Visible = True
+                '    AthleteNavMenuMobile.Visible = True
 
         End Select
 
