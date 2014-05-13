@@ -43,7 +43,7 @@
         BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="10pt" 
         ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="100%">
         <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
-        <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" 
+        <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#CCCCCC" 
             VerticalAlign="Bottom" />
         <OtherMonthDayStyle ForeColor="#999999" />
         <SelectedDayStyle BackColor="#333399" ForeColor="White" />
@@ -133,7 +133,7 @@
     <asp:Button ID="btnExercises" runat="server" BorderColor="Black" 
         Font-Bold="True" ForeColor="#330066" Text="Back to Exercises" Visible="False" />
     <asp:GridView ID="gvEnterData" runat="server" AutoGenerateColumns="False" 
-        DataKeyNames="EnteredDataID,EnteredDataID1" DataSourceID="sdsEnteredData" 
+        DataKeyNames="EnteredDataID" DataSourceID="sdsEnteredData" 
         Visible="False" BackColor="White" BorderColor="#999999" 
         BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" 
         GridLines="Vertical">
@@ -153,17 +153,17 @@
             <asp:BoundField DataField="DateID" HeaderText="DateID" SortExpression="DateID" 
                 Visible="False" />
             <asp:BoundField DataField="Assigned_weight" HeaderText="Target Weight" 
-                SortExpression="Assigned_weight" />
+                SortExpression="Assigned_weight" ReadOnly="True" />
             <asp:BoundField DataField="Entered_weight" HeaderText="Actual Weight" 
                 SortExpression="Entered_weight" />
             <asp:BoundField DataField="Assigned_reps" HeaderText="Target Reps" 
-                SortExpression="Assigned_reps" />
+                SortExpression="Assigned_reps" ReadOnly="True" />
             <asp:BoundField DataField="Entered_reps" HeaderText="Actual Reps" 
                 SortExpression="Entered_reps" />
             <asp:BoundField DataField="Rest_time_minutes" HeaderText="Rest Time (mins)" 
-                SortExpression="Rest_time_minutes" />
+                SortExpression="Rest_time_minutes" ReadOnly="True" />
             <asp:BoundField DataField="Rest_time_seconds" HeaderText="Rest Time (sec)" 
-                SortExpression="Rest_time_seconds" />
+                SortExpression="Rest_time_seconds" ReadOnly="True" />
         </Columns>
         <FooterStyle BackColor="#CCCCCC" />
         <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />

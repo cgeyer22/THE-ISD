@@ -53,11 +53,13 @@ Partial Class Default2
         lblExercise.Text = gvExercises.SelectedRow.Cells(2).Text
         lblExercise.Visible = True
         btnExercises.Visible = True
+        gvEnterData.Visible = True
     End Sub
 
     Protected Sub btnExercises_Click(sender As Object, e As System.EventArgs) Handles btnExercises.Click
         lblExercise.Visible = False
         btnExercises.Visible = False
+        gvEnterData.Visible = False
         lblWorkout.Visible = True
         btnWorkouts.Visible = True
         gvExercises.Visible = True
