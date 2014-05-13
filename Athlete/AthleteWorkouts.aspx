@@ -102,7 +102,7 @@
         ForeColor="Black" GridLines="Vertical">
         <AlternatingRowStyle BackColor="#CCCCCC" />
         <Columns>
-            <asp:CommandField ButtonType="Button" SelectText="Enter Results" 
+            <asp:CommandField ButtonType="Button" SelectText="Show Sets" 
                 ShowSelectButton="True">
             <ControlStyle ForeColor="#330066" />
             </asp:CommandField>
@@ -139,7 +139,8 @@
         GridLines="Vertical">
         <AlternatingRowStyle BackColor="#CCCCCC" />
         <Columns>
-            <asp:CommandField ButtonType="Button" ShowEditButton="True">
+            <asp:CommandField ButtonType="Button" ShowEditButton="True" 
+                EditText="Enter Results" UpdateText="Submit">
             <ControlStyle ForeColor="#330066" />
             </asp:CommandField>
             <asp:BoundField DataField="WorkoutID" HeaderText="WorkoutID" 
