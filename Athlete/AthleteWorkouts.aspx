@@ -40,16 +40,15 @@
         </UpdateParameters>
     </asp:SqlDataSource>
     <asp:Calendar ID="Calendar1" runat="server" BackColor="White" 
-        BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" 
-        ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px">
+        BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="10pt" 
+        ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="100%">
         <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
-        <DayStyle ForeColor="#330066" />
         <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" 
             VerticalAlign="Bottom" />
         <OtherMonthDayStyle ForeColor="#999999" />
         <SelectedDayStyle BackColor="#333399" ForeColor="White" />
-        <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="2px" 
-            Font-Bold="True" Font-Size="12pt" ForeColor="#330066" />
+        <TitleStyle BackColor="Black" BorderColor="Black" BorderWidth="4px" 
+            Font-Bold="True" Font-Size="12pt" ForeColor="#EEEEEE" />
         <TodayDayStyle BackColor="#CCCCCC" />
     </asp:Calendar>
     <asp:Label ID="lblDate" runat="server" Font-Bold="True" Font-Italic="True" 
