@@ -135,7 +135,10 @@
         Font-Bold="True" ForeColor="#330066" Text="Back to Exercises" Visible="False" />
     <asp:GridView ID="gvEnterData" runat="server" AutoGenerateColumns="False" 
         DataKeyNames="EnteredDataID,EnteredDataID1" DataSourceID="sdsEnteredData" 
-        Visible="False">
+        Visible="False" BackColor="White" BorderColor="#999999" 
+        BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" 
+        GridLines="Vertical">
+        <AlternatingRowStyle BackColor="#CCCCCC" />
         <Columns>
             <asp:CommandField ButtonType="Button" ShowEditButton="True">
             <ControlStyle ForeColor="#330066" />
@@ -163,6 +166,14 @@
             <asp:BoundField DataField="Rest_time_seconds" HeaderText="Rest Time (sec)" 
                 SortExpression="Rest_time_seconds" />
         </Columns>
+        <FooterStyle BackColor="#CCCCCC" />
+        <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+        <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+        <SortedAscendingHeaderStyle BackColor="#808080" />
+        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+        <SortedDescendingHeaderStyle BackColor="#383838" />
     </asp:GridView>
     <br />
     <br />
