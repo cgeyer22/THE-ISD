@@ -21,10 +21,27 @@ Partial Class Default3
         CreateTeam.Visible = False
     End Sub
 
-    Protected Sub Button3_Click(sender As Object, e As System.EventArgs) Handles Button3.Click
+    Protected Sub Button3_Click(sender As Object, e As System.EventArgs) Handles Cancel.Click
         AddAthletes.Visible = False
         CreateTeam.Visible = True
     End Sub
 
  
+    Protected Sub Button2_Click(sender As Object, e As System.EventArgs) Handles Add.Click
+        For Each item As ListItem In CheckBoxList1.Items
+            If item.Selected Then
+                Using con1 As New SqlConnection(connectionString)
+                    Dim sqlCommand1 As New SqlCommand("EXEC AssignToTeam @UserID, @Sport", con1)
+                    sqlCommand1.Parameters.AddWithValue("@UserID", item.Value)
+                    sqlCommand1.Parameters.AddWithValue("@Sport", DropDownList1.SelectedValue)
+                    con1.Open()
+                    Dim rowsAfftected As Integer = sqlCommand1.ExecuteNonQuery
+
+                    'THINGS I NEED TO GET WORKING: THE STORED PROCEDURE FOR ATHLETENOTINPOSITION
+                End Using
+            End If
+        Next
+        GridView2.DataBind()
+        CheckBoxList1.DataBind()
+    End Sub
 End Class

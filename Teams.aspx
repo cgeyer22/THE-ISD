@@ -143,8 +143,8 @@
             </SelectParameters>
         </asp:SqlDataSource>
         <br />
-    <asp:Button ID="Button2" runat="server" Text="Add" />
-    <asp:Button ID="Button3" runat="server" Text="Cancel" />
+    <asp:Button ID="Add" runat="server" Text="Add" />
+    <asp:Button ID="Cancel" runat="server" Text="Cancel" />
         <br />
     </div>
     <br />
