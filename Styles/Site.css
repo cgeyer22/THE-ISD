@@ -416,3 +416,8 @@ div.accountInfo
     margin-right: auto;
     /*margin: 20px auto 0px auto;*/
 }
+
+.loginDisplay
+{
+    white-space: nowrap;
+}

@@ -427,3 +427,38 @@ div.accountInfo
     margin-right: auto;
     /*margin: 20px auto 0px auto;*/
 }
+
+.loginDisplay
+{
+    white-space: nowrap;
+}
+
+@media only screen and (max-width : 530px) 
+{   
+    .loginDisplay
+    {
+        float: left;
+        width: 60%;
+        white-space: nowrap;
+        margin-top: -35px;
+    }
+    #break
+    {
+        position: absolute;
+    }
+}
+
+@media only screen and (max-width : 450px) 
+{
+    .loginDisplay
+    {
+        float: left;
+        width: 62%;
+        white-space: nowrap;
+        margin-top: -35px;
+    }
+    #break
+    {
+        position: absolute;
+    }
+}
