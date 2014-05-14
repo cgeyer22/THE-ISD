@@ -196,7 +196,7 @@ Partial Class _Default
                             textboxW.ID = "txtWeight6" + i.ToString
                             textboxW.Width() = 30
 
-                            dgv.Items(i).Cells(0).Text = firstName
+                            'dgv.Items(i).Cells(0).Text = firstName
                             dgv.Items(i).Cells(1).Text = lastName
                             dgv.Items(i).Cells(4).Text = ShowSetCount(WorkoutTable.SelectedValue, ExerciseID)
                             dgv.Items(i).Cells(5).Controls.Add(textboxR)
@@ -228,7 +228,7 @@ Partial Class _Default
         'Debug.Print(x)
         'If Not Me.FindControl(x) Is DBNull.Value Then
         Dim dgv1 As HtmlInputText = Me.FindControl(x)
-        Debug.Print("ID " + dgv1.ID)
+        ' Debug.Print("ID " + dgv1.ID)
 
 
     End Sub
@@ -275,10 +275,20 @@ Partial Class _Default
     End Sub
 
     Protected Sub EnterAssignedRepsAndWeight_Click(sender As Object, e As System.EventArgs) Handles EnterAssignedRepsAndWeight.Click
+
         'Using con2 As New SqlConnection(conStr)
         '    Dim ConnectSQLToReps As New SqlCommand("EXEC EnterWeightAndRepsAssignment @Assigned_weight, @Assigned_reps,@UserID,@WorkoutID,@ExerciseID", con2)
         '    ConnectSQLToReps.Parameters.AddWithValue("@Assigned_weight", textboxW.text)
         'End Using
+
+        Dim foo As System.Web.HttpRequest = Request
+        Debug.Print("Got request")
+        For Each k As String In Request.Form.AllKeys
+            Dim v As String = Request.Form(k)
+            Debug.Print("Key " + k + ", Value " + v)
+        Next
+
+        'Debug.Print("GOT SOMETHING " + Request.Form("ctl00$MainContent$dgvWR2$ctl02$txtRep50"))
 
         'Me.FindControl("dgvWR0").Controls.Item(0).Controls
         Debug.Print("DUMPING CONTROLS")
@@ -288,25 +298,25 @@ Partial Class _Default
         Next
         Dim x As String = "dgvWR1$txtRep50$0"
         'Debug.Print(x)
-            'If Not Me.FindControl(x) Is DBNull.Value Then
+        'If Not Me.FindControl(x) Is DBNull.Value Then
         Dim dgv As HtmlInputText = Me.FindControl(x)
-        Debug.Print("ID " + dgv.ID)
+        'Debug.Print("ID " + dgv.ID)
 
         'Debug.Print(dgv.Controls(0))
         'Debug.Print(dgv.Text)
-            'Me.FindControl(x).Controls.Item(0)
-            'Debug.Print(dgv.Items(0).Cells(0))
-            'Debug.Print(dgv.Items(0).Cells(0).Text)
-            'Debug.Print(dgv.Items(0).Cells(1).Text)
-            'Debug.Print(dgv.Items(0).Cells(3).Text)
+        'Me.FindControl(x).Controls.Item(0)
+        'Debug.Print(dgv.Items(0).Cells(0))
+        'Debug.Print(dgv.Items(0).Cells(0).Text)
+        'Debug.Print(dgv.Items(0).Cells(1).Text)
+        'Debug.Print(dgv.Items(0).Cells(3).Text)
 
-            ' End If
-
-
-            '.items(0).cells(5)
+        ' End If
 
 
-            'Debug.Print(
+        '.items(0).cells(5)
+
+
+        'Debug.Print(
 
     End Sub
 End Class
