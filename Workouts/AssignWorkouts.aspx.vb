@@ -219,6 +219,18 @@ Partial Class _Default
 
 
 
+        Debug.Print("DUMPING CONTROLS")
+        For Each c In Me.divWeightRep.Controls
+            Dim type_name As String = c.GetType().Name
+            Debug.Print("CONTROL " + type_name)
+        Next
+        Dim x As String = "txtRep50"
+        'Debug.Print(x)
+        'If Not Me.FindControl(x) Is DBNull.Value Then
+        Dim dgv1 As HtmlInputText = Me.FindControl(x)
+        Debug.Print("ID " + dgv1.ID)
+
+
     End Sub
 
     Protected Function ShowSetCount(ByVal wID As Integer, ByVal eID As Integer) As Integer
@@ -269,27 +281,32 @@ Partial Class _Default
         'End Using
 
         'Me.FindControl("dgvWR0").Controls.Item(0).Controls
-
-        Dim x As String = "txtRep50"
-        Debug.Print(x)
-        'If Not Me.FindControl(x) Is DBNull.Value Then
-        Dim dgv As TextBox = Me.FindControl(x)
+        Debug.Print("DUMPING CONTROLS")
+        For Each c In Me.divWeightRep.Controls
+            Dim type_name As String = c.GetType().Name
+            Debug.Print("CONTROL " + type_name)
+        Next
+        Dim x As String = "dgvWR1$txtRep50$0"
+        'Debug.Print(x)
+            'If Not Me.FindControl(x) Is DBNull.Value Then
+        Dim dgv As HtmlInputText = Me.FindControl(x)
+        Debug.Print("ID " + dgv.ID)
 
         'Debug.Print(dgv.Controls(0))
-        Debug.Print(dgv.Text)
-        'Me.FindControl(x).Controls.Item(0)
-        'Debug.Print(dgv.Items(0).Cells(0))
-        'Debug.Print(dgv.Items(0).Cells(0).Text)
-        'Debug.Print(dgv.Items(0).Cells(1).Text)
-        'Debug.Print(dgv.Items(0).Cells(3).Text)
+        'Debug.Print(dgv.Text)
+            'Me.FindControl(x).Controls.Item(0)
+            'Debug.Print(dgv.Items(0).Cells(0))
+            'Debug.Print(dgv.Items(0).Cells(0).Text)
+            'Debug.Print(dgv.Items(0).Cells(1).Text)
+            'Debug.Print(dgv.Items(0).Cells(3).Text)
 
-        ' End If
-
-
-        '.items(0).cells(5)
+            ' End If
 
 
-        'Debug.Print(
+            '.items(0).cells(5)
+
+
+            'Debug.Print(
 
     End Sub
 End Class
