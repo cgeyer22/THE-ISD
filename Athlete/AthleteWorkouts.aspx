@@ -73,12 +73,14 @@
                 Visible="False" />
             <asp:BoundField DataField="WorkoutName" HeaderText="Workout" 
                 SortExpression="WorkoutName">
-            <HeaderStyle ForeColor="#330066" />
             </asp:BoundField>
             <asp:BoundField DataField="Description" HeaderText="Description" 
                 SortExpression="Description">
-            <HeaderStyle ForeColor="#330066" />
             </asp:BoundField>
+            <asp:ButtonField ButtonType="Button" CommandName="Select" HeaderText="Summary" 
+                ShowHeader="True" Text="See Details">
+            <ControlStyle ForeColor="#330066" />
+            </asp:ButtonField>
         </Columns>
         <FooterStyle BackColor="#CCCCCC" />
         <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
@@ -111,11 +113,9 @@
                 Visible="False" />
             <asp:BoundField DataField="ExerciseName" HeaderText="Exercise" 
                 SortExpression="ExerciseName">
-            <HeaderStyle ForeColor="#330066" />
             </asp:BoundField>
             <asp:BoundField DataField="Description" HeaderText="Description" 
                 SortExpression="Description">
-            <HeaderStyle ForeColor="#330066" />
             </asp:BoundField>
         </Columns>
         <FooterStyle BackColor="#CCCCCC" />
@@ -162,9 +162,9 @@
             <asp:BoundField DataField="Entered_reps" HeaderText="Actual Reps" 
                 SortExpression="Entered_reps" />
             <asp:BoundField DataField="Rest_time_minutes" HeaderText="Rest Time (mins)" 
-                SortExpression="Rest_time_minutes" ReadOnly="True" />
+                SortExpression="Rest_time_minutes" ReadOnly="True" Visible="False" />
             <asp:BoundField DataField="Rest_time_seconds" HeaderText="Rest Time (sec)" 
-                SortExpression="Rest_time_seconds" ReadOnly="True" />
+                SortExpression="Rest_time_seconds" ReadOnly="True" Visible="False" />
         </Columns>
         <FooterStyle BackColor="#CCCCCC" />
         <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />

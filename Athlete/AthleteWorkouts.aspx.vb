@@ -28,6 +28,7 @@ Partial Class Default2
     End Sub
 
     Protected Sub gvAssignedWO_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles gvAssignedWO.SelectedIndexChanged
+        Debug.Print(gvAssignedWO.SelectedIndex)
         lblDate.Visible = False
         imgbtnCal.Visible = False
         gvAssignedWO.Visible = False
