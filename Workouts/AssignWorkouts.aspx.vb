@@ -154,6 +154,7 @@ Partial Class _Default
     End Sub
 
     Protected Sub btnWeightsReps_Click(sender As Object, e As System.EventArgs) Handles btnWeightsReps.Click
+        checklistAthletes.Visible = False
         divWeightRep.Visible = True
         'gvExercises.DataBind()
         
@@ -219,16 +220,16 @@ Partial Class _Default
 
 
 
-        Debug.Print("DUMPING CONTROLS")
-        For Each c In Me.divWeightRep.Controls
-            Dim type_name As String = c.GetType().Name
-            Debug.Print("CONTROL " + type_name)
-        Next
-        Dim x As String = "txtRep50"
-        'Debug.Print(x)
-        'If Not Me.FindControl(x) Is DBNull.Value Then
-        Dim dgv1 As HtmlInputText = Me.FindControl(x)
-        ' Debug.Print("ID " + dgv1.ID)
+        'Debug.Print("DUMPING CONTROLS")
+        'For Each c In Me.divWeightRep.Controls
+        '    Dim type_name As String = c.GetType().Name
+        '    Debug.Print("CONTROL " + type_name)
+        'Next
+        'Dim x As String = "txtRep50"
+        ''Debug.Print(x)
+        ''If Not Me.FindControl(x) Is DBNull.Value Then
+        'Dim dgv1 As HtmlInputText = Me.FindControl(x)
+        '' Debug.Print("ID " + dgv1.ID)
 
 
     End Sub
@@ -275,6 +276,7 @@ Partial Class _Default
     End Sub
 
     Protected Sub EnterAssignedRepsAndWeight_Click(sender As Object, e As System.EventArgs) Handles EnterAssignedRepsAndWeight.Click
+        checklistAthletes.Visible = True
 
         'Using con2 As New SqlConnection(conStr)
         '    Dim ConnectSQLToReps As New SqlCommand("EXEC EnterWeightAndRepsAssignment @Assigned_weight, @Assigned_reps,@UserID,@WorkoutID,@ExerciseID", con2)
@@ -283,24 +285,93 @@ Partial Class _Default
 
         Dim foo As System.Web.HttpRequest = Request
         Debug.Print("Got request")
+        Dim userIDList As New ArrayList
+        Dim repList As New ArrayList
+        Dim weightList As New ArrayList
+
         For Each k As String In Request.Form.AllKeys
             Dim v As String = Request.Form(k)
+
             Debug.Print("Key " + k + ", Value " + v)
+            If k.Contains("checklistAthletes") Then
+                userIDList.Add(v)
+                Debug.Print("user id is: " + v)
+            ElseIf k.Contains("txtRep") Then
+                repList.Add(v)
+                Debug.Print("rep count is: " + v)
+            ElseIf k.Contains("txtWeight") Then
+                weightList.Add(v)
+                Debug.Print("weight count is: " + v)
+            Else
+                'userIDList.Add(v)
+                Debug.Print("GGG")
+            End If
         Next
+
+        Dim exerciseIDList As New ArrayList
+
+        Using con2 As New SqlConnection(conStr)
+            Dim sqlCommand2 As New SqlCommand("EXEC FindExercise @WorkoutID", con2)
+            sqlCommand2.Parameters.AddWithValue("@WorkoutID", WorkoutTable.SelectedDataKey.Value)
+            con2.Open()
+
+            Dim rowsAffected2 As SqlDataReader = sqlCommand2.ExecuteReader()
+
+            If rowsAffected2.HasRows() Then
+                While rowsAffected2.Read()
+                    Dim ExerciseID As Integer = rowsAffected2("ExerciseID")
+                    exerciseIDList.Add(ExerciseID)
+                End While
+            End If
+        End Using
+
+        Dim userIDIndex As Integer = 0
+        Dim exerciseCount As Integer = 0
+
+        For i As Integer = 0 To weightList.Count - 1
+
+            Using conEnter As New SqlConnection(conStr)
+                Dim sqlCommandEnter As New SqlCommand("EXEC EnterWeightAndRepsAssignment @Assigned_weight, @Assigned_reps, @UserID, @WorkoutID, @ExerciseID", conEnter)
+
+                sqlCommandEnter.Parameters.AddWithValue("@Assigned_weight", weightList.Item(i))
+                sqlCommandEnter.Parameters.AddWithValue("@Assigned_reps", repList.Item(i))
+                sqlCommandEnter.Parameters.AddWithValue("@UserID", userIDList.Item(userIDIndex))
+                sqlCommandEnter.Parameters.AddWithValue("@WorkoutID", WorkoutTable.SelectedDataKey.Value)
+                sqlCommandEnter.Parameters.AddWithValue("@ExerciseID", exerciseIDList.Item(i))
+
+                conEnter.Open()
+
+                sqlCommandEnter.ExecuteNonQuery()
+
+            End Using
+
+            If exerciseCount = exerciseIDList.Count - 1 Then
+                userIDIndex += 1
+                exerciseCount = 0
+            Else
+                exerciseCount += 1
+            End If
+
+
+        Next
+
+
+
+        Dim test As String = userIDList.Item(0)
 
         'Debug.Print("GOT SOMETHING " + Request.Form("ctl00$MainContent$dgvWR2$ctl02$txtRep50"))
 
         'Me.FindControl("dgvWR0").Controls.Item(0).Controls
-        Debug.Print("DUMPING CONTROLS")
-        For Each c In Me.divWeightRep.Controls
-            Dim type_name As String = c.GetType().Name
-            Debug.Print("CONTROL " + type_name)
-        Next
-        Dim x As String = "dgvWR1$txtRep50$0"
-        'Debug.Print(x)
-        'If Not Me.FindControl(x) Is DBNull.Value Then
-        Dim dgv As HtmlInputText = Me.FindControl(x)
-        'Debug.Print("ID " + dgv.ID)
+        'Debug.Print("DUMPING CONTROLS")
+        'For Each c In Me.divWeightRep.Controls
+        '    Dim type_name As String = c.GetType().Name
+        '    Debug.Print("CONTROL " + type_name)
+        'Next
+        'Dim x As String = "dgvWR1$txtRep50$0"
+        ''Debug.Print(x)
+        ''If Not Me.FindControl(x) Is DBNull.Value Then
+        'Dim dgv As HtmlInputText = Me.FindControl(x)
+        ''Debug.Print("ID " + dgv.ID)
 
         'Debug.Print(dgv.Controls(0))
         'Debug.Print(dgv.Text)
