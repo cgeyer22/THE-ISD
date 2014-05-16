@@ -9,7 +9,11 @@
     ConnectionString="<%$ ConnectionStrings:BetaSYS39414ConnectionString %>" 
     InsertCommand="CreateTeam" InsertCommandType="StoredProcedure" 
     SelectCommand="ReadTeam" SelectCommandType="StoredProcedure" 
-    UpdateCommand="UpdateTeam" UpdateCommandType="StoredProcedure">
+    UpdateCommand="UpdateTeam" UpdateCommandType="StoredProcedure" 
+            DeleteCommand="DeleteTeam" DeleteCommandType="StoredProcedure">
+        <DeleteParameters>
+            <asp:Parameter Name="TeamID" Type="Int32" />
+        </DeleteParameters>
     <InsertParameters>
         <asp:Parameter Name="Sport" Type="String" />
         <asp:Parameter Name="Active" Type="Boolean" />
@@ -37,9 +41,10 @@
                 SortExpression="Description" />
             <asp:CheckBoxField DataField="Active" HeaderText="Active" 
                 SortExpression="Active" />
+               <asp:CommandField ShowInsertButton="True" ButtonType="Button" />
         </Fields>
     </asp:DetailsView>
-        <asp:Button ID="AddTeam" runat="server" Text="Add Team" />
+
         <br />
     <br />
 <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" 
@@ -49,8 +54,9 @@
             GridLines="Vertical" >
     <AlternatingRowStyle BackColor="#CCCCCC" />
     <Columns>
+        <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
         <asp:BoundField DataField="TeamID" HeaderText="TeamID" InsertVisible="False" 
-            ReadOnly="True" SortExpression="TeamID" />
+            ReadOnly="True" SortExpression="TeamID" Visible="false" />
         <asp:BoundField DataField="Sport" HeaderText="Sport" SortExpression="Sport" />
         <asp:BoundField DataField="Gender" HeaderText="Gender" 
             SortExpression="Gender" />

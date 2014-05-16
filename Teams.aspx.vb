@@ -36,12 +36,11 @@ Partial Class Default3
                     sqlCommand1.Parameters.AddWithValue("@Sport", DropDownList1.SelectedValue)
                     con1.Open()
                     Dim rowsAfftected As Integer = sqlCommand1.ExecuteNonQuery
-
-                    'THINGS I NEED TO GET WORKING: THE STORED PROCEDURE FOR ATHLETENOTINPOSITION
                 End Using
             End If
         Next
         GridView2.DataBind()
         CheckBoxList1.DataBind()
     End Sub
+
 End Class
