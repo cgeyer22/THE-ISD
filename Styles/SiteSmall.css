@@ -353,7 +353,18 @@ div.accountInfo
 /* Workout Page Layout
 ----------------------------------------------------------*/
 
+#workoutExerciseDiv
+{
+    padding: 10px 2px 10px 2px;
+    white-space: nowrap;
+}
 
+#controlsDiv
+{
+    margin-left: 20px;
+    float: left;
+    padding: 10px 10px 10px 10px;
+}
 
 /* MISC  
 ----------------------------------------------------------*/

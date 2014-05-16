@@ -15,17 +15,17 @@ Partial Class Default3
     End Sub
 
     Protected Sub WorkoutTable_SelectedIndexChanged(sender As Object, e As System.EventArgs) Handles WorkoutTable.SelectedIndexChanged
-
         gvWorkoutExercise.Visible = True
         lblChangeSetCount.Visible = True
         ddlExerInWO.Visible = True
-        lblWorkoutName.Text = "Selected Workout: " + WorkoutTable.SelectedRow.Cells(2).Text
+        lblWorkoutName.Text = "Workout Name: " + WorkoutTable.SelectedRow.Cells(2).Text
         lblWorkoutName.Font.Size = 20
         lblWorkoutName.Visible = True
         lblIntro.Visible = False
         lblPrevSetCount.Visible = False
         txtNewSetCount.Visible = False
         btnChangeSet.Visible = False
+
         ddlExerInWO.ClearSelection()
 
         ddlExercise.DataBind()
@@ -42,8 +42,10 @@ Partial Class Default3
         If ddlExercise.Items.Count = 0 Then
             ddlExercise.Visible = False
             btnAddExercise.Visible = False
+            btnNewExercise.Visible = True
         Else
             btnAddExercise.Visible = True
+            btnNewExercise.Visible = True
             ddlExercise.Visible = True
         End If
 
@@ -99,6 +101,7 @@ Partial Class Default3
         If ddlExercise.Items.Count = 0 Then
             ddlExercise.Visible = False
             btnAddExercise.Visible = False
+            btnNewExercise.Visible = True
         End If
 
         If Not ddlRemoveExercise.Items.Count = 0 Then
@@ -192,23 +195,19 @@ Partial Class Default3
 
     End Sub
 
-    Protected Sub SubmitSearchWorkout_Click(sender As Object, e As System.EventArgs) Handles SubmitSearchWorkout.Click
+    Protected Sub SubmitSearchWorkout_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles SubmitSearchWorkout.Click
+        btnNewWorkout.Visible = True
         Using connection As New SqlConnection(connectionString)
             Dim searchWorkouts As New SqlCommand("EXEC SearchWorkouts @WorkoutName", connection)
             searchWorkouts.Parameters.AddWithValue("@WorkoutName", WorkoutSearch.Text)
-
-
-
-
         End Using
-
     End Sub
 
     Protected Sub btnWorkoutVis_Click(sender As Object, e As System.EventArgs) Handles btnWorkoutVis.Click
         WorkoutTable.Visible = True
         btnNewWorkout.Visible = True
-
         btnWorkoutVis.Visible = False
+        hideWorkoutsBtn.Visible = True
     End Sub
 
     Protected Sub btnAddWorkout_Click(sender As Object, e As System.EventArgs) Handles btnAddWorkout.Click
@@ -259,8 +258,18 @@ Partial Class Default3
         If Not ddlExercise.Items.Count = 0 Then
             ddlExercise.Visible = True
             btnAddExercise.Visible = True
+            btnNewExercise.Visible = True
         End If
 
     End Sub
 
+    Protected Sub hideWorkoutsBtn_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles hideWorkoutsBtn.Click
+        WorkoutTable.Visible = False
+        btnNewWorkout.Visible = False
+        btnWorkoutVis.Visible = True
+        hideWorkoutsBtn.Visible = False
+        dvNewWorkout.Visible = False
+        btnAddWorkout.Visible = False
+        btnCancel.Visible = False
+    End Sub
 End Class
