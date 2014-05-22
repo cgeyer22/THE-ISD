@@ -77,10 +77,6 @@
             <asp:BoundField DataField="Description" HeaderText="Description" 
                 SortExpression="Description">
             </asp:BoundField>
-            <asp:ButtonField ButtonType="Button" CommandName="Select" HeaderText="Summary" 
-                ShowHeader="True" Text="See Details">
-            <ControlStyle ForeColor="#330066" />
-            </asp:ButtonField>
         </Columns>
         <FooterStyle BackColor="#CCCCCC" />
         <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
@@ -115,8 +111,13 @@
                 SortExpression="ExerciseName">
             </asp:BoundField>
             <asp:BoundField DataField="Description" HeaderText="Description" 
-                SortExpression="Description">
+                SortExpression="Description" Visible="False">
             </asp:BoundField>
+            <asp:TemplateField HeaderText="Set Count" >
+                    <ItemTemplate>
+                        <asp:Label ID="lblSets" Text='<%#  ShowSetCount(gvAssignedWO.selectedValue, Eval("ExerciseID"))  %>' runat="server"></asp:Label>
+                    </ItemTemplate>
+            </asp:TemplateField>
         </Columns>
         <FooterStyle BackColor="#CCCCCC" />
         <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
@@ -127,6 +128,11 @@
         <SortedDescendingCellStyle BackColor="#CAC9C9" />
         <SortedDescendingHeaderStyle BackColor="#383838" />
     </asp:GridView>
+    <asp:Button ID="btnDescriptions" runat="server" BorderColor="Black" 
+        Font-Bold="True" ForeColor="#330066" Text="Show Exercise Descriptions" 
+        Visible="False" />
+    <asp:Button ID="btnHide" runat="server" BorderColor="Black" Font-Bold="True" 
+        ForeColor="#330066" Text="Hide Descriptions" Visible="False" />
     <asp:Label ID="lblExercise" runat="server" Font-Bold="True" Font-Italic="True" 
         Font-Size="XX-Large" Text="Label" Visible="False"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
