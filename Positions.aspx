@@ -44,7 +44,7 @@
                 PropertyName="SelectedValue" Type="String" />
         </SelectParameters>
     </asp:SqlDataSource>
-    <asp:Button ID="PosButton" runat="server" Visible="false" Text="Creat New Position"  />
+    <asp:Button ID="PosButton" runat="server" Visible="false" Text="Create New Position"  />
     <br />
     <br />
     <asp:Label ID="Label3" runat="server" Text="Athletes:" Visible="false"></asp:Label>
