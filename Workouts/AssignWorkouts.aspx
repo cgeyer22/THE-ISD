@@ -73,13 +73,13 @@
     </div>
 
     <br /><br />
-    <asp:Button ID="btnAssign" runat="server" Text="Assign" Visible="False" />
+    <asp:Button ID="btnAssign" runat="server" Text="Assign" Visible="false" />
     <br />
     <br />
     <asp:Label ID="lblAssignmentResult" runat="server" Text="Assigned to: " Visible="false" />
     <br />
     <asp:Label ID="lblDublicate" runat="server" Text="Previously Assigned to: " Visible="false" />
     <br />
-    <asp:Button ID="EnterAssignedRepsAndWeight" Text="Submit" runat="server" />
+    <asp:Button ID="EnterAssignedRepsAndWeight" Text="Submit" runat="server" Visible="false" />
 </asp:Content>
 

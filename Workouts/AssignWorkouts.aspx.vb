@@ -40,10 +40,13 @@ Partial Class _Default
                 Debug.Print("value: " + item.Value)
                 Debug.Print("WorkoutTable: " + WorkoutTable.SelectedDataKey.Value.ToString)
 
+                Dim dateTest As Date = New Date(2014, 5, 5)
+
                 Using con1 As New SqlConnection(conStr)
-                    Dim sqlCommand1 As New SqlCommand("EXEC CreateAssignedWO @UserID, @WorkoutID", con1)
+                    Dim sqlCommand1 As New SqlCommand("EXEC CreateAssignedWO @UserID, @WorkoutID, @DateID", con1)
                     sqlCommand1.Parameters.AddWithValue("@UserID", item.Value)
                     sqlCommand1.Parameters.AddWithValue("@WorkoutID", WorkoutTable.SelectedDataKey.Value)
+                    sqlCommand1.Parameters.AddWithValue("@DateID", dateTest)
                     con1.Open()
                     Dim rowsAffected1 As Integer = sqlCommand1.ExecuteNonQuery()
                     If rowsAffected1 > 0 Then
@@ -58,9 +61,12 @@ Partial Class _Default
                             If rowsAffected2.HasRows() Then
                                 While rowsAffected2.Read()
 
+                                    Dim exerciseIDList As New ArrayList
+
                                     Dim setCount As Integer = 0
 
                                     Dim ExerciseID As Integer = rowsAffected2("ExerciseID")
+                                    exerciseIDList.Add(ExerciseID)
 
                                     Debug.Print("START ExerciseID is below")
                                     'Debug.Print(rowsAffected2("WorkoutID"))
@@ -103,6 +109,60 @@ Partial Class _Default
 
 
                                     End Using
+
+                                    Dim userIDList As New ArrayList
+                                    Dim repList As New ArrayList
+                                    Dim weightList As New ArrayList
+
+                                    For Each k As String In Request.Form.AllKeys
+                                        Dim v As String = Request.Form(k)
+
+                                        Debug.Print("Key " + k + ", Value " + v)
+                                        If k.Contains("checklistAthletes") Then
+                                            userIDList.Add(v)
+                                            Debug.Print("user id is: " + v)
+                                        ElseIf k.Contains("txtRep") Then
+                                            repList.Add(v)
+                                            Debug.Print("rep count is: " + v)
+                                        ElseIf k.Contains("txtWeight") Then
+                                            weightList.Add(v)
+                                            Debug.Print("weight count is: " + v)
+                                        Else
+                                            'userIDList.Add(v)
+                                            Debug.Print("GGG")
+                                        End If
+                                    Next
+
+                                    Dim userIDIndex As Integer = 0
+                                    Dim exerciseCount As Integer = 0
+
+                                    For i As Integer = 0 To weightList.Count - 1
+
+                                        Using conEnter As New SqlConnection(conStr)
+                                            Dim sqlCommandEnter As New SqlCommand("EXEC EnterWeightAndRepsAssignment @Assigned_weight, @Assigned_reps, @UserID, @WorkoutID, @ExerciseID", conEnter)
+
+                                            sqlCommandEnter.Parameters.AddWithValue("@Assigned_weight", weightList.Item(i))
+                                            sqlCommandEnter.Parameters.AddWithValue("@Assigned_reps", repList.Item(i))
+                                            sqlCommandEnter.Parameters.AddWithValue("@UserID", userIDList.Item(userIDIndex))
+                                            sqlCommandEnter.Parameters.AddWithValue("@WorkoutID", WorkoutTable.SelectedDataKey.Value)
+                                            sqlCommandEnter.Parameters.AddWithValue("@ExerciseID", exerciseIDList.Item(i))
+
+                                            conEnter.Open()
+
+                                            sqlCommandEnter.ExecuteNonQuery()
+
+                                        End Using
+
+                                        If exerciseCount = exerciseIDList.Count - 1 Then
+                                            userIDIndex += 1
+                                            exerciseCount = 0
+                                        Else
+                                            exerciseCount += 1
+                                        End If
+
+
+                                    Next
+
 
                                 End While
 
@@ -156,6 +216,7 @@ Partial Class _Default
     Protected Sub btnWeightsReps_Click(sender As Object, e As System.EventArgs) Handles btnWeightsReps.Click
         checklistAthletes.Visible = False
         divWeightRep.Visible = True
+        btnAssign.Visible = True
         'gvExercises.DataBind()
         
         Dim j As Integer = 0
@@ -283,8 +344,9 @@ Partial Class _Default
         '    ConnectSQLToReps.Parameters.AddWithValue("@Assigned_weight", textboxW.text)
         'End Using
 
-        Dim foo As System.Web.HttpRequest = Request
-        Debug.Print("Got request")
+        'Dim foo As System.Web.HttpRequest = Request
+        'Debug.Print("Got request")
+
         Dim userIDList As New ArrayList
         Dim repList As New ArrayList
         Dim weightList As New ArrayList
